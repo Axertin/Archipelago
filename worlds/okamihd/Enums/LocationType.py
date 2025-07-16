@@ -17,3 +17,4 @@ class LocationType(Enum):
     BURIED_UNDER_LEAF_PILE=8,
     EVENT=9
     BURNING_CHEST_NO_WATER=10,
+    DARUMA=11

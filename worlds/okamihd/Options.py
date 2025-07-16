@@ -51,6 +51,11 @@ class OpenGameStart(Toggle):
     display_name = "Remove some events for a more open start"
     default = 1
 
+class RemoveBlockHead(Toggle):
+    """Removes all 3 instances of Blockhead"""
+    display_name = "Removes all 3 instances of Blockhead"
+    default = 1
+
 #
 #class PraiseSanity(Choice):
 #    """Randomize Praise Rewards"""
@@ -69,6 +74,7 @@ class OkamiOptions(PerGameCommonOptions):
     KarmicTransformers: KarmicTransformers
     OpenGameStart: OpenGameStart
     ProgressiveWeapons:ProgressiveWeapons
+    RemoveBlockHead: RemoveBlockHead
 #    PraiseSanity:PraiseSanity
 
 
@@ -77,7 +83,8 @@ okami_option_groups: Dict[str, List[Any]] = {
         BuriedChestsByNight,
         KarmicTransformers,
         OpenGameStart,
-        ProgressiveWeapons
+        ProgressiveWeapons,
+        RemoveBlockHead
         #PraiseSanity
         ],
 

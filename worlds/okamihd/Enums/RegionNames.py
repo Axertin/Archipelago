@@ -67,3 +67,11 @@ class RegionNames(StrEnum):
     CURSED_TAKA_PASS_CAVE="Cursed Taka Pass (Cave)"
     CURSED_TAKA_PASS_GUARDIAN_SAPLING = "Cursed Taka Pass (Guardian Sapling)"
     TAKA_PASS = "Taka Pass"
+
+    ## KUSA VILLAGE
+    KUSA_VILLAGE="Kusa Village"
+    KUSA_VILLAGE_BLOCKHEAD="Kusa Village (Blockhead cave)"
+
+    ### INTERIORS
+    BAMBOO_HOUSE="Mr Bamboo's house"
+    KUSA_INN="Kusa Village Inn"

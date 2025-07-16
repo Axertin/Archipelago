@@ -34,8 +34,8 @@ events={
 
 locations = {
     RegionNames.CURSED_TAKA_PASS_CAVE:{
-        "Taka pass - Stray bead chest in cave pond" : LocData(96, type=LocationType.UNDERWATER_CHEST),
-        "Taka pass - Burning chest in cave upper": LocData(97, type=LocationType.BURNING_CHEST),
+        "Taka pass - Stray bead chest in cave pond" : LocData(125, type=LocationType.UNDERWATER_CHEST),
+        "Taka pass - Burning chest in cave upper": LocData(126, type=LocationType.BURNING_CHEST),
         "Taka pass - Second Burning chest in cave upper": LocData(98, type=LocationType.BURNING_CHEST_NO_WATER),
     }
 

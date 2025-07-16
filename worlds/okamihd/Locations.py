@@ -2,7 +2,7 @@ from BaseClasses import Region, Location, ItemClassification
 from .Rules import apply_event_or_location_rules
 from .Types import LocData, OkamiLocation, OkamiItem
 from typing import Dict, TYPE_CHECKING
-from .RegionsData import r100, r122, r101, r102, r103, r104, rf01, rf02, rf03, rf04
+from .RegionsData import r100, r122, r101, r102, r103, r104, rf01, rf02, rf03, rf04,rf07,rf08,r108
 
 if TYPE_CHECKING:
     from . import OkamiWorld
@@ -80,6 +80,9 @@ okami_locations = {
     **rf02.locations,
     **rf03.locations,
     **rf04.locations,
+    **rf07.locations,
+    **rf08.locations,
+    **r108.locations
 }
 
 okami_events = {
@@ -92,5 +95,8 @@ okami_events = {
     **rf01.events,
     **rf02.events,
     **rf03.events,
-    **rf04.events
+    **rf04.events,
+    **rf07.events,
+    **rf08.events,
+    **r108.events
 }
