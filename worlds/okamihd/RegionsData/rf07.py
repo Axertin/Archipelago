@@ -14,7 +14,7 @@ exits={
     # Region for mandatory waka encounter
     RegionNames.CURSED_TAKA_PASS_WAKA: [ExitData("Defeat Waka Again",RegionNames.CURSED_TAKA_PASS_CAVE, has_events=["Taka Pass - Rematch with Waka"])],
     RegionNames.CURSED_TAKA_PASS_CAVE : [ExitData("Cross Bridge to Guardian Sapling",RegionNames.CURSED_TAKA_PASS_GUARDIAN_SAPLING,has_events=["Taka pass - Restore Bridge to Guardian Sapling"])],
-    RegionNames.CURSED_TAKA_PASS_GUARDIAN_SAPLING: [ExitData("Taka Pass Restoraztion",RegionNames.TAKA_PASS,has_events=["Taka pass - Restore Guardian Sapling"])]
+    RegionNames.CURSED_TAKA_PASS_GUARDIAN_SAPLING: [ExitData("Taka Pass Restoration",RegionNames.TAKA_PASS,has_events=["Taka pass - Restore Guardian Sapling"])]
 }
 events={
     RegionNames.CURSED_TAKA_PASS:{
