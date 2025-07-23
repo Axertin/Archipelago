@@ -1,10 +1,15 @@
 import typing
-from typing import NamedTuple, Optional, List
-from BaseClasses import Location, Item, ItemClassification
+from typing import NamedTuple, Optional, List, Callable
+
+from typing_extensions import TypeVar
+
+from BaseClasses import Location, Item, ItemClassification, LocationProgressType
+from worlds.okamihd import OkamiWorld
 from .Enums.BrushTechniques import BrushTechniques
 from .Enums.LocationType import LocationType
 from .Enums.OkamiEnnemies import OkamiEnnemies
 from .Options import OkamiOptions
+
 
 class OkamiLocation(Location):
     game = "Okami HD"
@@ -18,6 +23,7 @@ class ItemData(NamedTuple):
     code: int
     classification: ItemClassification
 
+
 class LocData(NamedTuple):
     id: int
     type: LocationType = LocationType.NORMAL_CHEST
@@ -27,7 +33,10 @@ class LocData(NamedTuple):
     required_items_events: [str] = []
     mandatory_enemies: List[OkamiEnnemies] = []
     needs_swim: bool = False
-    praise_sanity:int=0
+    praise_sanity: int = 0
+    progress_type: LocationProgressType | typing.Callable[
+        [OkamiOptions], LocationProgressType] = LocationProgressType.DEFAULT
+
 
 class EventData(NamedTuple):
     id: int | None = None
@@ -39,11 +48,21 @@ class EventData(NamedTuple):
     required_items_events: [str] = []
     mandatory_enemies: List[OkamiEnnemies] = []
     needs_swim: bool = False
-    is_event_item: bool | typing.Callable[[OkamiOptions], bool] = False
     precollected: bool | typing.Callable[[OkamiOptions], bool] = False
+    is_event_item: bool | typing.Callable[[OkamiOptions], bool] = False
+    progress_type: LocationProgressType | typing.Callable[
+        [OkamiOptions], LocationProgressType] = LocationProgressType.DEFAULT
+
 
 class ExitData(NamedTuple):
     name: str
     destination: str
     has_events: [str] = []
     needs_swim: bool = False
+
+# Generic function to return the value or the resolved value of a callable that depends of options.
+def resolve_option_callable[T](value: T | Callable[[OkamiOptions], T], world: "OkamiWorld") -> T:
+    if isinstance(value, Callable):
+        return value(world.options)
+    else:
+        return value

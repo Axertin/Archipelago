@@ -118,9 +118,7 @@ okami_items = {
     "Lips of Ice": ItemData(0x4b, ItemClassification.progression),
     "Eyeball of Fire": ItemData(0x4c, ItemClassification.progression),
     "Black Demon Horn": ItemData(0x4d, ItemClassification.progression),
-    "Loyalty Orb": ItemData(0x4e, ItemClassification.progression),
-    "Justice Orb": ItemData(0x4f, ItemClassification.progression),
-    "Duty Orb": ItemData(0x50, ItemClassification.progression),
+
     "Golden Mushroom": ItemData(0x5f, ItemClassification.progression),
     "Gimmick Gear": ItemData(0x60, ItemClassification.progression),
     "8 Purification Sake": ItemData(0x62, ItemClassification.progression),
@@ -133,6 +131,21 @@ okami_items = {
     "Marlin Rod": ItemData(0x77, ItemClassification.progression),
     # Not sure if this should be an item as we already have the power in the item pool...
     # "Fog Pot":ItemData(0x9f,ItemClassification.progression),
+
+    ## Canine Warriors
+    "Canine Warrior Rei" : ItemData(0x303,ItemClassification.progression_skip_balancing),
+    "Canine Warrior Shin": ItemData(0x304, ItemClassification.progression_skip_balancing),
+    "Canine Warrior Chi": ItemData(0x305, ItemClassification.progression_skip_balancing),
+    "Canine Warrior Ko": ItemData(0x306, ItemClassification.progression_skip_balancing),
+    "Canine Warrior Tei": ItemData(0x307, ItemClassification.progression_skip_balancing),
+    "Loyalty Orb": ItemData(0x4e, ItemClassification.progression_skip_balancing),
+    "Justice Orb": ItemData(0x4f, ItemClassification.progression_skip_balancing),
+    "Duty Orb": ItemData(0x50, ItemClassification.progression_skip_balancing),
+
+
+
+
+
 
     ## "Biteable" Items
     ### As these disappear and respanw each time you transition, the best way to handle those would be to set the flag

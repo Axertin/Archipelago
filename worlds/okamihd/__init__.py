@@ -10,7 +10,7 @@ from .Options import create_option_groups, OkamiOptions, slot_data_options, Karm
 from worlds.AutoWorld import World, WebWorld, CollectionState
 from typing import List, Dict, TextIO
 from Utils import local_path
-from .Types import OkamiItem
+from .Types import OkamiItem, resolve_option_callable
 from .Enums.DivineInstruments import DivineInstruments
 from .Enums.RegionNames import RegionNames
 
@@ -92,51 +92,46 @@ class OkamiWorld(World):
             world.push_precollected(
                 OkamiItem(di, ItemClassification.progression, get_item_name_to_id_dict()[di], world.player))
         else:
-            (di_name,di) = random.choice(list(progressive_weapons.items()))
-            world.push_precollected(OkamiItem(di_name,ItemClassification.progression,di.code,world.player))
-            for (progressive_waepon_name,progressive_weapon) in progressive_weapons.items():
-                if di_name==progressive_waepon_name:
-                    count=4
+            (di_name, di) = random.choice(list(progressive_weapons.items()))
+            world.push_precollected(OkamiItem(di_name, ItemClassification.progression, di.code, world.player))
+            for (progressive_waepon_name, progressive_weapon) in progressive_weapons.items():
+                if di_name == progressive_waepon_name:
+                    count = 4
                 else:
-                    count=5
+                    count = 5
                 for i in range(count):
                     itempool += [OkamiItem(di_name, di.classification, di.code, world.player)]
 
         match world.options.KarmicTransformers:
             case KarmicTransformers.option_precollected:
-                for (k_name,k) in karmic_transformers.items():
-                    world.push_precollected(OkamiItem(k_name,k.classification,k.code,world.player))
+                for (k_name, k) in karmic_transformers.items():
+                    world.push_precollected(OkamiItem(k_name, k.classification, k.code, world.player))
             case KarmicTransformers.option_in_item_pool:
                 for (k_name, k) in karmic_transformers.items():
-                    if k_name=="Karmic Returner":
+                    if k_name == "Karmic Returner":
                         world.push_precollected(OkamiItem(k_name, k.classification, k.code, world.player))
                     else:
-                        itempool+=[OkamiItem(k_name, k.classification, k.code, world.player)]
+                        itempool += [OkamiItem(k_name, k.classification, k.code, world.player)]
 
         # Event Items Creation
         for name in RegionNames:
             if name in okami_events:
                 for (event_name, event_data) in okami_events[name].items():
-                    if isinstance(event_data.precollected, bool):
-                        precollected_item_event_state = event_data.precollected
-                    else:
-                        precollected_item_event_state = event_data.precollected(world.options)
+                    precollected_item_event_state = resolve_option_callable(event_data.precollected, world)
 
-                        if precollected_item_event_state:
-                            # With the current options this event is unlocked at the start, so we create a precollected item
-                            # Classification probably doesn't matter much for precollected items I'd guess
-                            world.push_precollected(
-                                OkamiItem(event_name, ItemClassification.progression, event_data.id, world.player))
-                        # If it's precollected, no need to add it to the itempool
-                        else:
-                            if isinstance(event_data.is_event_item, bool):
-                                is_event_item_state = event_data.is_event_item
-                            else:
-                                is_event_item_state = event_data.is_event_item(world.options)
-                            if is_event_item_state:
-                                # With the current options this event becomes its own item, so we need to add it to the item pool
-                                itempool += OkamiItem(event_name, ItemClassification.progression, event_data.id,
-                                                      world.player)
+                    if precollected_item_event_state:
+                        # With the current options this event is unlocked at the start, so we create a precollected item
+                        # Classification probably doesn't matter much for precollected items I'd guess
+                        world.push_precollected(
+                            OkamiItem(event_name, ItemClassification.progression, event_data.id, world.player))
+                    # If it's precollected, no need to add it to the itempool
+                    else:
+                        is_event_item_state = resolve_option_callable(event_data.is_event_item, world)
+
+                        if is_event_item_state:
+                            # With the current options this event becomes its own item, so we need to add it to the item pool
+                            itempool += OkamiItem(event_name, ItemClassification.progression, event_data.id,
+                                                  world.player)
 
         itempool += create_brush_techniques_items(world)
         for name in item_table.keys():
@@ -162,5 +157,15 @@ class OkamiWorld(World):
                                      DivineInstruments.EIGHT_WONDER.value.item_name],
         "divine_instrument_tier_5": [DivineInstruments.SOLAR_FLARE.value.item_name,
                                      DivineInstruments.TUNDRA_BEADS.value.item_name,
-                                     DivineInstruments.THUNDER_EDGE.value.item_name]
+                                     DivineInstruments.THUNDER_EDGE.value.item_name],
+        "canine_warriors": [
+            "Canine Warrior Rei",
+            "Canine Warrior Shin",
+            "Canine Warrior Chi",
+            "Canine Warrior Ko",
+            "Canine Warrior Tei",
+            "Loyalty Orb",
+            "Justice Orb",
+            "Duty Orb"
+        ],
     }

@@ -34,6 +34,9 @@ def has_portable_thunder_source(state: CollectionState, world: "OkamiWorld") -> 
 def has_portable_ice_source(state: CollectionState, world: "OkamiWorld") -> bool:
     return state.has(DivineInstruments.TUNDRA_BEADS.value.item_name, world.player)
 
+def gale_shrine_access(state:CollectionState, world: "OkamiWorld") ->bool:
+    return state.has_group("canine_warriors",world.player,world.options.RequiredDoggorbs.value)
+
 
 def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiWorld") -> bool:
     if not world.options.ProgressiveWeapons:
