@@ -1,9 +1,11 @@
 from typing import TYPE_CHECKING
 
+from BaseClasses import LocationProgressType
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
 from ..Enums.OkamiEnnemies import OkamiEnnemies
 from ..Enums.RegionNames import RegionNames
+from ..Rules import gale_shrine_access
 from ..Types import EventData, ExitData, LocData
 
 if TYPE_CHECKING:
@@ -17,7 +19,36 @@ exits = {
 }
 events = {
     RegionNames.KUSA_VILLAGE: {
-        "Kusa Village - Defeat Blockhead": EventData(precollected=lambda o:o.RemoveBlockHead)
+        "Kusa Village - Defeat Blockhead": EventData(precollected=lambda o:o.RemoveBlockHead),
+        "Kusa Village - Open Gale Shrine Door": EventData(special_rule=lambda s, w:gale_shrine_access(s,w)),
+        "Kusa Village - Save Rei":EventData(cherry_bomb_level=1,override_item_id=0x303,
+                                            is_event_item=lambda o:o.CanineRewards!=0,
+                                            progress_type=lambda o: LocationProgressType.EXCLUDED if o.CanineRewards==2
+                                            else LocationProgressType.DEFAULT),
+        "Kusa Village - Save Shin": EventData(required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM], override_item_id=0x304,
+                                             is_event_item=lambda o: o.CanineRewards != 0,
+                                             progress_type=lambda
+                                                 o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
+                                             else LocationProgressType.DEFAULT),
+        "Kusa Village - Save Chi": EventData(power_slash_level=1,
+                                              override_item_id=0x305,
+                                              is_event_item=lambda o: o.CanineRewards != 0,
+                                              progress_type=lambda
+                                                  o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
+                                              else LocationProgressType.DEFAULT),
+        "Kusa Village - Save Ko": EventData(required_brush_techniques=[BrushTechniques.GREENSPROUT_VINE],
+                                             override_item_id=0x306,
+                                             is_event_item=lambda o: o.CanineRewards != 0,
+                                             progress_type=lambda
+                                                 o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
+                                             else LocationProgressType.DEFAULT),
+        # Should we add more conditions to get this one ?
+        "Kusa Village - Save Tei": EventData( mandatory_enemies=[OkamiEnnemies.TEI],
+                                            override_item_id=0x307,
+                                            is_event_item=lambda o: o.CanineRewards != 0,
+                                            progress_type=lambda
+                                                o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
+                                            else LocationProgressType.DEFAULT)
     }
 }
 locations = {

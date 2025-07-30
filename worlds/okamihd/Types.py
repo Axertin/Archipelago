@@ -3,8 +3,8 @@ from typing import NamedTuple, Optional, List, Callable
 
 from typing_extensions import TypeVar
 
-from BaseClasses import Location, Item, ItemClassification, LocationProgressType
-from worlds.okamihd import OkamiWorld
+from BaseClasses import Location, Item, ItemClassification, LocationProgressType, CollectionState
+from worlds.AutoWorld import World
 from .Enums.BrushTechniques import BrushTechniques
 from .Enums.LocationType import LocationType
 from .Enums.OkamiEnnemies import OkamiEnnemies
@@ -22,6 +22,7 @@ class OkamiItem(Item):
 class ItemData(NamedTuple):
     code: int
     classification: ItemClassification
+    exclude_from_pool: Callable[[OkamiOptions], bool] | bool = False
 
 
 class LocData(NamedTuple):
@@ -36,6 +37,8 @@ class LocData(NamedTuple):
     praise_sanity: int = 0
     progress_type: LocationProgressType | typing.Callable[
         [OkamiOptions], LocationProgressType] = LocationProgressType.DEFAULT
+    # This rule overrides all other access rules
+    special_rule: typing.Callable[[CollectionState, World], bool] | None = None
 
 
 class EventData(NamedTuple):
@@ -45,6 +48,7 @@ class EventData(NamedTuple):
     power_slash_level: int = 0
     cherry_bomb_level: int = 0
     override_event_item_name: str | None = None
+    override_item_id: int | None = None
     required_items_events: [str] = []
     mandatory_enemies: List[OkamiEnnemies] = []
     needs_swim: bool = False
@@ -52,6 +56,8 @@ class EventData(NamedTuple):
     is_event_item: bool | typing.Callable[[OkamiOptions], bool] = False
     progress_type: LocationProgressType | typing.Callable[
         [OkamiOptions], LocationProgressType] = LocationProgressType.DEFAULT
+    # This rule overrides all other access rules
+    special_rule: typing.Callable[[CollectionState, World], bool] | None = None
 
 
 class ExitData(NamedTuple):
@@ -59,6 +65,7 @@ class ExitData(NamedTuple):
     destination: str
     has_events: [str] = []
     needs_swim: bool = False
+
 
 # Generic function to return the value or the resolved value of a callable that depends of options.
 def resolve_option_callable[T](value: T | Callable[[OkamiOptions], T], world: "OkamiWorld") -> T:

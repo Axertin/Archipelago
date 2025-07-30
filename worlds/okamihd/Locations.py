@@ -44,21 +44,21 @@ def create_region_events(reg: Region, world: "OkamiWorld"):
             if not precollected_item_event_state and not is_event_item_state:
                 # It's a true event, we need to create it as such.
                 if event_data.override_event_item_name:
-                    event_location = create_event(event_name, event_data.override_event_item_name, reg, event_data,
+                    event_location = create_event(event_name, event_data.override_event_item_name,event_data.override_item_id, reg, event_data,
                                                   world)
                 else:
-                    event_location = create_event(event_name, event_name, reg, event_data, world)
+                    event_location = create_event(event_name, event_name, event_data.override_item_id, reg, event_data, world)
                 event_location.show_in_spoiler = False
             elif is_event_item_state:
                 create_location(event_name, event_data, reg, world)
 
 
-def create_event(location_name: str, item_name: str, region: Region, data: LocData, world: "OkamiWorld") -> Location:
+def create_event(location_name: str, item_name: str, code:int|None, region: Region, data: LocData, world: "OkamiWorld") -> Location:
     event = OkamiLocation(world.player, location_name, None, region)
     apply_event_or_location_rules(event, location_name, data, world)
     region.locations.append(event)
     #FIXME: Add an option to give an id to the placed item
-    event.place_locked_item(OkamiItem(item_name, ItemClassification.progression, None, world.player))
+    event.place_locked_item(OkamiItem(item_name, ItemClassification.progression, code, world.player))
     return event
 
 

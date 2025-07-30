@@ -73,11 +73,11 @@ class CanineRewards(Choice):
     """Rewards given by the 8 Canine Warriors checks:
 
     Vanilla: Won't randomise their quest rewards.
-    Random: they will give random rewards, Dogs and orbs will be placed in the item pool.
+    Randomized: they will give random rewards, Dogs and orbs will be placed in the item pool.
     Junk: They won't given anything useful, Dogs and orbs will be placed in the item pool."""
     display_name = "Rewards given by the 8 Canine Warriors checks"
     option_vanilla = 0
-    option_random = 1
+    option_randomized = 1
     option_junk = 2
     default = 1
 

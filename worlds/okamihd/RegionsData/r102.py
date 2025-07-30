@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 
+from BaseClasses import LocationProgressType
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
 from ..Enums.OkamiEnnemies import OkamiEnnemies
@@ -23,7 +24,13 @@ events = {
     RegionNames.STONE_KAMIKI: {
         "Kamiki Village - Restoring the villagers": EventData(required_brush_techniques=[BrushTechniques.SUNRISE],id=0x203,precollected=lambda o:o.OpenGameStart),
         "Kamiki Village - Fight with Mr.Orange": EventData(mandatory_enemies=[OkamiEnnemies.GREEN_IMP], id=0x208,
-                                                              precollected=lambda o: o.OpenGameStart,required_items_events=["Kamiki Village - Restoring the villagers"])
+                                                              precollected=lambda o: o.OpenGameStart,required_items_events=["Kamiki Village - Restoring the villagers"]),
+        "Kamiki Village - Get Orb from Hayabusa": EventData( mandatory_enemies=[OkamiEnnemies.HAYABUSA],
+                                            override_item_id=0x4e,
+                                            is_event_item=lambda o: o.CanineRewards != 0,
+                                            progress_type=lambda
+                                                o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
+                                            else LocationProgressType.DEFAULT)
 
     },
     RegionNames.SUSANOS_UNDERGROUD:{
@@ -44,8 +51,8 @@ locations = {
     RegionNames.KAMIKI_VILLAGE: {
         "Kamiki Village - Chest After Mr.Orange Yokai Fight": LocData(7),
         "Kamiki Village - Buried Chest near Komuso": LocData(8, type=LocationType.BURIED_CHEST),
-        "Kamiki Village - Underwater Chest 1" :LocData(13, type=LocationType.UNDERWATER_CHEST),
-        "Kamiki Village - Underwater Chest 2" :LocData(14, type=LocationType.UNDERWATER_CHEST),
+        "Kamiki Village - Underwater Chest 1" :LocData(13, type=LocationType.UNDERWATER_CHEST_SHALLOW),
+        "Kamiki Village - Underwater Chest 2" :LocData(14, type=LocationType.UNDERWATER_CHEST_SHALLOW),
         "Kamiki Village - Underwater chest in lake near Kushi's house": LocData(21,type=LocationType.UNDERWATER_CHEST),
         "Kamiki Village - Hasugami" : LocData(16,required_items_events=["Kamiki Village - Restore Sakuya's Tree"],type=LocationType.CONSTELLATION),
         "Kamiki Village - Buried chest in field": LocData(19,type=LocationType.BURIED_CHEST),

@@ -1,9 +1,9 @@
 from BaseClasses import Item, ItemClassification
-from MultiServer import console
 from .Types import OkamiItem, ItemData
 from .Enums.BrushTechniques import BrushTechniques, BrushTechniqueData
 from .Enums.DivineInstruments import DivineInstrumentData, DivineInstruments
 from typing import List, Dict, TYPE_CHECKING
+from . import resolve_option_callable
 
 if TYPE_CHECKING:
     from . import OkamiWorld
@@ -43,9 +43,9 @@ def create_multiple_items(world: "OkamiWorld", name: str, count: int = 1,
                           item_type: ItemClassification = ItemClassification.progression) -> List[Item]:
     data = item_table[name]
     itemlist: List[Item] = []
-
-    for i in range(count):
-        itemlist += [OkamiItem(name, item_type, data.code, world.player)]
+    if not resolve_option_callable(data.exclude_from_pool,world.options):
+        for i in range(count):
+            itemlist += [OkamiItem(name, item_type, data.code, world.player)]
 
     return itemlist
 
@@ -74,10 +74,11 @@ def get_item_name_to_id_dict() -> dict:
         item_dict[d.item_name] = d.code
     return item_dict
 
-progressive_weapons={
-    "Progressive Mirror":ItemData(0x300,ItemClassification.progression),
-    "Progressive Rosary":ItemData(0x301,ItemClassification.progression),
-    "Progressive Sword":ItemData(0x302,ItemClassification.progression),
+
+progressive_weapons = {
+    "Progressive Mirror": ItemData(0x300, ItemClassification.progression),
+    "Progressive Rosary": ItemData(0x301, ItemClassification.progression),
+    "Progressive Sword": ItemData(0x302, ItemClassification.progression),
 }
 
 karmic_transformers = {
@@ -133,19 +134,14 @@ okami_items = {
     # "Fog Pot":ItemData(0x9f,ItemClassification.progression),
 
     ## Canine Warriors
-    "Canine Warrior Rei" : ItemData(0x303,ItemClassification.progression_skip_balancing),
-    "Canine Warrior Shin": ItemData(0x304, ItemClassification.progression_skip_balancing),
-    "Canine Warrior Chi": ItemData(0x305, ItemClassification.progression_skip_balancing),
-    "Canine Warrior Ko": ItemData(0x306, ItemClassification.progression_skip_balancing),
-    "Canine Warrior Tei": ItemData(0x307, ItemClassification.progression_skip_balancing),
-    "Loyalty Orb": ItemData(0x4e, ItemClassification.progression_skip_balancing),
-    "Justice Orb": ItemData(0x4f, ItemClassification.progression_skip_balancing),
-    "Duty Orb": ItemData(0x50, ItemClassification.progression_skip_balancing),
-
-
-
-
-
+    "Canine Warrior Rei": ItemData(0x303, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
+    "Canine Warrior Shin": ItemData(0x304, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
+    "Canine Warrior Chi": ItemData(0x305, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
+    "Canine Warrior Ko": ItemData(0x306, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
+    "Canine Warrior Tei": ItemData(0x307, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
+    "Loyalty Orb": ItemData(0x4e, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
+    "Justice Orb": ItemData(0x4f, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
+    "Duty Orb": ItemData(0x50, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
 
     ## "Biteable" Items
     ### As these disappear and respanw each time you transition, the best way to handle those would be to set the flag
@@ -224,22 +220,70 @@ okami_items = {
 }
 
 junk_weights = {
-    #TODO: Junk items weight
+    # TODO: Junk items weight
+    "Exorcism Slip L": 1,
+    "Exorcism Slip M": 1,
+    "Exorcism Slip S": 1,
+    "Vengeance Slip": 1,
+    "Inkfinity Stone": 1,
+    "Holy Bone L": 1,
     "Holy Bone S": 1,
-    "Demon Fang": 2,
     "White porcelain pot": 1,
-
+    "Traveler's Charm": 1,
+    "Holy Bone M": 1,
+    "Feedbag (Meat)": 1,
+    "Feedbag (Herbs)": 1,
+    "Feedbag (Seeds)": 1,
+    "Feedbag (Fish)": 1,
+    "Steel Fist Sake": 1,
+    "Steel Soul Sake": 1,
+    "Godly Charm": 1,
+    "Kutani Pottery": 1,
+    "Incense Burner": 1,
+    "Vase": 1,
+    "Silver Pocket Watch": 1,
+    "Rat Statue": 1,
+    "Bull Horn": 1,
+    "Etched Glass": 1,
+    "Lacquerware Set": 1,
+    "Wooden Bear": 1,
+    "Glass Beads": 1,
+    "Dragonfly Bead": 1,
+    "Coral Fragment": 1,
+    "Crystal": 1,
+    "Pearl": 1,
+    "Ruby Tassels": 1,
+    "Bull Statue": 1,
+    "Tiger Statue": 1,
+    "Rabbit Statue": 1,
+    "Dragon Statue": 1,
+    "Snake Statue": 1,
+    "Horse Statue": 1,
+    "Sheep Statue": 1,
+    "Monkey Statue": 1,
+    "Rooster Statue": 1,
+    "Dog Statue": 1,
+    "Boar Statue": 1,
+    "Cat Statue": 1,
+    "Sapphire Tassels": 1,
+    "Emerald Tassels": 1,
+    "Turquoise Tassels": 1,
+    "Agate Tassels": 1,
+    "Amber Tassels": 1,
+    "Cat's Eye Tassels": 1,
+    "Amethyst Tassels": 1,
+    "Jade Tassels": 1,
     # Set junk_weight to 0 so additional copies won't be placed if there's space for them
     "Karmic Returner": 0,
-    "Karmic Transformer 2":0,
-    "Karmic Transformer 6":0,
-    "Karmic Transformer 5":0,
-    "Karmic Transformer 4":0,
-    "Karmic Transformer 3":0,
-    "Karmic Transformer 8":0,
-    "Karmic Transformer 7":0,
-    "Karmic Transformer 9":0,
-    "Karmic Transformer 1":0
+    "Karmic Transformer 2": 0,
+    "Karmic Transformer 6": 0,
+    "Karmic Transformer 5": 0,
+    "Karmic Transformer 4": 0,
+    "Karmic Transformer 3": 0,
+    "Karmic Transformer 8": 0,
+    "Karmic Transformer 7": 0,
+    "Karmic Transformer 9": 0,
+    "Karmic Transformer 1": 0
 }
 # For items that need to appear more than once, I'll put the right numbers, but keep them commented to not flood
 # the item pool while there aren't enough locations to place them

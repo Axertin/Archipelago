@@ -23,6 +23,8 @@ class OkamiEnnemies(Enum):
     WAKA_2 = EnnemyData(0x7f, "Waka (Taka Pass)", 1)
     BUD_OGRE = EnnemyData(0x4d, "Bud Ogre",1,BrushTechniques.GREENSPROUT_BLOOM,required_techniques=[BrushTechniques.GREENSPROUT_BLOOM])
     SPIDER_QUEEN = EnnemyData(0x2b, "Spider Queen",1,required_techniques=[BrushTechniques.GREENSPROUT_VINE])
+    TEI= EnnemyData(0x24, "Canine Warrior Tei",1)
+    HAYABUSA = EnnemyData(0x21, "Hayabusa", 1)
 
     @staticmethod
     def list():
