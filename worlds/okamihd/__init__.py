@@ -4,12 +4,11 @@ from .Items import item_table, create_item, create_multiple_items, create_junk_i
     create_brush_techniques_items, get_item_name_to_id_dict, create_divine_instrument_items, karmic_transformers, \
     progressive_weapons
 from .Regions import create_regions
-from .Locations import is_location_valid, get_total_locations, get_location_names, okami_events
+from .Locations import get_location_names, okami_events, get_total_locations
 from .Rules import set_rules
 from .Options import create_option_groups, OkamiOptions, slot_data_options, KarmicTransformers
 from worlds.AutoWorld import World, WebWorld, CollectionState
-from typing import List, Dict, TextIO
-from Utils import local_path
+from typing import List
 from .Types import OkamiItem, resolve_option_callable
 from .Enums.DivineInstruments import DivineInstruments
 from .Enums.RegionNames import RegionNames
@@ -29,7 +28,7 @@ class OkamiWebWolrd(WebWorld):
     )]
 
 
-# TODO: Replace
+
 class OkamiWorld(World):
     """
     Okami HD
@@ -130,13 +129,14 @@ class OkamiWorld(World):
 
                         if is_event_item_state:
                             # With the current options this event becomes its own item, so we need to add it to the item pool
-                            itempool += OkamiItem(event_name, ItemClassification.progression, event_data.id,
-                                                  world.player)
+                            itempool += [OkamiItem(event_name, ItemClassification.progression, event_data.id,
+                                                  world.player)]
 
         itempool += create_brush_techniques_items(world)
         for name in item_table.keys():
             item_type: ItemClassification = item_table.get(name).classification
             itempool += create_multiple_items(world, name, item_frequencies.get(name, 1), item_type)
+
         itempool += create_junk_items(world, get_total_locations(world) - len(itempool))
 
         return itempool
@@ -159,11 +159,11 @@ class OkamiWorld(World):
                                      DivineInstruments.TUNDRA_BEADS.value.item_name,
                                      DivineInstruments.THUNDER_EDGE.value.item_name],
         "canine_warriors": [
-            "Canine Warrior Rei",
-            "Canine Warrior Shin",
-            "Canine Warrior Chi",
-            "Canine Warrior Ko",
-            "Canine Warrior Tei",
+            "Save Rei",
+            "Save Shin",
+            "Save Chi",
+            "Save Ko",
+            "Save Tei",
             "Loyalty Orb",
             "Justice Orb",
             "Duty Orb"

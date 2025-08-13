@@ -25,12 +25,12 @@ events = {
         "Kamiki Village - Restoring the villagers": EventData(required_brush_techniques=[BrushTechniques.SUNRISE],id=0x203,precollected=lambda o:o.OpenGameStart),
         "Kamiki Village - Fight with Mr.Orange": EventData(mandatory_enemies=[OkamiEnnemies.GREEN_IMP], id=0x208,
                                                               precollected=lambda o: o.OpenGameStart,required_items_events=["Kamiki Village - Restoring the villagers"]),
-        "Kamiki Village - Get Orb from Hayabusa": EventData( mandatory_enemies=[OkamiEnnemies.HAYABUSA],
+        "Kamiki Village - Get Orb from Hayabusa": EventData( id=127, mandatory_enemies=[OkamiEnnemies.HAYABUSA],
                                             override_item_id=0x4e,
                                             is_event_item=lambda o: o.CanineRewards != 0,
                                             progress_type=lambda
                                                 o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
-                                            else LocationProgressType.DEFAULT)
+                                            else LocationProgressType.DEFAULT,override_event_item_name="Duty Orb")
 
     },
     RegionNames.SUSANOS_UNDERGROUD:{

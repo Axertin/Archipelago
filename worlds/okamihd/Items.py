@@ -1,9 +1,8 @@
 from BaseClasses import Item, ItemClassification
-from .Types import OkamiItem, ItemData
+from .Types import OkamiItem, ItemData, resolve_option_callable
 from .Enums.BrushTechniques import BrushTechniques, BrushTechniqueData
 from .Enums.DivineInstruments import DivineInstrumentData, DivineInstruments
 from typing import List, Dict, TYPE_CHECKING
-from . import resolve_option_callable
 
 if TYPE_CHECKING:
     from . import OkamiWorld
@@ -43,7 +42,7 @@ def create_multiple_items(world: "OkamiWorld", name: str, count: int = 1,
                           item_type: ItemClassification = ItemClassification.progression) -> List[Item]:
     data = item_table[name]
     itemlist: List[Item] = []
-    if not resolve_option_callable(data.exclude_from_pool,world.options):
+    if not resolve_option_callable(data.exclude_from_pool,world):
         for i in range(count):
             itemlist += [OkamiItem(name, item_type, data.code, world.player)]
 

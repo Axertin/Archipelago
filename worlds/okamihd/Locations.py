@@ -9,12 +9,14 @@ if TYPE_CHECKING:
 
 
 def get_location_names():
-    #FIXME: Inaccurate count due to events that can get transformed in locations.
+    # ALL Locations are in this table, even events
     location_names = {}
     for region_key, region_locations in okami_locations.items():
         for location_name, location_data in region_locations.items():
             location_names[location_name] = location_data.id
-
+    for region_key,region_events in okami_events.items():
+        for event_name, event_data in region_events.items():
+                location_names[event_name] =event_data.id
     return location_names
 
 
@@ -57,20 +59,21 @@ def create_event(location_name: str, item_name: str, code:int|None, region: Regi
     event = OkamiLocation(world.player, location_name, None, region)
     apply_event_or_location_rules(event, location_name, data, world)
     region.locations.append(event)
-    #FIXME: Add an option to give an id to the placed item
     event.place_locked_item(OkamiItem(item_name, ItemClassification.progression, code, world.player))
     return event
 
-
+# Remember to update me when adding locations that aren't always randomized.
 def get_total_locations(world: "OkamiWorld") -> int:
-    return len(get_location_names().keys())
+    location_count = 0
+    for _ , region_locations in okami_locations.items():
+        location_count+=len(region_locations)
+    for region_key, region_events in okami_events.items():
+        for _ , event_data in region_events.items():
+            if resolve_option_callable(event_data.is_event_item, world):
+                location_count += 1
+    return location_count
 
 
-def is_location_valid(world: "OkamiWorld", location: str) -> bool:
-    # used to mark locations as invalid when they're not in the seed bc of settings
-    # data = location_table.get(location) or event_locs.get(location)
-
-    return True
 
 
 okami_locations = {
