@@ -25,6 +25,8 @@ class OkamiEnnemies(Enum):
     SPIDER_QUEEN = EnnemyData(0x2b, "Spider Queen",1,required_techniques=[BrushTechniques.GREENSPROUT_VINE])
     TEI= EnnemyData(0x24, "Canine Warrior Tei",1)
     HAYABUSA = EnnemyData(0x21, "Hayabusa", 1)
+    #FIXME: Put real id.
+    CUTTERS= EnnemyData(0x0, "Mr and Ms.Cutter",1)
 
     @staticmethod
     def list():

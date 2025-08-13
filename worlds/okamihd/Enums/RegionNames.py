@@ -75,3 +75,7 @@ class RegionNames(StrEnum):
     ### INTERIORS
     BAMBOO_HOUSE="Mr Bamboo's house"
     KUSA_INN="Kusa Village Inn"
+
+    ## SASA SANCTUARY
+    SASA_SANCTUARY_ENTRANCE="Sasa Sanctuary (Entrance)"
+    SASA_SANCTUARY = "Sasa Sanctuary"

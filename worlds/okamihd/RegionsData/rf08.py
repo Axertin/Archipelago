@@ -10,10 +10,14 @@ if TYPE_CHECKING:
     from .. import OkamiWorld
 
 exits={
-    RegionNames.TAKA_PASS:[ExitData("Kusa Village Entrance",RegionNames.KUSA_VILLAGE)]
+    RegionNames.TAKA_PASS:[ExitData("Kusa Village Entrance",RegionNames.KUSA_VILLAGE),
+                           ExitData("Sasa Sanctuary Entrance",RegionNames.SASA_SANCTUARY_ENTRANCE)]
+
 }
 events={
-
+    RegionNames.TAKA_PASS:{
+        "Taka Pass - Save Chun" : EventData(cherry_bomb_level=1,mandatory_enemies=[OkamiEnnemies.CUTTERS])
+    }
 }
 
 locations = {
