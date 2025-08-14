@@ -28,6 +28,7 @@ class OkamiEnnemies(Enum):
     SPIDER_QUEEN = EnnemyData(0x2b, "Spider Queen", 1, required_techniques=[BrushTechniques.GREENSPROUT_VINE])
     TEI = EnnemyData(0x24, "Canine Warrior Tei", 1)
     HAYABUSA = EnnemyData(0x21, "Hayabusa", 1)
+    UME = EnnemyData(0x22, "Ume", 1)
     TAKE = EnnemyData(0x23, "Take", 1)
     CUTTERS = EnnemyData(0x57, "Mr and Ms.Cutter", 1)
     CROW_TENGU = EnnemyData(0x57, "Crow Tengu", 1)
