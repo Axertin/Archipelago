@@ -6,8 +6,8 @@ from BaseClasses import ItemClassification
 if TYPE_CHECKING:
     from .. import OkamiWorld
 
-class RegionNames(StrEnum):
 
+class RegionNames(StrEnum):
     MENU = "Menu"
 
     # Eastern Nippon
@@ -34,44 +34,48 @@ class RegionNames(StrEnum):
     SUSANOS_UNDERGROUD = "Susano's Secret Underground Meditation Chamber"
     ORANGES_HOUSE = "Mr and Mrs Orange's house"
 
-
     ## Shinshu Field
     CURSED_SHINSHU_FIELD = "Cursed Shinshu Field"
     SHINSHU_FIELD = "Shinshu Field"
-    SHINSHU_FIELD_AGATA_CAVE="Shinshu Field (Cave to Agata Forest)"
-    TAMA_HOUSE="Tama's house"
+    SHINSHU_FIELD_AGATA_CAVE = "Shinshu Field (Cave to Agata Forest)"
+    TAMA_HOUSE = "Tama's house"
 
     ## HANA VALLEY
     CURSED_HANA_VALLEY = "Cursed Hana Valley"
     HANA_VALLEY = "Hana Valley"
-    HANA_VALLEY_SAKIGAMI =" Hana Valley - Sakigami sequence"
+    HANA_VALLEY_SAKIGAMI = " Hana Valley - Sakigami sequence"
 
     ## AGATA FOREST
-    CURSED_AGATA_FOREST="Cursed Agata Forest"
-    AGATA_FOREST_WAKA="Agata Forest (Pre-waka fight)"
-    AGATA_FOREST="Agata Forest"
+    CURSED_AGATA_FOREST = "Cursed Agata Forest"
+    AGATA_FOREST_WAKA = "Agata Forest (Pre-waka fight)"
+    AGATA_FOREST = "Agata Forest"
     ### INTERIORS
-    FAWNS_HOUSE="Madame Fawn's House"
+    FAWNS_HOUSE = "Madame Fawn's House"
 
     ## TSUTA RUINS
-    TSUTA_RUINS_1F_MAIN_PART="Tsuta Ruins (1F - Main Part)"
-    TSUTA_RUINS_MUSHROOMS="Tsuta Ruins (Mushrooms)"
-    TSUTA_RUINS_LEFT_SIDE= "Tsuta Ruins (Left Side)"
-    TSUTA_RUINS_DEVIL_GATES="Tsuta Ruins (Devil Gates)"
-    TSUTA_RUINS_CENTRAL_STATUE="Tsuta Ruins (Inside central Statue)"
+    TSUTA_RUINS_1F_MAIN_PART = "Tsuta Ruins (1F - Main Part)"
+    TSUTA_RUINS_MUSHROOMS = "Tsuta Ruins (Mushrooms)"
+    TSUTA_RUINS_LEFT_SIDE = "Tsuta Ruins (Left Side)"
+    TSUTA_RUINS_DEVIL_GATES = "Tsuta Ruins (Devil Gates)"
+    TSUTA_RUINS_CENTRAL_STATUE = "Tsuta Ruins (Inside central Statue)"
     TSUTA_RUINS_SPIDER = "Tsuta Ruins (Spider Queen's lair)"
 
     ## TAKA PASS
-    CURSED_TAKA_PASS="Curesd Taka Pass"
+    CURSED_TAKA_PASS = "Curesd Taka Pass"
     CURSED_TAKA_PASS_WAKA = "Cursed Taka Pass (Waka Fight)"
-    CURSED_TAKA_PASS_CAVE="Cursed Taka Pass (Cave)"
+    CURSED_TAKA_PASS_CAVE = "Cursed Taka Pass (Cave)"
     CURSED_TAKA_PASS_GUARDIAN_SAPLING = "Cursed Taka Pass (Guardian Sapling)"
     TAKA_PASS = "Taka Pass"
 
     ## KUSA VILLAGE
-    KUSA_VILLAGE="Kusa Village"
-    KUSA_VILLAGE_BLOCKHEAD="Kusa Village (Blockhead cave)"
+    KUSA_VILLAGE = "Kusa Village"
+    KUSA_VILLAGE_BLOCKHEAD = "Kusa Village (Blockhead cave)"
 
     ### INTERIORS
-    BAMBOO_HOUSE="Mr Bamboo's house"
-    KUSA_INN="Kusa Village Inn"
+    BAMBOO_HOUSE = "Mr Bamboo's house"
+    KUSA_INN = "Kusa Village Inn"
+
+    ## SASA SANCTUARY
+    SASA_SANCTUARY_ENTRANCE = "Sasa Sanctuary (Entrance)"
+    SASA_SANCTUARY = "Sasa Sanctuary"
+    SASA_SANCTUARY_BAMBOO = "Sasa Sanctuary (Bamboo Grove)"

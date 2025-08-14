@@ -115,6 +115,14 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
             case LocationType.UNDERWATER_CHEST_SHALLOW:
                 add_rule(loc, lambda state: state.has(BrushTechniques.POWER_SLASH.value.item_name, world.player) or
                                             state.has(BrushTechniques.CHERRY_BOMB.value.item_name, world.player))
+            case LocationType.DIGGING_MINIGAME_EARLY:
+                required_power_slash_level=max(required_power_slash_level,1)
+                required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
+                required_techinques+=[BrushTechniques.GREENSPROUT_BLOOM]
+            case LocationType.DIGGING_MINIGAME_LATER:
+                required_power_slash_level = max(required_power_slash_level, 1)
+                required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
+                required_techinques += [BrushTechniques.GREENSPROUT_BLOOM,BrushTechniques.WATERSPROUT,BrushTechniques.GALESTROM]
 
         if data.needs_swim:
             add_rule(loc, lambda state: (state.has("Water Tablet", world.player) or state.has(
