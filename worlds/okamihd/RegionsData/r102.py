@@ -30,7 +30,7 @@ events = {
                                             is_event_item=lambda o: o.CanineRewards != 0,
                                             progress_type=lambda
                                                 o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
-                                            else LocationProgressType.DEFAULT,override_event_item_name="Duty Orb")
+                                            else LocationProgressType.DEFAULT,override_event_item_name="Loyalty Orb")
 
     },
     RegionNames.SUSANOS_UNDERGROUD:{
