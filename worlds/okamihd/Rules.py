@@ -12,15 +12,15 @@ if TYPE_CHECKING:
 
 
 def has_power_slash_level(state: CollectionState, world: "OkamiWorld", level: int) -> bool:
-    return state.has(BrushTechniques.POWER_SLASH.value.item_name, world.player, level)
+    return state.has(BrushTechniques.POWER_SLASH, world.player, level)
 
 
 def has_cherry_bomb_level(state: CollectionState, world: "OkamiWorld", level: int) -> bool:
-    return state.has(BrushTechniques.CHERRY_BOMB.value.item_name, world.player, level)
+    return state.has(BrushTechniques.CHERRY_BOMB, world.player, level)
 
 
 def has_brush_technique(state: CollectionState, world: "OkamiWorld", technique: BrushTechniques) -> bool:
-    return state.has(technique.value.item_name, world.player)
+    return state.has(technique, world.player)
 
 
 def has_portable_fire_source(state: CollectionState, world: "OkamiWorld") -> bool:
@@ -111,15 +111,15 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
                 if world.options.BuriedChestsByNight:
                     required_techinques += [BrushTechniques.CRESCENT]
             case LocationType.BURNING_CHEST:
-                add_rule(loc, lambda state: state.has(BrushTechniques.GALESTROM.value.item_name, world.player)
-                                            or state.has(BrushTechniques.WATERSPROUT.value.item_name, world.player))
+                add_rule(loc, lambda state: state.has(BrushTechniques.GALESTROM, world.player)
+                                            or state.has(BrushTechniques.WATERSPROUT, world.player))
             case LocationType.BURNING_CHEST_NO_WATER:
                 required_techinques += [BrushTechniques.GALESTROM]
             case LocationType.UNDERWATER_CHEST:
                 required_power_slash_level = max(required_power_slash_level, 1)
             case LocationType.UNDERWATER_CHEST_SHALLOW:
-                add_rule(loc, lambda state: state.has(BrushTechniques.POWER_SLASH.value.item_name, world.player) or
-                                            state.has(BrushTechniques.CHERRY_BOMB.value.item_name, world.player))
+                add_rule(loc, lambda state: state.has(BrushTechniques.POWER_SLASH, world.player) or
+                                            state.has(BrushTechniques.CHERRY_BOMB, world.player))
             case LocationType.DIGGING_MINIGAME_EARLY:
                 required_power_slash_level = max(required_power_slash_level, 1)
                 required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
@@ -132,7 +132,7 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
 
         if data.needs_swim:
             add_rule(loc, lambda state: (state.has("Water Tablet", world.player) or state.has(
-                BrushTechniques.GREENSPROUT_WATERLILY.value.item_name, world.player)))
+                BrushTechniques.GREENSPROUT_WATERLILY, world.player)))
 
         for t in required_techinques:
             add_rule(loc, lambda state, technique=t: has_brush_technique(state, world, technique))
@@ -158,7 +158,7 @@ def apply_exit_rules(etr: Entrance, name: str, data: ExitData, world: "OkamiWorl
             # TODO: add event here to buy the water table from its unrandomized location at the emperor's as an alternative way
             # to get this OR place locked water tablet at a standard location
             state.has(
-                BrushTechniques.GREENSPROUT_WATERLILY.value.item_name, world.player)))
+                BrushTechniques.GREENSPROUT_WATERLILY, world.player)))
 
     for e in data.has_events:
         add_rule(etr, lambda state: state.has(e, world.player))

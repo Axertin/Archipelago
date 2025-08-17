@@ -22,7 +22,8 @@ class OkamiItem(Item):
 class ItemData(NamedTuple):
     code: int
     classification: ItemClassification
-    exclude_from_pool: Callable[[OkamiOptions], bool] | bool = False
+    # Number in pool, set this to 0 to exclude the item from the pool
+    count_in_pool: Callable[[OkamiOptions], int] | int = 1
 
 
 class LocData(NamedTuple):

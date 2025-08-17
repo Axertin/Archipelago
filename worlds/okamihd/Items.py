@@ -1,50 +1,28 @@
 from BaseClasses import Item, ItemClassification
 from .Types import OkamiItem, ItemData, resolve_option_callable
-from .Enums.BrushTechniques import BrushTechniques, BrushTechniqueData
-from .Enums.DivineInstruments import DivineInstrumentData, DivineInstruments
+from .Enums.BrushTechniques import BrushTechniques
+from .Enums.DivineInstruments import DivineInstruments
 from typing import List, Dict, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from . import OkamiWorld
 
 
-def create_item(world: "OkamiWorld", name: str) -> Item:
+def create_item(name: str, code: int, classification: ItemClassification, world: "OkamiWorld") -> Item:
+    return OkamiItem(name, classification, code, world.player)
+
+
+def create_standard_item(world: "OkamiWorld", name: str) -> Item:
     data = item_table[name]
-    return OkamiItem(name, data.classification, data.code, world.player)
-
-
-def create_brush_techniques_items(world: "OkamiWorld") -> List[Item]:
-    items = []
-    for b in BrushTechniques.list():
-        for i in range(b.item_count):
-            items.append(create_brush_technique_item(world, b))
-
-    return items
-
-
-def create_brush_technique_item(world: "OkamiWorld", data: BrushTechniqueData) -> Item:
-    return OkamiItem(data.item_name, data.item_classification, data.code, world.player)
-
-
-def create_divine_instrument_items(world: "OkamiWorld", precollected_instrument: str | None) -> List[Item]:
-    items = []
-    for d in DivineInstruments.list():
-        if precollected_instrument and d.item_name != precollected_instrument:
-            items.append(create_divine_instrument_item(world, d))
-    return items
-
-
-def create_divine_instrument_item(world: "OkamiWorld", data: DivineInstrumentData) -> Item:
-    return OkamiItem(data.item_name, ItemClassification.progression, data.code, world.player)
+    return create_item(name, data.code, data.classification, world)
 
 
 def create_multiple_items(world: "OkamiWorld", name: str, count: int = 1,
                           item_type: ItemClassification = ItemClassification.progression) -> List[Item]:
     data = item_table[name]
     itemlist: List[Item] = []
-    if not resolve_option_callable(data.exclude_from_pool,world):
-        for i in range(count):
-            itemlist += [OkamiItem(name, item_type, data.code, world.player)]
+    for i in range(count):
+        itemlist += [create_item(name, data.code, item_type, world)]
 
     return itemlist
 
@@ -67,8 +45,6 @@ def create_junk_items(world: "OkamiWorld", count: int) -> List[Item]:
 
 def get_item_name_to_id_dict() -> dict:
     item_dict = {name: data.code for name, data in item_table.items()}
-    for b in BrushTechniques.list():
-        item_dict[b.item_name] = b.code
     for d in DivineInstruments.list():
         item_dict[d.item_name] = d.code
     return item_dict
@@ -94,6 +70,32 @@ karmic_transformers = {
 }
 
 okami_items = {
+
+    # Brush Techniques
+    BrushTechniques.SUNRISE: ItemData(0x100, ItemClassification.progression),
+    BrushTechniques.REJUVENATION: ItemData(0x101, ItemClassification.progression),
+    BrushTechniques.POWER_SLASH: ItemData(0x102, ItemClassification.progression, count_in_pool=3),
+    BrushTechniques.CHERRY_BOMB: ItemData(0x103, ItemClassification.progression, count_in_pool=3),
+    BrushTechniques.GREENSPROUT_BLOOM: ItemData(0x104, ItemClassification.progression),
+    BrushTechniques.GREENSPROUT_WATERLILY: ItemData(0x105, ItemClassification.progression),
+    BrushTechniques.GREENSPROUT_VINE: ItemData(0x106, ItemClassification.progression),
+    BrushTechniques.WATERSPROUT: ItemData(0x107, ItemClassification.progression),
+    BrushTechniques.CRESCENT: ItemData(0x108, ItemClassification.progression),
+    BrushTechniques.GALESTROM: ItemData(0x109, ItemClassification.progression),
+    BrushTechniques.INFERNO: ItemData(0x10A, ItemClassification.progression),
+    BrushTechniques.VEIL_OF_MIST: ItemData(0x10B, ItemClassification.progression),
+    BrushTechniques.CATWALK: ItemData(0x10C, ItemClassification.progression),
+    BrushTechniques.THUNDERSTORM: ItemData(0x10D, ItemClassification.progression),
+    BrushTechniques.BLIZZARD: ItemData(0x10E, ItemClassification.progression),
+    ## UPGRADES/SECRET
+    BrushTechniques.MIST_WARP: ItemData(0x10F, ItemClassification.progression),
+    BrushTechniques.FIREBURST: ItemData(0x110, ItemClassification.progression),
+    BrushTechniques.WHIRLWIND: ItemData(0x111, ItemClassification.progression),
+    BrushTechniques.DELUGE: ItemData(0x112, ItemClassification.progression),
+    BrushTechniques.FOUNTAIN: ItemData(0x113, ItemClassification.progression),
+    BrushTechniques.THUNDERBOLT: ItemData(0x114, ItemClassification.progression),
+    ## VERY SECRET ONE
+    BrushTechniques.ICESTORM: ItemData(0x115, ItemClassification.useful),
 
     # Equips
     # "Water Tablet": ItemData(0x9c, ItemClassification.progression),
@@ -131,7 +133,6 @@ okami_items = {
     "Marlin Rod": ItemData(0x77, ItemClassification.progression),
     # Not sure if this should be an item as we already have the power in the item pool...
     # "Fog Pot":ItemData(0x9f,ItemClassification.progression),
-
 
     ## "Biteable" Items
     ### As these disappear and respanw each time you transition, the best way to handle those would be to set the flag
