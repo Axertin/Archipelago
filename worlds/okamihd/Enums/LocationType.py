@@ -17,3 +17,11 @@ class LocationType(Enum):
     BURIED_UNDER_LEAF_PILE=8,
     EVENT=9
     BURNING_CHEST_NO_WATER=10,
+    DARUMA=11,
+    # Like underwater chest, but can also be obtained with cherry bomb.
+    UNDERWATER_CHEST_SHALLOW = 12,
+    # Slash, Bomb, Bloom
+    DIGGING_MINIGAME_EARLY=13,
+    # + Watersprout + Galestrom
+    DIGGING_MINIGAME_LATER = 14,
+

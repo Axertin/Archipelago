@@ -14,7 +14,7 @@ exits={
     # Region for mandatory waka encounter
     RegionNames.CURSED_TAKA_PASS_WAKA: [ExitData("Defeat Waka Again",RegionNames.CURSED_TAKA_PASS_CAVE, has_events=["Taka Pass - Rematch with Waka"])],
     RegionNames.CURSED_TAKA_PASS_CAVE : [ExitData("Cross Bridge to Guardian Sapling",RegionNames.CURSED_TAKA_PASS_GUARDIAN_SAPLING,has_events=["Taka pass - Restore Bridge to Guardian Sapling"])],
-    RegionNames.CURSED_TAKA_PASS_GUARDIAN_SAPLING: [ExitData("Taka Pass Restoraztion",RegionNames.TAKA_PASS,has_events=["Taka pass - Restore Guardian Sapling"])]
+    RegionNames.CURSED_TAKA_PASS_GUARDIAN_SAPLING: [ExitData("Taka Pass Restoration",RegionNames.TAKA_PASS,has_events=["Taka pass - Restore Guardian Sapling"])]
 }
 events={
     RegionNames.CURSED_TAKA_PASS:{
@@ -34,8 +34,8 @@ events={
 
 locations = {
     RegionNames.CURSED_TAKA_PASS_CAVE:{
-        "Taka pass - Stray bead chest in cave pond" : LocData(96, type=LocationType.UNDERWATER_CHEST),
-        "Taka pass - Burning chest in cave upper": LocData(97, type=LocationType.BURNING_CHEST),
+        "Taka pass - Stray bead chest in cave pond" : LocData(125, type=LocationType.UNDERWATER_CHEST),
+        "Taka pass - Burning chest in cave upper": LocData(126, type=LocationType.BURNING_CHEST),
         "Taka pass - Second Burning chest in cave upper": LocData(98, type=LocationType.BURNING_CHEST_NO_WATER),
     }
 

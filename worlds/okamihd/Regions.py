@@ -1,7 +1,7 @@
 from BaseClasses import Region, Entrance, ItemClassification, Location, LocationProgressType, CollectionState
 from .Locations import create_region_locations, create_region_events
 from typing import TYPE_CHECKING, List, Dict, Optional
-from .RegionsData import menu, r100, r122, r101, r102, r103, r104, rf01, rf02, rf03, rf04
+from .RegionsData import menu, r100, r122, r101, r102, r103, r104, rf01, rf02, rf03, rf04, rf07, rf08, r108, r109, r107
 from .Rules import apply_exit_rules
 from .Enums.RegionNames import RegionNames
 
@@ -20,6 +20,11 @@ okami_exits = {
     **rf02.exits,
     **rf03.exits,
     **rf04.exits,
+    **rf07.exits,
+    **rf08.exits,
+    **r108.exits,
+    **r109.exits,
+    **r107.exits
 }
 
 

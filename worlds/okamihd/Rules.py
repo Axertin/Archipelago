@@ -35,6 +35,10 @@ def has_portable_ice_source(state: CollectionState, world: "OkamiWorld") -> bool
     return state.has(DivineInstruments.TUNDRA_BEADS.value.item_name, world.player)
 
 
+def gale_shrine_access(state: CollectionState, world: "OkamiWorld") -> bool:
+    return state.has_group("canine_warriors", world.player, world.options.RequiredDoggorbs.value)
+
+
 def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiWorld") -> bool:
     if not world.options.ProgressiveWeapons:
         match tier:
@@ -69,61 +73,81 @@ def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiW
 
 
 def apply_event_or_location_rules(loc: Location, name: str, data: LocData | EventData, world: "OkamiWorld"):
-    required_techinques = []
-    required_power_slash_level=data.power_slash_level
-    required_cherry_bomb_level=data.cherry_bomb_level
+    if data.special_rule is None:
+        required_techinques = []
+        required_power_slash_level = data.power_slash_level
+        required_cherry_bomb_level = data.cherry_bomb_level
 
-    if len(data.mandatory_enemies) > 0:
-        weapon_tier_required = 0
-        for e in data.mandatory_enemies:
-            weapon_tier_required = max(weapon_tier_required, e.value.required_weapon_tier)
-            if len(e.value.required_techniques) > 0:
-                required_techinques += e.value.required_techniques
-        if weapon_tier_required > 0:
-            add_rule(loc,
-                     lambda state, level=weapon_tier_required: has_divine_instrument_tier(weapon_tier_required, state,
-                                                                                          world))
-    required_techinques += data.required_brush_techniques
+        if len(data.mandatory_enemies) > 0:
+            weapon_tier_required = 0
+            for e in data.mandatory_enemies:
+                weapon_tier_required = max(weapon_tier_required, e.value.required_weapon_tier)
+                if len(e.value.required_techniques) > 0:
+                    required_techinques += e.value.required_techniques
+                if e.value.requires_slash:
+                    required_power_slash_level = max(required_power_slash_level, 1)
+                if e.value.requires_bomb:
+                    required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
 
-    match data.type:
-        case LocationType.TREASURE_BUD:
-            required_techinques += [BrushTechniques.GREENSPROUT_BLOOM]
-        case LocationType.BURIED_UNDER_LEAF_PILE:
-            required_techinques += [BrushTechniques.GALESTROM]
-            if world.options.BuriedChestsByNight:
-                required_techinques += [BrushTechniques.CRESCENT]
-        case LocationType.BURIED_CHEST:
-            if world.options.BuriedChestsByNight:
-                required_techinques += [BrushTechniques.CRESCENT]
-        case LocationType.STONE_BURIED_CHEST:
-            # FIXME when dojo techniques are handled
-            if world.options.BuriedChestsByNight:
-                required_techinques += [BrushTechniques.CRESCENT]
-        case LocationType.BURNING_CHEST:
-            add_rule(loc, lambda state: state.has(BrushTechniques.GALESTROM.value.item_name,world.player) or state.has(
-                BrushTechniques.WATERSPROUT.value.item_name,world.player))
-        case LocationType.BURNING_CHEST_NO_WATER:
-            required_techinques += [BrushTechniques.GALESTROM]
-        case LocationType.UNDERWATER_CHEST:
-            required_power_slash_level=max(required_power_slash_level,1)
+            if weapon_tier_required > 0:
+                add_rule(loc,
+                         lambda state, level=weapon_tier_required: has_divine_instrument_tier(weapon_tier_required,
+                                                                                              state,
+                                                                                              world))
+        required_techinques += data.required_brush_techniques
 
-    if data.needs_swim:
-        add_rule(loc, lambda state: (state.has("Water Tablet", world.player) or state.has(
-            BrushTechniques.GREENSPROUT_WATERLILY.value.item_name, world.player)))
+        match data.type:
+            case LocationType.TREASURE_BUD:
+                required_techinques += [BrushTechniques.GREENSPROUT_BLOOM]
+            case LocationType.BURIED_UNDER_LEAF_PILE:
+                required_techinques += [BrushTechniques.GALESTROM]
+                if world.options.BuriedChestsByNight:
+                    required_techinques += [BrushTechniques.CRESCENT]
+            case LocationType.BURIED_CHEST:
+                if world.options.BuriedChestsByNight:
+                    required_techinques += [BrushTechniques.CRESCENT]
+            case LocationType.STONE_BURIED_CHEST:
+                # FIXME when dojo techniques are handled
+                if world.options.BuriedChestsByNight:
+                    required_techinques += [BrushTechniques.CRESCENT]
+            case LocationType.BURNING_CHEST:
+                add_rule(loc, lambda state: state.has(BrushTechniques.GALESTROM.value.item_name, world.player)
+                                            or state.has(BrushTechniques.WATERSPROUT.value.item_name, world.player))
+            case LocationType.BURNING_CHEST_NO_WATER:
+                required_techinques += [BrushTechniques.GALESTROM]
+            case LocationType.UNDERWATER_CHEST:
+                required_power_slash_level = max(required_power_slash_level, 1)
+            case LocationType.UNDERWATER_CHEST_SHALLOW:
+                add_rule(loc, lambda state: state.has(BrushTechniques.POWER_SLASH.value.item_name, world.player) or
+                                            state.has(BrushTechniques.CHERRY_BOMB.value.item_name, world.player))
+            case LocationType.DIGGING_MINIGAME_EARLY:
+                required_power_slash_level = max(required_power_slash_level, 1)
+                required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
+                required_techinques += [BrushTechniques.GREENSPROUT_BLOOM]
+            case LocationType.DIGGING_MINIGAME_LATER:
+                required_power_slash_level = max(required_power_slash_level, 1)
+                required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
+                required_techinques += [BrushTechniques.GREENSPROUT_BLOOM, BrushTechniques.WATERSPROUT,
+                                        BrushTechniques.GALESTROM]
 
-    for t in required_techinques:
-        add_rule(loc, lambda state, technique=t: has_brush_technique(state, world, technique))
+        if data.needs_swim:
+            add_rule(loc, lambda state: (state.has("Water Tablet", world.player) or state.has(
+                BrushTechniques.GREENSPROUT_WATERLILY.value.item_name, world.player)))
 
-    if required_power_slash_level > 0:
-        add_rule(loc, (lambda state, level=required_power_slash_level: has_power_slash_level(state, world, level)))
+        for t in required_techinques:
+            add_rule(loc, lambda state, technique=t: has_brush_technique(state, world, technique))
 
-    if required_cherry_bomb_level > 0:
-        add_rule(loc, (lambda state, level=required_cherry_bomb_level: has_cherry_bomb_level(state, world, level)))
+        if required_power_slash_level > 0:
+            add_rule(loc, (lambda state, level=required_power_slash_level: has_power_slash_level(state, world, level)))
 
-    for i in data.required_items_events:
-        add_rule(loc, lambda state: state.has(i, world.player))
+        if required_cherry_bomb_level > 0:
+            add_rule(loc, (lambda state, level=required_cherry_bomb_level: has_cherry_bomb_level(state, world, level)))
 
-
+        for i in data.required_items_events:
+            add_rule(loc, lambda state: state.has(i, world.player))
+    else:
+        # Call special rule if it's defined
+        add_rule(loc, lambda state: data.special_rule(state, world))
 
 
 def apply_exit_rules(etr: Entrance, name: str, data: ExitData, world: "OkamiWorld"):
@@ -142,7 +166,7 @@ def apply_exit_rules(etr: Entrance, name: str, data: ExitData, world: "OkamiWorl
 
 def set_rules(world: "OkamiWorld"):
     world.multiworld.completion_condition[world.player] = lambda state: state.has(
-        "Tsuta Ruins - Defeat the spider queen", world.player)
+        "Gale Shrine - Defeat Crimson Helm", world.player)
     return
     # set_specific_rules(world)
 

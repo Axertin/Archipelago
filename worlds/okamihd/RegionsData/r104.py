@@ -46,7 +46,7 @@ events = {
     },
     RegionNames.TSUTA_RUINS_LEFT_SIDE: {
         # Maybe add a check that Celestial Brush is unlocked to do this, i'm not sure this matters a lot
-        "Tsuta Ruins - Defeat Blockhead": EventData(),
+        "Tsuta Ruins - Defeat Blockhead": EventData(precollected=lambda o:o.RemoveBlockHead),
         "Tsuta Ruins - Open Lockjaw with Exorcising Arrow": EventData(
             required_items_events=["Tsuta Ruins - Defeat Blockhead"]),
         "Tsuta Ruins - Restore Bridge to Devil Gates' room": EventData(
