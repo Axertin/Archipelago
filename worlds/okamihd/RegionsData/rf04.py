@@ -82,7 +82,7 @@ locations = {
         "Agata Forest - Chest near Demon Fang merchant": LocData(73),
         "Agata Forest - Chest near Tusta ruins door": LocData(74),
         "Agata Forest - Fish Giant Salmon with Kokari": LocData(77, power_slash_level=1),
-        "Agata Forest - Yumigami": LocData(144, type=LocationType.CONSTELLATION,
+        "Agata Forest - Yumigami": LocData(152, type=LocationType.CONSTELLATION,
                                            required_items_events=["Agata Forest - Fish Whopper with Kokari"])
     }
 }

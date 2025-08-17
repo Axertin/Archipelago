@@ -129,8 +129,8 @@ class OkamiWorld(World):
 
                         if is_event_item_state:
                             # With the current options this event becomes its own item, so we need to add it to the item pool
-                            itempool += [OkamiItem(event_name, ItemClassification.progression, event_data.id,
-                                                  world.player)]
+                            itempool += [OkamiItem(event_data.override_event_item_name if event_data.override_event_item_name is not None else event_name, ItemClassification.progression, event_data.id,
+                                                   world.player)]
 
         itempool += create_brush_techniques_items(world)
         for name in item_table.keys():

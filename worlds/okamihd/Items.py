@@ -132,15 +132,6 @@ okami_items = {
     # Not sure if this should be an item as we already have the power in the item pool...
     # "Fog Pot":ItemData(0x9f,ItemClassification.progression),
 
-    ## Canine Warriors
-    "Canine Warrior Rei": ItemData(0x303, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
-    "Canine Warrior Shin": ItemData(0x304, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
-    "Canine Warrior Chi": ItemData(0x305, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
-    "Canine Warrior Ko": ItemData(0x306, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
-    "Canine Warrior Tei": ItemData(0x307, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
-    "Loyalty Orb": ItemData(0x4e, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
-    "Justice Orb": ItemData(0x4f, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
-    "Duty Orb": ItemData(0x50, ItemClassification.progression_skip_balancing,exclude_from_pool=lambda o:o.CanineRewards==0),
 
     ## "Biteable" Items
     ### As these disappear and respanw each time you transition, the best way to handle those would be to set the flag

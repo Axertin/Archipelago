@@ -39,12 +39,12 @@ locations = {
         "Sasa Sanctuary - Buried Chest near Entrance": LocData(137, type=LocationType.BURIED_CHEST)
     },
     RegionNames.SASA_SANCTUARY: {
-        "Sasa Sanctuary - 4th West side chest near Papa Jamba": LocData(127, type=LocationType.NORMAL_CHEST),
-        "Sasa Sanctuary - 2nd West side chest near Papa Jamba": LocData(128, type=LocationType.NORMAL_CHEST),
-        "Sasa Sanctuary - 5th East side chest near Papa Jamba": LocData(129, type=LocationType.NORMAL_CHEST),
-        "Sasa Sanctuary - 3rd East side chest near Papa Jamba": LocData(130, type=LocationType.NORMAL_CHEST),
-        "Sasa Sanctuary - 1st East side chest near Papa Jamba": LocData(131, type=LocationType.NORMAL_CHEST),
-        "Sasa Sanctuary - 4th East side chest near Papa Jamba": LocData(132, type=LocationType.NORMAL_CHEST),
+        "Sasa Sanctuary - 4th West side chest near Papa Jamba": LocData(146, type=LocationType.NORMAL_CHEST),
+        "Sasa Sanctuary - 2nd West side chest near Papa Jamba": LocData(147, type=LocationType.NORMAL_CHEST),
+        "Sasa Sanctuary - 5th East side chest near Papa Jamba": LocData(148, type=LocationType.NORMAL_CHEST),
+        "Sasa Sanctuary - 3rd East side chest near Papa Jamba": LocData(149, type=LocationType.NORMAL_CHEST),
+        "Sasa Sanctuary - 1st East side chest near Papa Jamba": LocData(150, type=LocationType.NORMAL_CHEST),
+        "Sasa Sanctuary - 4th East side chest near Papa Jamba": LocData(151, type=LocationType.NORMAL_CHEST),
         "Sasa Sanctuary - 2nd East side chest near Papa Jamba": LocData(133, type=LocationType.NORMAL_CHEST),
         "Sasa Sanctuary - 5th West side chest near Papa Jamba": LocData(134, type=LocationType.NORMAL_CHEST),
         "Sasa Sanctuary - 3rd West side chest near Papa Jamba": LocData(135, type=LocationType.NORMAL_CHEST),
