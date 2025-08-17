@@ -1,6 +1,5 @@
 from BaseClasses import Item, ItemClassification
-from MultiServer import console
-from .Types import OkamiItem, ItemData
+from .Types import OkamiItem, ItemData, resolve_option_callable
 from .Enums.BrushTechniques import BrushTechniques, BrushTechniqueData
 from .Enums.DivineInstruments import DivineInstrumentData, DivineInstruments
 from typing import List, Dict, TYPE_CHECKING
@@ -43,9 +42,9 @@ def create_multiple_items(world: "OkamiWorld", name: str, count: int = 1,
                           item_type: ItemClassification = ItemClassification.progression) -> List[Item]:
     data = item_table[name]
     itemlist: List[Item] = []
-
-    for i in range(count):
-        itemlist += [OkamiItem(name, item_type, data.code, world.player)]
+    if not resolve_option_callable(data.exclude_from_pool,world):
+        for i in range(count):
+            itemlist += [OkamiItem(name, item_type, data.code, world.player)]
 
     return itemlist
 
@@ -74,10 +73,11 @@ def get_item_name_to_id_dict() -> dict:
         item_dict[d.item_name] = d.code
     return item_dict
 
-progressive_weapons={
-    "Progressive Mirror":ItemData(0x300,ItemClassification.progression),
-    "Progressive Rosary":ItemData(0x301,ItemClassification.progression),
-    "Progressive Sword":ItemData(0x302,ItemClassification.progression),
+
+progressive_weapons = {
+    "Progressive Mirror": ItemData(0x300, ItemClassification.progression),
+    "Progressive Rosary": ItemData(0x301, ItemClassification.progression),
+    "Progressive Sword": ItemData(0x302, ItemClassification.progression),
 }
 
 karmic_transformers = {
@@ -118,9 +118,7 @@ okami_items = {
     "Lips of Ice": ItemData(0x4b, ItemClassification.progression),
     "Eyeball of Fire": ItemData(0x4c, ItemClassification.progression),
     "Black Demon Horn": ItemData(0x4d, ItemClassification.progression),
-    "Loyalty Orb": ItemData(0x4e, ItemClassification.progression),
-    "Justice Orb": ItemData(0x4f, ItemClassification.progression),
-    "Duty Orb": ItemData(0x50, ItemClassification.progression),
+
     "Golden Mushroom": ItemData(0x5f, ItemClassification.progression),
     "Gimmick Gear": ItemData(0x60, ItemClassification.progression),
     "8 Purification Sake": ItemData(0x62, ItemClassification.progression),
@@ -133,6 +131,7 @@ okami_items = {
     "Marlin Rod": ItemData(0x77, ItemClassification.progression),
     # Not sure if this should be an item as we already have the power in the item pool...
     # "Fog Pot":ItemData(0x9f,ItemClassification.progression),
+
 
     ## "Biteable" Items
     ### As these disappear and respanw each time you transition, the best way to handle those would be to set the flag
@@ -211,22 +210,70 @@ okami_items = {
 }
 
 junk_weights = {
-    #TODO: Junk items weight
+    # TODO: Junk items weight
+    "Exorcism Slip L": 1,
+    "Exorcism Slip M": 1,
+    "Exorcism Slip S": 1,
+    "Vengeance Slip": 1,
+    "Inkfinity Stone": 1,
+    "Holy Bone L": 1,
     "Holy Bone S": 1,
-    "Demon Fang": 2,
     "White porcelain pot": 1,
-
+    "Traveler's Charm": 1,
+    "Holy Bone M": 1,
+    "Feedbag (Meat)": 1,
+    "Feedbag (Herbs)": 1,
+    "Feedbag (Seeds)": 1,
+    "Feedbag (Fish)": 1,
+    "Steel Fist Sake": 1,
+    "Steel Soul Sake": 1,
+    "Godly Charm": 1,
+    "Kutani Pottery": 1,
+    "Incense Burner": 1,
+    "Vase": 1,
+    "Silver Pocket Watch": 1,
+    "Rat Statue": 1,
+    "Bull Horn": 1,
+    "Etched Glass": 1,
+    "Lacquerware Set": 1,
+    "Wooden Bear": 1,
+    "Glass Beads": 1,
+    "Dragonfly Bead": 1,
+    "Coral Fragment": 1,
+    "Crystal": 1,
+    "Pearl": 1,
+    "Ruby Tassels": 1,
+    "Bull Statue": 1,
+    "Tiger Statue": 1,
+    "Rabbit Statue": 1,
+    "Dragon Statue": 1,
+    "Snake Statue": 1,
+    "Horse Statue": 1,
+    "Sheep Statue": 1,
+    "Monkey Statue": 1,
+    "Rooster Statue": 1,
+    "Dog Statue": 1,
+    "Boar Statue": 1,
+    "Cat Statue": 1,
+    "Sapphire Tassels": 1,
+    "Emerald Tassels": 1,
+    "Turquoise Tassels": 1,
+    "Agate Tassels": 1,
+    "Amber Tassels": 1,
+    "Cat's Eye Tassels": 1,
+    "Amethyst Tassels": 1,
+    "Jade Tassels": 1,
     # Set junk_weight to 0 so additional copies won't be placed if there's space for them
     "Karmic Returner": 0,
-    "Karmic Transformer 2":0,
-    "Karmic Transformer 6":0,
-    "Karmic Transformer 5":0,
-    "Karmic Transformer 4":0,
-    "Karmic Transformer 3":0,
-    "Karmic Transformer 8":0,
-    "Karmic Transformer 7":0,
-    "Karmic Transformer 9":0,
-    "Karmic Transformer 1":0
+    "Karmic Transformer 2": 0,
+    "Karmic Transformer 6": 0,
+    "Karmic Transformer 5": 0,
+    "Karmic Transformer 4": 0,
+    "Karmic Transformer 3": 0,
+    "Karmic Transformer 8": 0,
+    "Karmic Transformer 7": 0,
+    "Karmic Transformer 9": 0,
+    "Karmic Transformer 1": 0
 }
 # For items that need to appear more than once, I'll put the right numbers, but keep them commented to not flood
 # the item pool while there aren't enough locations to place them
