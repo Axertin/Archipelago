@@ -50,25 +50,6 @@ def get_item_name_to_id_dict() -> dict:
     return item_dict
 
 
-progressive_weapons = {
-    "Progressive Mirror": ItemData(0x300, ItemClassification.progression),
-    "Progressive Rosary": ItemData(0x301, ItemClassification.progression),
-    "Progressive Sword": ItemData(0x302, ItemClassification.progression),
-}
-
-karmic_transformers = {
-    "Karmic Returner": ItemData(0xc8, ItemClassification.filler),
-    "Karmic Transformer 1": ItemData(0x5b, ItemClassification.filler),
-    "Karmic Transformer 2": ItemData(0xc9, ItemClassification.filler),
-    "Karmic Transformer 3": ItemData(0x79, ItemClassification.filler),
-    "Karmic Transformer 4": ItemData(0xcf, ItemClassification.filler),
-    "Karmic Transformer 5": ItemData(0xcb, ItemClassification.filler),
-    "Karmic Transformer 6": ItemData(0xca, ItemClassification.filler),
-    "Karmic Transformer 7": ItemData(0x7b, ItemClassification.filler),
-    "Karmic Transformer 8": ItemData(0x7a, ItemClassification.filler),
-    "Karmic Transformer 9": ItemData(0x7c, ItemClassification.filler),
-}
-
 brush_techniques_items = {
 
     # Brush Techniques
@@ -218,20 +199,65 @@ filler_items = {
     "Jade Tassels": ItemData(0xc7, ItemClassification.filler)
 }
 
-# Items that represent IG Events or quest progression. They should always have count_in_pool as 0, they'll be created
-# with their relative events.
+# Items that represent IG Events or quest progression.
+# ALL Items sections blew should have a count of 0, they're created otherwise!
 event_items = {
     # CANINE WARRIORS STUFF
-    "Save Rei":ItemData(0x303,ItemClassification.progression,count_in_pool=0),
-    "Save Shin": ItemData(0x304,ItemClassification.progression,count_in_pool=0),
-    "Save Chi": ItemData(0x305,ItemClassification.progression,count_in_pool=0),
-    "Save Ko": ItemData(0x306,ItemClassification.progression,count_in_pool=0),
-    "Save Tei": ItemData(0x307,ItemClassification.progression,count_in_pool=0),
-    "Loyalty Orb": ItemData(0x4e,ItemClassification.progression,count_in_pool=0),
-    "Justice Orb": ItemData(0x4f,ItemClassification.progression,count_in_pool=0),
-    "Duty Orb": ItemData(0x50,ItemClassification.progression,count_in_pool=0)
+    "Save Rei": ItemData(0x303, ItemClassification.progression, count_in_pool=0),
+    "Save Shin": ItemData(0x304, ItemClassification.progression, count_in_pool=0),
+    "Save Chi": ItemData(0x305, ItemClassification.progression, count_in_pool=0),
+    "Save Ko": ItemData(0x306, ItemClassification.progression, count_in_pool=0),
+    "Save Tei": ItemData(0x307, ItemClassification.progression, count_in_pool=0),
+    "Loyalty Orb": ItemData(0x4e, ItemClassification.progression, count_in_pool=0),
+    "Justice Orb": ItemData(0x4f, ItemClassification.progression, count_in_pool=0),
+    "Duty Orb": ItemData(0x50, ItemClassification.progression, count_in_pool=0)
+}
+weapons_items = {
+    "Divine Retribution": ItemData(0x10, ItemClassification.progression, count_in_pool=0),
+    "Snarling Beast": ItemData(0x11, ItemClassification.progression, count_in_pool=0),
+    "Infinity Judge": ItemData(0x12, ItemClassification.progression, count_in_pool=0),
+    "Trinity Mirror": ItemData(0x13, ItemClassification.progression, count_in_pool=0),
+    "Solar Flare": ItemData(0x14, ItemClassification.progression, count_in_pool=0),
+    "Devout Beads": ItemData(0x15, ItemClassification.progression, count_in_pool=0),
+    "Life Beads": ItemData(0x16, ItemClassification.progression, count_in_pool=0),
+    "Exorcism Beads": ItemData(0x17, ItemClassification.progression, count_in_pool=0),
+    "Resurrection Beads": ItemData(0x18, ItemClassification.progression, count_in_pool=0),
+    "Tundra Beads": ItemData(0x19, ItemClassification.progression, count_in_pool=0),
+    "Tsumugari": ItemData(0x1A, ItemClassification.progression, count_in_pool=0),
+    "Seven Strike": ItemData(0x1B, ItemClassification.progression, count_in_pool=0),
+    "Blade of Kusanagi": ItemData(0x1C, ItemClassification.progression, count_in_pool=0),
+    "Eight Wonder": ItemData(0x1D, ItemClassification.progression, count_in_pool=0),
+    "Thunder Edge": ItemData(0x1E, ItemClassification.progression, count_in_pool=0),
+}
+progressive_weapons = {
+    "Progressive Mirror": ItemData(0x300, ItemClassification.progression, count_in_pool=0),
+    "Progressive Rosary": ItemData(0x301, ItemClassification.progression, count_in_pool=0),
+    "Progressive Sword": ItemData(0x302, ItemClassification.progression, count_in_pool=0)
+}
+karmic_transformers = {
+    "Karmic Returner": ItemData(0xc8, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 1": ItemData(0x5b, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 2": ItemData(0xc9, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 3": ItemData(0x79, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 4": ItemData(0xcf, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 5": ItemData(0xcb, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 6": ItemData(0xca, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 7": ItemData(0x7b, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 8": ItemData(0x7a, ItemClassification.filler, count_in_pool=0),
+    "Karmic Transformer 9": ItemData(0x7c, ItemClassification.filler, count_in_pool=0)
 }
 
+item_table = {
+    **brush_techniques_items,
+    **equips,
+    **bitable_items,
+    **useful_items,
+    **filler_items,
+    **event_items,
+    **weapons_items,
+    **progressive_weapons,
+    **karmic_transformers,
+}
 junk_weights = {
     # TODO: Junk items weight
     "Exorcism Slip L": 1,
@@ -297,15 +323,4 @@ junk_weights = {
     "Karmic Transformer 7": 0,
     "Karmic Transformer 9": 0,
     "Karmic Transformer 1": 0
-}
-
-
-
-item_table = {
-    **brush_techniques_items,
-    **equips,
-    **bitable_items,
-    **useful_items,
-    **filler_items,
-    **event_items
 }
