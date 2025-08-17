@@ -46,13 +46,11 @@ def create_region_events(reg: Region, world: "OkamiWorld"):
 
             if not precollected_item_event_state and not is_event_item_state:
                 # It's a true event, we need to create it as such.
-                if event_data.override_event_item_name:
-                    event_location = create_event(event_name, event_data.override_event_item_name,
-                                                  event_data.override_item_id, reg, event_data,
-                                                  world)
-                else:
-                    event_location = create_event(event_name, event_name, event_data.override_item_id, reg, event_data,
-                                                  world)
+                event_location = create_event(event_name,
+                                              event_data.event_item_name if event_data.event_item_name else event_name,
+                                              None, reg, event_data,
+                                              world)
+
                 event_location.show_in_spoiler = False
             elif is_event_item_state:
                 create_location(event_name, event_data, reg, world)

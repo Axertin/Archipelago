@@ -1,6 +1,6 @@
 import random
 from BaseClasses import Item, ItemClassification, Tutorial, Location, MultiWorld
-from .Items import item_table, create_item, create_multiple_items, create_junk_items, item_frequencies, get_item_name_to_id_dict, karmic_transformers, \
+from .Items import item_table, create_item, create_multiple_items, create_junk_items, get_item_name_to_id_dict, karmic_transformers, \
     progressive_weapons, create_standard_item
 from .Regions import create_regions
 from .Locations import get_location_names, okami_events, get_total_locations
@@ -127,10 +127,7 @@ class OkamiWorld(World):
 
                         if is_event_item_state:
                             # With the current options this event becomes its own item, so we need to add it to the item pool
-                            itempool += [create_item(
-                                event_data.override_event_item_name if event_data.override_event_item_name is not None else event_name,
-                                event_data.id,
-                                ItemClassification.progression, world)]
+                            itempool += [create_standard_item(world,event_data.event_item_name)]
 
         for name in item_table.keys():
             item_type: ItemClassification = item_table.get(name).classification

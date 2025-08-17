@@ -48,8 +48,7 @@ class EventData(NamedTuple):
     required_brush_techniques: List[BrushTechniques] = []
     power_slash_level: int = 0
     cherry_bomb_level: int = 0
-    override_event_item_name: str | None = None
-    override_item_id: int | None = None
+    event_item_name: str | None = None
     required_items_events: [str] = []
     mandatory_enemies: List[OkamiEnnemies] = []
     needs_swim: bool = False

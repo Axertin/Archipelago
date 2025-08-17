@@ -69,7 +69,7 @@ karmic_transformers = {
     "Karmic Transformer 9": ItemData(0x7c, ItemClassification.filler),
 }
 
-okami_items = {
+brush_techniques_items = {
 
     # Brush Techniques
     BrushTechniques.SUNRISE: ItemData(0x100, ItemClassification.progression),
@@ -95,7 +95,9 @@ okami_items = {
     BrushTechniques.FOUNTAIN: ItemData(0x113, ItemClassification.progression),
     BrushTechniques.THUNDERBOLT: ItemData(0x114, ItemClassification.progression),
     ## VERY SECRET ONE
-    BrushTechniques.ICESTORM: ItemData(0x115, ItemClassification.useful),
+    BrushTechniques.ICESTORM: ItemData(0x115, ItemClassification.useful)
+}
+equips = {
 
     # Equips
     # "Water Tablet": ItemData(0x9c, ItemClassification.progression),
@@ -104,8 +106,10 @@ okami_items = {
     "Thief's Glove": ItemData(0x96, ItemClassification.useful),
     "Wood Mat": ItemData(0x97, ItemClassification.useful),
     "Golden Ink Pot": ItemData(0x98, ItemClassification.useful),
-    "Fire Tablet": ItemData(0x9d, ItemClassification.progression),
+    "Fire Tablet": ItemData(0x9d, ItemClassification.progression)
+}
 
+quest_items = {
     # Quest Items
 
     "Canine Tracker": ItemData(0x42, ItemClassification.progression),
@@ -132,8 +136,9 @@ okami_items = {
     "Pinwheel": ItemData(0x76, ItemClassification.progression),
     "Marlin Rod": ItemData(0x77, ItemClassification.progression),
     # Not sure if this should be an item as we already have the power in the item pool...
-    # "Fog Pot":ItemData(0x9f,ItemClassification.progression),
-
+    # "Fog Pot":ItemData(0x9f,ItemClassification.progression)
+}
+bitable_items = {
     ## "Biteable" Items
     ### As these disappear and respanw each time you transition, the best way to handle those would be to set the flag
     ### making them appear/respawn active, instead of giving them to the player
@@ -142,8 +147,9 @@ okami_items = {
     ### I'm not sure how that's going to work with ER.
     "Vista of the Gods": ItemData(0x5C, ItemClassification.progression),
     "Tsuta Ruins Key": ItemData(0x40, ItemClassification.progression),
-    # "Oddly Shaped Turnip": ItemData(0x41, ItemClassification.progression),
-
+    # "Oddly Shaped Turnip": ItemData(0x41, ItemClassification.progression)
+}
+useful_items = {
     # Useful items
     "Sun Fragment": ItemData(0x05, ItemClassification.useful),
     "Astral Pouch": ItemData(0x06, ItemClassification.useful),
@@ -153,8 +159,10 @@ okami_items = {
     # Technically a filler item, but useful feels more appropriate. Warping with those without Fountain will probably be out of logic.
     "Mermaid Coin": ItemData(0x0e, ItemClassification.useful),
     "Golden Peach": ItemData(0x0f, ItemClassification.useful),
-    "Gold Dust": ItemData(0x9e, ItemClassification.useful),
+    "Gold Dust": ItemData(0x9e, ItemClassification.useful)
+}
 
+filler_items = {
     # Filler
     "Exorcism Slip L": ItemData(0x08, ItemClassification.filler),
     "Exorcism Slip M": ItemData(0x09, ItemClassification.filler),
@@ -208,6 +216,20 @@ okami_items = {
     "Cat's Eye Tassels": ItemData(0xc5, ItemClassification.filler),
     "Amethyst Tassels": ItemData(0xc6, ItemClassification.filler),
     "Jade Tassels": ItemData(0xc7, ItemClassification.filler)
+}
+
+# Items that represent IG Events or quest progression. They should always have count_in_pool as 0, they'll be created
+# with their relative events.
+event_items = {
+    # CANINE WARRIORS STUFF
+    "Save Rei":ItemData(0x303,ItemClassification.progression,count_in_pool=0),
+    "Save Shin": ItemData(0x304,ItemClassification.progression,count_in_pool=0),
+    "Save Chi": ItemData(0x305,ItemClassification.progression,count_in_pool=0),
+    "Save Ko": ItemData(0x306,ItemClassification.progression,count_in_pool=0),
+    "Save Tei": ItemData(0x307,ItemClassification.progression,count_in_pool=0),
+    "Loyalty Orb": ItemData(0x4e,ItemClassification.progression,count_in_pool=0),
+    "Justice Orb": ItemData(0x4f,ItemClassification.progression,count_in_pool=0),
+    "Duty Orb": ItemData(0x50,ItemClassification.progression,count_in_pool=0)
 }
 
 junk_weights = {
@@ -276,15 +298,14 @@ junk_weights = {
     "Karmic Transformer 9": 0,
     "Karmic Transformer 1": 0
 }
-# For items that need to appear more than once, I'll put the right numbers, but keep them commented to not flood
-# the item pool while there aren't enough locations to place them
-item_frequencies = {
-    # "Sun Fragment": 15
-    # "Stray Bead": 100
-    # "Mermaid Coin" : 5
-    # "Gold Dust": 15
-}
+
+
 
 item_table = {
-    **okami_items,
+    **brush_techniques_items,
+    **equips,
+    **bitable_items,
+    **useful_items,
+    **filler_items,
+    **event_items
 }
