@@ -15,12 +15,12 @@ exits = {
     RegionNames.KUSA_VILLAGE: [ExitData('Enter Blockhead cave', RegionNames.KUSA_VILLAGE_BLOCKHEAD,
                                         has_events=['Kusa Village - Defeat Blockhead']),
                                ExitData("Enter Mr Bamboo's house", RegionNames.BAMBOO_HOUSE),
-                               ExitData("Enter Kusa Village Inn", RegionNames.KUSA_INN)]
+                               ExitData("Enter Kusa Village Inn", RegionNames.KUSA_INN),
+                               ExitData("Enter Gale Shrine",RegionNames.GALE_SHRINE_ENTRANCE)]
 }
 events = {
     RegionNames.KUSA_VILLAGE: {
         "Kusa Village - Defeat Blockhead": EventData(precollected=lambda o:o.RemoveBlockHead),
-        "Kusa Village - Open Gale Shrine Door": EventData(special_rule=lambda s, w:gale_shrine_access(s,w)),
         "Kusa Village - Save Rei":EventData(id=128,cherry_bomb_level=1,override_item_id=0x303,
                                             is_event_item=lambda o:o.CanineRewards!=0,
                                             progress_type=lambda o: LocationProgressType.EXCLUDED if o.CanineRewards==2

@@ -79,3 +79,12 @@ class RegionNames(StrEnum):
     SASA_SANCTUARY_ENTRANCE = "Sasa Sanctuary (Entrance)"
     SASA_SANCTUARY = "Sasa Sanctuary"
     SASA_SANCTUARY_BAMBOO = "Sasa Sanctuary (Bamboo Grove)"
+
+    ## GALE SHRINE
+    GALE_SHRINE_ENTRANCE = "Gale Shrine (1F Entrance)"
+    GALE_SHRINE = "Gale Shrine (1F Main room)"
+    GALE_SHRINE_LIFT = "Gale Shrine (Lift)"
+    GALE_SHRINE_2F = "Gale Shrine (2F)"
+    GALE_SHRINE_3F = "Gale Shrine (3F)"
+    GALE_SHRINE_BACK = "Gale Shrine (After Windmill Bridges)"
+    GALE_SHRINE_BOSS = "Gale Shrine (Crimson Helm Arena)"

@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING, NamedTuple, List
 from enum import Enum
 
 from .BrushTechniques import BrushTechniques
+from ...stardew_valley.stardew_rule import false_
 
 if TYPE_CHECKING:
     from .. import OkamiWorld
@@ -13,6 +14,8 @@ class EnnemyData(NamedTuple):
     required_weapon_tier: int
     floral_finisher: BrushTechniques | None = None
     required_techniques: List[BrushTechniques] = []
+    requires_slash: bool = False
+    requires_bomb: bool = False
 
 
 class OkamiEnnemies(Enum):
@@ -32,6 +35,9 @@ class OkamiEnnemies(Enum):
     TAKE = EnnemyData(0x23, "Take", 1)
     CUTTERS = EnnemyData(0x57, "Mr and Ms.Cutter", 1)
     CROW_TENGU = EnnemyData(0x57, "Crow Tengu", 1)
+    CHIMERA = EnnemyData(0x4e, "Chimera", 1, requires_slash=True)
+    # don't require slash here bc it's required in the cutscene that follows, not to beat the boss itself
+    CRIMSON_HELM =EnnemyData(0x11,"Crimson Helm",1, required_techniques=[BrushTechniques.GALESTROM])
 
     @staticmethod
     def list():

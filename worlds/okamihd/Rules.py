@@ -73,7 +73,6 @@ def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiW
 
 
 def apply_event_or_location_rules(loc: Location, name: str, data: LocData | EventData, world: "OkamiWorld"):
-
     if data.special_rule is None:
         required_techinques = []
         required_power_slash_level = data.power_slash_level
@@ -85,9 +84,15 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
                 weapon_tier_required = max(weapon_tier_required, e.value.required_weapon_tier)
                 if len(e.value.required_techniques) > 0:
                     required_techinques += e.value.required_techniques
+                if e.value.requires_slash:
+                    required_power_slash_level = max(required_power_slash_level, 1)
+                if e.value.requires_bomb:
+                    required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
+
             if weapon_tier_required > 0:
                 add_rule(loc,
-                         lambda state, level=weapon_tier_required: has_divine_instrument_tier(weapon_tier_required, state,
+                         lambda state, level=weapon_tier_required: has_divine_instrument_tier(weapon_tier_required,
+                                                                                              state,
                                                                                               world))
         required_techinques += data.required_brush_techniques
 
@@ -116,13 +121,14 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
                 add_rule(loc, lambda state: state.has(BrushTechniques.POWER_SLASH.value.item_name, world.player) or
                                             state.has(BrushTechniques.CHERRY_BOMB.value.item_name, world.player))
             case LocationType.DIGGING_MINIGAME_EARLY:
-                required_power_slash_level=max(required_power_slash_level,1)
+                required_power_slash_level = max(required_power_slash_level, 1)
                 required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
-                required_techinques+=[BrushTechniques.GREENSPROUT_BLOOM]
+                required_techinques += [BrushTechniques.GREENSPROUT_BLOOM]
             case LocationType.DIGGING_MINIGAME_LATER:
                 required_power_slash_level = max(required_power_slash_level, 1)
                 required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
-                required_techinques += [BrushTechniques.GREENSPROUT_BLOOM,BrushTechniques.WATERSPROUT,BrushTechniques.GALESTROM]
+                required_techinques += [BrushTechniques.GREENSPROUT_BLOOM, BrushTechniques.WATERSPROUT,
+                                        BrushTechniques.GALESTROM]
 
         if data.needs_swim:
             add_rule(loc, lambda state: (state.has("Water Tablet", world.player) or state.has(
@@ -141,8 +147,7 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
             add_rule(loc, lambda state: state.has(i, world.player))
     else:
         # Call special rule if it's defined
-        add_rule(loc,lambda state:data.special_rule(state,world))
-
+        add_rule(loc, lambda state: data.special_rule(state, world))
 
 
 def apply_exit_rules(etr: Entrance, name: str, data: ExitData, world: "OkamiWorld"):
@@ -161,7 +166,7 @@ def apply_exit_rules(etr: Entrance, name: str, data: ExitData, world: "OkamiWorl
 
 def set_rules(world: "OkamiWorld"):
     world.multiworld.completion_condition[world.player] = lambda state: state.has(
-        "Kusa Village - Open Gale Shrine Door", world.player)
+        "Gale Shrine - Defeat Crimson Helm", world.player)
     return
     # set_specific_rules(world)
 
