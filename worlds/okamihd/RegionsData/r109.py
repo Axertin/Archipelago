@@ -25,12 +25,11 @@ events = {
     RegionNames.SASA_SANCTUARY_BAMBOO: {
         "Sasa Sanctuary - Save Take": EventData(power_slash_level=1),
         "Sasa Sanctuary - Get Orb from Take": EventData(id=144, mandatory_enemies=[OkamiEnnemies.TAKE],
-                                                        override_item_id=0x50,
                                                         is_event_item=lambda o: o.CanineRewards != 0,
                                                         progress_type=lambda
                                                             o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
                                                         else LocationProgressType.DEFAULT,
-                                                        override_event_item_name="Duty Orb",
+                                                        event_item_name="Duty Orb",
                                                         required_items_events=["Sasa Sanctuary - Save Take"])
     }
 }

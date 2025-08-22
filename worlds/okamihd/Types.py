@@ -22,7 +22,8 @@ class OkamiItem(Item):
 class ItemData(NamedTuple):
     code: int
     classification: ItemClassification
-    exclude_from_pool: Callable[[OkamiOptions], bool] | bool = False
+    # Number in pool, set this to 0 to exclude the item from the pool
+    count_in_pool: Callable[[OkamiOptions], int] | int = 1
 
 
 class LocData(NamedTuple):
@@ -47,8 +48,7 @@ class EventData(NamedTuple):
     required_brush_techniques: List[BrushTechniques] = []
     power_slash_level: int = 0
     cherry_bomb_level: int = 0
-    override_event_item_name: str | None = None
-    override_item_id: int | None = None
+    event_item_name: str | None = None
     required_items_events: [str] = []
     mandatory_enemies: List[OkamiEnnemies] = []
     needs_swim: bool = False

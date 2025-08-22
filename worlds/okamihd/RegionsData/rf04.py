@@ -36,11 +36,10 @@ events = {
                                                              required_items_events=[
                                                                  "Agata Forest - Fight with Susano"]),
         "Agata Forest - Get Orb from Ume": EventData(id=127, mandatory_enemies=[OkamiEnnemies.UME],
-                                                     override_item_id=0x4f,
                                                      is_event_item=lambda o: o.CanineRewards != 0,
                                                      progress_type=lambda
                                                          o: LocationProgressType.EXCLUDED if o.CanineRewards == 2 else LocationProgressType.DEFAULT,
-                                                     override_event_item_name="Justice Orb",
+                                                     event_item_name="Justice Orb",
                                                      required_items_events=["Agata Forest - Fish Whopper with Kokari"])
     }
 }
