@@ -88,3 +88,9 @@ class RegionNames(StrEnum):
     GALE_SHRINE_3F = "Gale Shrine (3F)"
     GALE_SHRINE_BACK = "Gale Shrine (After Windmill Bridges)"
     GALE_SHRINE_BOSS = "Gale Shrine (Crimson Helm Arena)"
+
+    ## MOON CAVE
+    MOON_CAVE_OUTSIDE="Moon Cave (Entrance outside)"
+    MOON_CAVE_BROKEN_STAIRS="Moon Cave (Broken stairs)"
+    MOON_CAVE_UNDERGROUND_ENTRANCE="Moon Cave (Underground Entrance)"
+    CALCIFIED_CAVERN =  "Calcified Cavern"

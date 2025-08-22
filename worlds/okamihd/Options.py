@@ -47,7 +47,7 @@ class OpenGameStart(Toggle):
         - Cutting the peach containing the villagers in Kamiki
         - Restoring Kamiki Village with Sunrise
         - Fixing Kushi's Water Mill
-        - Wkaking Up Susano
+        - Waking Up Susano
         - Saving the Merchant in Kamiki
         - Opening the boulder to Shinshu field
         - Mr. Orange fight after restoring Kamiki Villagers"""
@@ -82,6 +82,17 @@ class CanineRewards(Choice):
     default = 1
 
 
+class MoonCaveAccess(Choice):
+    """What does trigger access to moon cave ?
+
+    Serpent Crystal: You need to find the Serpent Crystal item to open Moon cave
+    Crimson Helm: You need to defeat Crimson Helm to open moon cave."""
+    display_name = "What does trigger access to moon cave ?"
+    option_serpent_crystal = 0
+    options_crimson_helm = 1
+    default = 0
+
+
 #
 # class PraiseSanity(Choice):
 #    """Randomize Praise Rewards"""
@@ -103,6 +114,7 @@ class OkamiOptions(PerGameCommonOptions):
     RemoveBlockHead: RemoveBlockHead
     RequiredDoggorbs: RequiredDoggorbs
     CanineRewards: CanineRewards
+    MoonCaveAccess:MoonCaveAccess
 
 
 #    PraiseSanity:PraiseSanity
@@ -115,10 +127,13 @@ okami_option_groups: Dict[str, List[Any]] = {
         OpenGameStart,
         ProgressiveWeapons,
         RemoveBlockHead
+
         # PraiseSanity
     ],
     "Orochi Arc Options": [
-        RequiredDoggorbs, CanineRewards
+        RequiredDoggorbs,
+        CanineRewards,
+        MoonCaveAccess
     ]
 
 }
@@ -131,5 +146,6 @@ slot_data_options = {
     "RemoveBlockHead",
     "RequiredDoggorbs",
     "CanineRewards",
+    "MoonCaveAccess"
     #    "PraiseSanity"
 }

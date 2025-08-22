@@ -39,6 +39,13 @@ def gale_shrine_access(state: CollectionState, world: "OkamiWorld") -> bool:
     return state.has_group("canine_warriors", world.player, world.options.RequiredDoggorbs.value)
 
 
+def moon_cave_access(state: CollectionState, world: "OkamiWorld") -> bool:
+    if world.options.MoonCaveAccess == 0:
+        return state.has('Serpent Crystal', world.player)
+    else:
+        return state.has("Gale Shrine - Defeat Crimson Helm", world.player)
+
+
 def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiWorld") -> bool:
     if not world.options.ProgressiveWeapons:
         match tier:

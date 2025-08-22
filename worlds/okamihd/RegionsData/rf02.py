@@ -12,9 +12,10 @@ if TYPE_CHECKING:
 exits = {
     RegionNames.SHINSHU_FIELD: [
         ExitData("Cross Cave to Agata Forest", RegionNames.SHINSHU_FIELD_AGATA_CAVE, needs_swim=True),
-        ExitData("Enter Tama's house", RegionNames.TAMA_HOUSE)],
+        ExitData("Enter Tama's house", RegionNames.TAMA_HOUSE),
+        ExitData("To Moon Cave Entrance",RegionNames.MOON_CAVE_OUTSIDE)],
     RegionNames.SHINSHU_FIELD_AGATA_CAVE: [ExitData('To Cursed Agata Forest', RegionNames.CURSED_AGATA_FOREST,
-                                                    has_events=["Shinshu Field - Open Entrance to Agata Forest"])],
+                                                    has_events=["Shinshu Field - Open Entrance to Agata Forest"])]
 }
 events = {
     RegionNames.SHINSHU_FIELD_AGATA_CAVE: {

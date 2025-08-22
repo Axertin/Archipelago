@@ -210,7 +210,8 @@ event_items = {
     "Save Tei": ItemData(0x307, ItemClassification.progression, count_in_pool=0),
     "Loyalty Orb": ItemData(0x4e, ItemClassification.progression, count_in_pool=0),
     "Justice Orb": ItemData(0x4f, ItemClassification.progression, count_in_pool=0),
-    "Duty Orb": ItemData(0x50, ItemClassification.progression, count_in_pool=0)
+    "Duty Orb": ItemData(0x50, ItemClassification.progression, count_in_pool=0),
+    "Serpent Crystal": ItemData(0x308,ItemClassification.progression, count_in_pool=0)
 }
 weapons_items = {
     "Divine Retribution": ItemData(0x10, ItemClassification.progression, count_in_pool=0),
