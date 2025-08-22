@@ -40,10 +40,7 @@ def gale_shrine_access(state: CollectionState, world: "OkamiWorld") -> bool:
 
 
 def moon_cave_access(state: CollectionState, world: "OkamiWorld") -> bool:
-    if world.options.MoonCaveAccess == 0:
-        return state.has('Serpent Crystal', world.player)
-    else:
-        return state.has("Gale Shrine - Defeat Crimson Helm", world.player)
+    return state.has('Serpent Crystal', world.player)
 
 
 def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiWorld") -> bool:
