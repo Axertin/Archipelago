@@ -133,6 +133,8 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
                 required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
                 required_techinques += [BrushTechniques.GREENSPROUT_BLOOM, BrushTechniques.WATERSPROUT,
                                         BrushTechniques.GALESTROM]
+            case LocationType.FROZEN_CHEST:
+                required_techinques+=[BrushTechniques.INFERNO]
 
         if data.needs_swim:
             add_rule(loc, lambda state: (state.has("Water Tablet", world.player) or state.has(
@@ -170,7 +172,7 @@ def apply_exit_rules(etr: Entrance, name: str, data: ExitData, world: "OkamiWorl
 
 def set_rules(world: "OkamiWorld"):
     world.multiworld.completion_condition[world.player] = lambda state: state.has(
-        "Gale Shrine - Defeat Crimson Helm", world.player)
+        "Calcified Cavern - Fool Yokai Guards", world.player)
     return
     # set_specific_rules(world)
 

@@ -89,7 +89,7 @@ class MoonCaveAccess(Choice):
     Crimson Helm: You need to defeat Crimson Helm to open moon cave."""
     display_name = "What does trigger access to moon cave ?"
     option_serpent_crystal = 0
-    options_crimson_helm = 1
+    option_crimson_helm = 1
     default = 0
 
 

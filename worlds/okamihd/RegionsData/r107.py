@@ -46,12 +46,16 @@ events = {
     RegionNames.GALE_SHRINE_BOSS: {
         # Techinally galestrom is already required to beat the boss,
         # but if we ever randomize enemies/bosses, I've added the following Susano cutscene requirements here.
-        # FIXME: Add a aquire serpent crystal event to complete this one. (see fixme below)
         "Gale Shrine - Defeat Crimson Helm": EventData(mandatory_enemies=[OkamiEnnemies.CRIMSON_HELM],
                                                        power_slash_level=1,
                                                        required_brush_techniques=[BrushTechniques.GALESTROM],
-                                                       event_item_name="Serpent Crystal",
-                                                       is_event_item=lambda o:o.MoonCaveAccess==0 )
+                                                        ),
+        "Gale Shrine - Get Serpent Crystal" :EventData(
+            required_items_events=["Gale Shrine - Defeat Crimson Helm"],
+            event_item_name="Serpent Crystal",
+            is_event_item=lambda o:o.MoonCaveAccess==0
+
+        )
     }
 }
 locations = {
@@ -95,8 +99,6 @@ locations = {
                                                                            BrushTechniques.GALESTROM])
     },
     RegionNames.GALE_SHRINE_BOSS:{
-        #FIXME: This event is never given since we changed its name to serpent crystal for Moon Cave access.
-
         "Gale Shrine - Crimson Helm Reward": LocData(170, required_items_events=["Gale Shrine - Defeat Crimson Helm"])
     }
 }

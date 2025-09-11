@@ -24,4 +24,6 @@ class LocationType(Enum):
     DIGGING_MINIGAME_EARLY=13,
     # + Watersprout + Galestrom
     DIGGING_MINIGAME_LATER = 14,
+    # Frozen chest with fire source around
+    FROZEN_CHEST= 15,
 
