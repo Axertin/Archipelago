@@ -166,4 +166,10 @@ class OkamiWorld(World):
             "Justice Orb",
             "Duty Orb"
         ],
+
+        "soup_ingredients":[
+            "Ogre Liver",
+            "Ice Lips",
+            "Fire Eye"
+        ]
     }

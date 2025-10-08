@@ -38,6 +38,8 @@ class OkamiEnnemies(Enum):
     CHIMERA = EnnemyData(0x4e, "Chimera", 1, requires_slash=True)
     # don't require slash here bc it's required in the cutscene that follows, not to beat the boss itself
     CRIMSON_HELM =EnnemyData(0x11,"Crimson Helm",1, required_techniques=[BrushTechniques.GALESTROM])
+    FIRE_EYE =EnnemyData(0x52,"Fire Eye",1, required_techniques=[BrushTechniques.GALESTROM])
+
 
     @staticmethod
     def list():
