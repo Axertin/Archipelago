@@ -35,6 +35,7 @@ def create_location(location_name: str, location_data: EventData | LocData, reg:
     location.progress_type = progress_type
     apply_event_or_location_rules(location, location_name, location_data, world)
     reg.locations.append(location)
+    return location
 
 
 def create_region_events(reg: Region, world: "OkamiWorld"):
@@ -53,6 +54,7 @@ def create_region_events(reg: Region, world: "OkamiWorld"):
                                               world)
 
                 event_location.show_in_spoiler = False
+
             elif is_event_item_state:
                 create_location(event_name, event_data, reg, world)
 

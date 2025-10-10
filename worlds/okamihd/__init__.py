@@ -170,6 +170,7 @@ class OkamiWorld(World):
         "soup_ingredients":[
             "Ogre Liver",
             "Ice Lips",
-            "Fire Eye"
+            "Fire Eye",
+            "Black Demon Horn"
         ]
     }

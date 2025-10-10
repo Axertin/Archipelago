@@ -39,6 +39,7 @@ class OkamiEnnemies(Enum):
     # don't require slash here bc it's required in the cutscene that follows, not to beat the boss itself
     CRIMSON_HELM =EnnemyData(0x11,"Crimson Helm",1, required_techniques=[BrushTechniques.GALESTROM])
     FIRE_EYE =EnnemyData(0x52,"Fire Eye",1, required_techniques=[BrushTechniques.GALESTROM])
+    OROCHI_1=EnnemyData(0x69,"Orochi (Moon Cave)", 1 ,required_techniques=[BrushTechniques.WATERSPROUT])
 
 
     @staticmethod
