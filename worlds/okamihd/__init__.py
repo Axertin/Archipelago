@@ -63,9 +63,10 @@ class OkamiWorld(World):
                            "SeedName": self.multiworld.seed_name,
                            "TotalLocations": get_total_locations(self)}
 
-        for name, value in self.options.as_dict(*self.options_dataclass.type_hints).items():
-            if name in slot_data_options:
-                slot_data[name] = value
+       # FIXME: Causes issues with Archipelago 0.6.4
+       # for name, value in self.options.as_dict(*self.options_dataclass.type_hints).items():
+       #     if name in slot_data_options:
+       #         slot_data[name] = value
 
         return slot_data
 

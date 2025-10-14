@@ -53,30 +53,30 @@ def get_item_name_to_id_dict() -> dict:
 brush_techniques_items = {
 
     # Brush Techniques
-    BrushTechniques.SUNRISE: ItemData(0x100, ItemClassification.progression),
-    BrushTechniques.REJUVENATION: ItemData(0x101, ItemClassification.progression),
-    BrushTechniques.POWER_SLASH: ItemData(0x102, ItemClassification.progression, count_in_pool=3),
-    BrushTechniques.CHERRY_BOMB: ItemData(0x103, ItemClassification.progression, count_in_pool=3),
-    BrushTechniques.GREENSPROUT_BLOOM: ItemData(0x104, ItemClassification.progression),
-    BrushTechniques.GREENSPROUT_WATERLILY: ItemData(0x105, ItemClassification.progression),
-    BrushTechniques.GREENSPROUT_VINE: ItemData(0x106, ItemClassification.progression),
-    BrushTechniques.WATERSPROUT: ItemData(0x107, ItemClassification.progression),
-    BrushTechniques.CRESCENT: ItemData(0x108, ItemClassification.progression),
-    BrushTechniques.GALESTROM: ItemData(0x109, ItemClassification.progression),
-    BrushTechniques.INFERNO: ItemData(0x10A, ItemClassification.progression),
-    BrushTechniques.VEIL_OF_MIST: ItemData(0x10B, ItemClassification.progression),
-    BrushTechniques.CATWALK: ItemData(0x10C, ItemClassification.progression),
-    BrushTechniques.THUNDERSTORM: ItemData(0x10D, ItemClassification.progression),
-    BrushTechniques.BLIZZARD: ItemData(0x10E, ItemClassification.progression),
+    BrushTechniques.SUNRISE.value: ItemData(0x100, ItemClassification.progression),
+    BrushTechniques.REJUVENATION.value: ItemData(0x101, ItemClassification.progression),
+    BrushTechniques.POWER_SLASH.value: ItemData(0x102, ItemClassification.progression, count_in_pool=3),
+    BrushTechniques.CHERRY_BOMB.value: ItemData(0x103, ItemClassification.progression, count_in_pool=3),
+    BrushTechniques.GREENSPROUT_BLOOM.value: ItemData(0x104, ItemClassification.progression),
+    BrushTechniques.GREENSPROUT_WATERLILY.value: ItemData(0x105, ItemClassification.progression),
+    BrushTechniques.GREENSPROUT_VINE.value: ItemData(0x106, ItemClassification.progression),
+    BrushTechniques.WATERSPROUT.value: ItemData(0x107, ItemClassification.progression),
+    BrushTechniques.CRESCENT.value: ItemData(0x108, ItemClassification.progression),
+    BrushTechniques.GALESTROM.value: ItemData(0x109, ItemClassification.progression),
+    BrushTechniques.INFERNO.value: ItemData(0x10A, ItemClassification.progression),
+    BrushTechniques.VEIL_OF_MIST.value: ItemData(0x10B, ItemClassification.progression),
+    BrushTechniques.CATWALK.value: ItemData(0x10C, ItemClassification.progression),
+    BrushTechniques.THUNDERSTORM.value: ItemData(0x10D, ItemClassification.progression),
+    BrushTechniques.BLIZZARD.value: ItemData(0x10E, ItemClassification.progression),
     ## UPGRADES/SECRET
-    BrushTechniques.MIST_WARP: ItemData(0x10F, ItemClassification.progression),
-    BrushTechniques.FIREBURST: ItemData(0x110, ItemClassification.progression),
-    BrushTechniques.WHIRLWIND: ItemData(0x111, ItemClassification.progression),
-    BrushTechniques.DELUGE: ItemData(0x112, ItemClassification.progression),
-    BrushTechniques.FOUNTAIN: ItemData(0x113, ItemClassification.progression),
-    BrushTechniques.THUNDERBOLT: ItemData(0x114, ItemClassification.progression),
+    BrushTechniques.MIST_WARP.value: ItemData(0x10F, ItemClassification.progression),
+    BrushTechniques.FIREBURST.value: ItemData(0x110, ItemClassification.progression),
+    BrushTechniques.WHIRLWIND.value: ItemData(0x111, ItemClassification.progression),
+    BrushTechniques.DELUGE.value: ItemData(0x112, ItemClassification.progression),
+    BrushTechniques.FOUNTAIN.value: ItemData(0x113, ItemClassification.progression),
+    BrushTechniques.THUNDERBOLT.value: ItemData(0x114, ItemClassification.progression),
     ## VERY SECRET ONE
-    BrushTechniques.ICESTORM: ItemData(0x115, ItemClassification.useful)
+    BrushTechniques.ICESTORM.value: ItemData(0x115, ItemClassification.useful)
 }
 equips = {
 
