@@ -3,7 +3,8 @@ from BaseClasses import Item, ItemClassification, Tutorial, Location, MultiWorld
 from .Items import item_table, create_item, create_multiple_items, create_junk_items, get_item_name_to_id_dict, karmic_transformers, \
     progressive_weapons, create_standard_item
 from .Regions import create_regions
-from .Locations import get_location_names, okami_events, get_total_locations
+from .Locations import get_location_names, get_total_locations
+from .RegionsData import okami_events,okami_locations
 from .Rules import set_rules
 from .Options import create_option_groups, OkamiOptions, slot_data_options, KarmicTransformers
 from worlds.AutoWorld import World, WebWorld, CollectionState

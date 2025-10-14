@@ -1,34 +1,12 @@
-from BaseClasses import Region, Entrance, ItemClassification, Location, LocationProgressType, CollectionState
+from BaseClasses import Region, LocationProgressType
 from .Locations import create_region_locations, create_region_events
-from typing import TYPE_CHECKING, List, Dict, Optional
-from .RegionsData import menu, r100, r122, r101, r102, r103, r104, rf01, rf02, rf03, rf04, rf07, rf08, r108, r109, r107, \
-    r10e, r110, rf06
+from typing import TYPE_CHECKING
 from .Rules import apply_exit_rules
 from .Enums.RegionNames import RegionNames
+from .RegionsData import okami_exits
 
 if TYPE_CHECKING:
     from . import OkamiWorld
-
-okami_exits = {
-    **r100.exits,
-    **r101.exits,
-    **r102.exits,
-    **r103.exits,
-    **r104.exits,
-    **r107.exits,
-    **r108.exits,
-    **r109.exits,
-    **r10e.exits,
-    **r110.exits,
-    **r122.exits,
-    **rf01.exits,
-    **rf02.exits,
-    **rf03.exits,
-    **rf04.exits,
-    **rf06.exits,
-    **rf07.exits,
-    **rf08.exits,
-}
 
 
 def get_region_name(key: str):

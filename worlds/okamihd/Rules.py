@@ -51,7 +51,7 @@ def moon_cave_fire_rule(state:CollectionState,world:"OkamiWorld")->bool:
     return state.has(BrushTechniques.INFERNO,world.player) and (
         has_portable_fire_source(state,world) or state.has("Moon Cave - 2F Push the ball",world.player)
     )
-# Vairant for the 4F fireball room
+# Variant for the 4F fireball room
 def moon_cave_fire_rule_4f(state:CollectionState,world:"OkamiWorld")->bool:
     return state.has(BrushTechniques.INFERNO,world.player) and (
         has_portable_fire_source(state,world) or state.has("Moon Cave - 4F Move Fireball",world.player)
