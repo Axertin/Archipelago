@@ -47,11 +47,19 @@ class OpenGameStart(Toggle):
         - Cutting the peach containing the villagers in Kamiki
         - Restoring Kamiki Village with Sunrise
         - Fixing Kushi's Water Mill
-        - Wkaking Up Susano
+        - Waking Up Susano
         - Saving the Merchant in Kamiki
         - Opening the boulder to Shinshu field
         - Mr. Orange fight after restoring Kamiki Villagers"""
     display_name = "Remove some events for a more open start"
+    default = 1
+
+
+class BloomGuardianSaplings(Toggle):
+    """
+    Bloom every guardian sapling except Kamiki Village
+    """
+    display_name = "Bloom all guardian saplings"
     default = 1
 
 
@@ -82,6 +90,19 @@ class CanineRewards(Choice):
     default = 1
 
 
+class MoonCaveAccess(Choice):
+    """What does trigger access to moon cave ?
+
+    Serpent Crystal: You need to find the Serpent Crystal item to open Moon cave
+    Crimson Helm: You need to defeat Crimson Helm to open moon cave.
+    Open: Moon Cave is open from start"""
+    display_name = "What does trigger access to moon cave ?"
+    option_serpent_crystal = 0
+    option_crimson_helm = 1
+    option_open = 2
+    default = 0
+
+
 #
 # class PraiseSanity(Choice):
 #    """Randomize Praise Rewards"""
@@ -103,6 +124,8 @@ class OkamiOptions(PerGameCommonOptions):
     RemoveBlockHead: RemoveBlockHead
     RequiredDoggorbs: RequiredDoggorbs
     CanineRewards: CanineRewards
+    MoonCaveAccess: MoonCaveAccess
+    BloomGuardianSaplings: BloomGuardianSaplings
 
 
 #    PraiseSanity:PraiseSanity
@@ -114,11 +137,15 @@ okami_option_groups: Dict[str, List[Any]] = {
         KarmicTransformers,
         OpenGameStart,
         ProgressiveWeapons,
-        RemoveBlockHead
+        RemoveBlockHead,
+        BloomGuardianSaplings
+
         # PraiseSanity
     ],
     "Orochi Arc Options": [
-        RequiredDoggorbs, CanineRewards
+        RequiredDoggorbs,
+        CanineRewards,
+        MoonCaveAccess
     ]
 
 }
@@ -131,5 +158,7 @@ slot_data_options = {
     "RemoveBlockHead",
     "RequiredDoggorbs",
     "CanineRewards",
+    "MoonCaveAccess",
+    "BloomGuardianSaplings"
     #    "PraiseSanity"
 }

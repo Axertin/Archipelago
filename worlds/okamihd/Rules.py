@@ -39,6 +39,25 @@ def gale_shrine_access(state: CollectionState, world: "OkamiWorld") -> bool:
     return state.has_group("canine_warriors", world.player, world.options.RequiredDoggorbs.value)
 
 
+def moon_cave_access(state: CollectionState, world: "OkamiWorld") -> bool:
+    return state.has('Serpent Crystal', world.player)
+
+def has_soup_ingerdients(state: CollectionState, world: "OkamiWorld", amount:int) -> bool:
+    return state.has_group("soup_ingredients",world.player,amount)
+
+# Special Rule to handle fire with the big ball torches in Moon Cave
+# Player needs to have either fire, or lit the torches by solving the sand room.
+def moon_cave_fire_rule(state:CollectionState,world:"OkamiWorld")->bool:
+    return state.has(BrushTechniques.INFERNO,world.player) and (
+        has_portable_fire_source(state,world) or state.has("Moon Cave - 2F Push the ball",world.player)
+    )
+# Variant for the 4F fireball room
+def moon_cave_fire_rule_4f(state:CollectionState,world:"OkamiWorld")->bool:
+    return state.has(BrushTechniques.INFERNO,world.player) and (
+        has_portable_fire_source(state,world) or state.has("Moon Cave - 4F Move Fireball",world.player)
+    )
+
+
 def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiWorld") -> bool:
     if not world.options.ProgressiveWeapons:
         match tier:
@@ -73,7 +92,9 @@ def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiW
 
 
 def apply_event_or_location_rules(loc: Location, name: str, data: LocData | EventData, world: "OkamiWorld"):
+    #TODO: Make special rule apply with other rules (and operator)
     if data.special_rule is None:
+        print (name+" has no special rule")
         required_techinques = []
         required_power_slash_level = data.power_slash_level
         required_cherry_bomb_level = data.cherry_bomb_level
@@ -129,6 +150,12 @@ def apply_event_or_location_rules(loc: Location, name: str, data: LocData | Even
                 required_cherry_bomb_level = max(required_cherry_bomb_level, 1)
                 required_techinques += [BrushTechniques.GREENSPROUT_BLOOM, BrushTechniques.WATERSPROUT,
                                         BrushTechniques.GALESTROM]
+            case LocationType.FROZEN_CHEST:
+                required_techinques+=[BrushTechniques.INFERNO]
+
+            case _:
+                required_techinques+=[]
+
 
         if data.needs_swim:
             add_rule(loc, lambda state: (state.has("Water Tablet", world.player) or state.has(
@@ -166,7 +193,7 @@ def apply_exit_rules(etr: Entrance, name: str, data: ExitData, world: "OkamiWorl
 
 def set_rules(world: "OkamiWorld"):
     world.multiworld.completion_condition[world.player] = lambda state: state.has(
-        "Gale Shrine - Defeat Crimson Helm", world.player)
+        "Moon Cave - Defeat Orochi", world.player)
     return
     # set_specific_rules(world)
 

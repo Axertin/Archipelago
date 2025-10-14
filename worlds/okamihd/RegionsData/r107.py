@@ -48,7 +48,14 @@ events = {
         # but if we ever randomize enemies/bosses, I've added the following Susano cutscene requirements here.
         "Gale Shrine - Defeat Crimson Helm": EventData(mandatory_enemies=[OkamiEnnemies.CRIMSON_HELM],
                                                        power_slash_level=1,
-                                                       required_brush_techniques=[BrushTechniques.GALESTROM])
+                                                       required_brush_techniques=[BrushTechniques.GALESTROM],
+                                                        ),
+        "Gale Shrine - Get Serpent Crystal" :EventData(
+            required_items_events=["Gale Shrine - Defeat Crimson Helm"],
+            event_item_name="Serpent Crystal",
+            is_event_item=lambda o:o.MoonCaveAccess==0,
+            precollected=lambda o:o.MoonCaveAccess==2,
+        )
     }
 }
 locations = {

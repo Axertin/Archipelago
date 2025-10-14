@@ -14,7 +14,7 @@ exits = {
 events = {
     RegionNames.CURSED_AGATA_FOREST: {
         "Agata Forest - Restore Guardian Sapling": EventData(
-            required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM],cherry_bomb_level=1)
+            required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM],cherry_bomb_level=1, precollected=lambda o:o.BloomGuardianSaplings)
     },
 }
 locations = {

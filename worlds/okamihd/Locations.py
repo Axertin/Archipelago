@@ -2,7 +2,7 @@ from BaseClasses import Region, Location, ItemClassification
 from .Rules import apply_event_or_location_rules
 from .Types import LocData, OkamiLocation, OkamiItem, resolve_option_callable, EventData
 from typing import Dict, TYPE_CHECKING
-from .RegionsData import r100, r122, r101, r102, r103, r104, rf01, rf02, rf03, rf04, rf07, rf08, r108, r109, r107
+from .RegionsData import okami_locations,okami_events
 
 if TYPE_CHECKING:
     from . import OkamiWorld
@@ -34,6 +34,7 @@ def create_location(location_name: str, location_data: EventData | LocData, reg:
     location.progress_type = progress_type
     apply_event_or_location_rules(location, location_name, location_data, world)
     reg.locations.append(location)
+    return location
 
 
 def create_region_events(reg: Region, world: "OkamiWorld"):
@@ -52,6 +53,7 @@ def create_region_events(reg: Region, world: "OkamiWorld"):
                                               world)
 
                 event_location.show_in_spoiler = False
+
             elif is_event_item_state:
                 create_location(event_name, event_data, reg, world)
 
@@ -75,40 +77,3 @@ def get_total_locations(world: "OkamiWorld") -> int:
             if resolve_option_callable(event_data.is_event_item, world):
                 location_count += 1
     return location_count
-
-
-okami_locations = {
-    **r100.locations,
-    **r122.locations,
-    **r101.locations,
-    **r102.locations,
-    **r103.locations,
-    **r104.locations,
-    **rf01.locations,
-    **rf02.locations,
-    **rf03.locations,
-    **rf04.locations,
-    **rf07.locations,
-    **rf08.locations,
-    **r108.locations,
-    **r109.locations,
-    **r107.locations,
-}
-
-okami_events = {
-    **r100.events,
-    **r122.events,
-    **r101.events,
-    **r102.events,
-    **r103.events,
-    **r104.events,
-    **rf01.events,
-    **rf02.events,
-    **rf03.events,
-    **rf04.events,
-    **rf07.events,
-    **rf08.events,
-    **r108.events,
-    **r109.events,
-    **r107.events,
-}

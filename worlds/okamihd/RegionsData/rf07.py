@@ -28,7 +28,7 @@ events={
     },
     RegionNames.CURSED_TAKA_PASS_GUARDIAN_SAPLING: {
         "Taka pass - Restore Guardian Sapling": EventData(
-            required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM])
+            required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM],precollected=lambda o:o.BloomGuardianSaplings)
     },
 }
 
