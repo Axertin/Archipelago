@@ -14,9 +14,9 @@ exits = {
     RegionNames.MOON_CAVE_BROKEN_STAIRS: [ExitData("Jump into the hole", RegionNames.MOON_CAVE_UNDERGROUND_ENTRANCE)],
     RegionNames.MOON_CAVE_UNDERGROUND_ENTRANCE: [ExitData("To Calcified Cavern", RegionNames.CALCIFIED_CAVERN)],
     RegionNames.MOON_CAVE: [ExitData("Enter 1F Locked Cave", RegionNames.MOON_CAVE_1F_LOCKED_CAVE,
-                                     has_events=["Moon Cave - Free Yokai Chef from soup"]),
+                                     has_events=["Moon Cave - 1F Free Ajimi from soup"]),
                             ExitData("Moon Cave - Take lift to B2F", RegionNames.MOON_CAVE_B2F_LIFT,
-                                     has_events=["Moon Cave - Main room disturb lift"]),
+                                     has_events=["Moon Cave - 1F Main room disturb lift"]),
                             ExitData("Moon Cave - Access Kitchen Back", RegionNames.MOON_CAVE_KITCHEN_BACK),
                             ExitData("Moon Cave - lift to Orochi", RegionNames.MOON_CAVE_OROCHI)],
     RegionNames.MOON_CAVE_1F_LOCKED_CAVE: [ExitData("To 1F locked cave back", RegionNames.MOON_CAVE_1F_LOCKED_CAVE_BACK,
@@ -40,7 +40,7 @@ exits = {
                  has_events=["Moon Cave - B2F oepn eyes door"])],
     RegionNames.MOON_CAVE_B2F_FROZEN_STATUE: [
         ExitData("Moon Cave - To B2F lift back", RegionNames.MOON_CAVE_B2F_OTHER_LIFT,
-                 has_events=["Moon Cave - B2F melt Ice block to other lift"])],
+                 has_events=["Moon Cave - B2F Melt Ice block to other lift"])],
     RegionNames.MOON_CAVE_B2F_OTHER_LIFT: [
         ExitData("Moon Cave - to B2F room beihnd bombable wall", RegionNames.MOON_CAVE_B2F_BOMBABLE,
                  has_events=["Moon Cave - B2F Explode wall behind lift"]),
@@ -48,7 +48,7 @@ exits = {
     ],
     RegionNames.MOON_CAVE_2F_SAND: [ExitData("Moon Cave - to 2F/3F Rafters", RegionNames.MOON_CAVE_2F_3F_RAFTERS,
                                              has_events=["Moon Cave - 2F Push the ball"])],
-    RegionNames.MOON_CAVE_2F_3F_RAFTERS: [ExitData("Moon Cave - to 4F rafters", RegionNames.MOON_CAVE_4F_CANON,
+    RegionNames.MOON_CAVE_2F_3F_RAFTERS: [ExitData("Moon Cave - to 4F rafters", RegionNames.MOON_CAVE_4F_RAFTERS,
                                                    has_events=["Moon Cave - 3F Rafters use flower"])],
     RegionNames.MOON_CAVE_4F_RAFTERS: [ExitData("Moon Cave - to 4F canon", RegionNames.MOON_CAVE_4F_CANON,
                                                 has_events=["Moon Cave - 4F Rafters cross banners"]),
@@ -59,7 +59,7 @@ exits = {
 }
 events = {
     RegionNames.MOON_CAVE: {
-        "Moon Cave - 1F Free Yokai Chef from soup": EventData(
+        "Moon Cave - 1F Free Ajimi from soup": EventData(
             required_brush_techniques=[BrushTechniques.GREENSPROUT_VINE]),
         "Moon Cave - 1F Main room geyser": EventData(required_brush_techniques=[BrushTechniques.WATERSPROUT],
                                                      special_rule=lambda s, w: has_soup_ingerdients(s, w, 1)),
@@ -180,7 +180,7 @@ locations = {
         "Moon Cave - Moegami": LocData(177, type=LocationType.CONSTELLATION)
     },
     RegionNames.MOON_CAVE_B2F_BOMBABLE: {
-        "Moon Cave - B2F Chest behind bombable wall": LocData(178)
+        "Moon Cave - B2F Chest behind bombable wall": LocData(188)
     },
     RegionNames.MOON_CAVE_2F_SAND: {
         # Made this logically require cherry bomb as it's required to exit this area.
@@ -192,10 +192,10 @@ locations = {
         "Moon Cave - 2F Rafters Chest under 3F Rafters": LocData(182),
     },
     RegionNames.MOON_CAVE_2F_FIRE_EYE: {
-        "Moon Cave - 2F Left Frozen Chest after Fire eye room": LocData(185,
+        "Moon Cave - 2F Left Frozen Chest after Fire eye room": LocData(189,
                                                                         special_rule=lambda s, w: moon_cave_fire_rule(s,
                                                                                                                       w)),
-        "Moon Cave - 2F Middle Frozen Chest after Fire eye room": LocData(186,
+        "Moon Cave - 2F Middle Frozen Chest after Fire eye room": LocData(190,
                                                                         special_rule=lambda s, w: moon_cave_fire_rule(s,
                                                                                                                       w)),
         "Moon Cave - 2F Right Frozen Chest after Fire eye room": LocData(187,
