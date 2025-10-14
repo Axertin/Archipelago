@@ -18,7 +18,7 @@ exits = {
                             ExitData("Moon Cave - Take lift to B2F", RegionNames.MOON_CAVE_B2F_LIFT,
                                      has_events=["Moon Cave - 1F Main room disturb lift"]),
                             ExitData("Moon Cave - Access Kitchen Back", RegionNames.MOON_CAVE_KITCHEN_BACK),
-                            ExitData("Moon Cave - lift to Orochi", RegionNames.MOON_CAVE_OROCHI)],
+                            ExitData("Moon Cave - lift to Orochi", RegionNames.MOON_CAVE_OROCHI,has_events=["Moon Cave - 1F Give all ingredients to Ajimi"])],
     RegionNames.MOON_CAVE_1F_LOCKED_CAVE: [ExitData("To 1F locked cave back", RegionNames.MOON_CAVE_1F_LOCKED_CAVE_BACK,
                                                     has_events=['Moon Cave - 1F Locked Cave open eye door']),
                                            ExitData("To 2F geyser rafters", RegionNames.MOON_CAVE_2F_GEYSER_RAFTER,
@@ -55,7 +55,6 @@ exits = {
                                        ExitData("Moon Cave - 4f behind the blown up wall",
                                                 RegionNames.MOON_CAVE_4F_AFTER_CANON,
                                                 has_events=["Moon Cave - 4F Mandatory Fight"])]
-
 }
 events = {
     RegionNames.MOON_CAVE: {

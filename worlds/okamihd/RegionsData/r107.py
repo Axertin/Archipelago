@@ -53,8 +53,8 @@ events = {
         "Gale Shrine - Get Serpent Crystal" :EventData(
             required_items_events=["Gale Shrine - Defeat Crimson Helm"],
             event_item_name="Serpent Crystal",
-            is_event_item=lambda o:o.MoonCaveAccess==0
-
+            is_event_item=lambda o:o.MoonCaveAccess==0,
+            precollected=lambda o:o.MoonCaveAccess==2,
         )
     }
 }

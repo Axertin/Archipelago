@@ -54,12 +54,14 @@ class OpenGameStart(Toggle):
     display_name = "Remove some events for a more open start"
     default = 1
 
+
 class BloomGuardianSaplings(Toggle):
     """
     Bloom every guardian sapling except Kamiki Village
     """
-    display_name="Bloom all guardian saplings"
+    display_name = "Bloom all guardian saplings"
     default = 1
+
 
 class RemoveBlockHead(Toggle):
     """Removes all 3 instances of Blockhead"""
@@ -92,12 +94,13 @@ class MoonCaveAccess(Choice):
     """What does trigger access to moon cave ?
 
     Serpent Crystal: You need to find the Serpent Crystal item to open Moon cave
-    Crimson Helm: You need to defeat Crimson Helm to open moon cave."""
+    Crimson Helm: You need to defeat Crimson Helm to open moon cave.
+    Open: Moon Cave is open from start"""
     display_name = "What does trigger access to moon cave ?"
     option_serpent_crystal = 0
     option_crimson_helm = 1
+    option_open = 2
     default = 0
-
 
 
 #
@@ -121,8 +124,8 @@ class OkamiOptions(PerGameCommonOptions):
     RemoveBlockHead: RemoveBlockHead
     RequiredDoggorbs: RequiredDoggorbs
     CanineRewards: CanineRewards
-    MoonCaveAccess:MoonCaveAccess
-    BloomGuardianSaplings:BloomGuardianSaplings
+    MoonCaveAccess: MoonCaveAccess
+    BloomGuardianSaplings: BloomGuardianSaplings
 
 
 #    PraiseSanity:PraiseSanity
