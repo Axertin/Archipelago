@@ -57,7 +57,7 @@ class OpenGameStart(Toggle):
 
 class BloomGuardianSaplings(Toggle):
     """
-    Bloom every guardian sapling except Kamiki Village
+    Bloom every guardian sapling except Kamiki Village and Hana Valley
     """
     display_name = "Bloom all guardian saplings"
     default = 1

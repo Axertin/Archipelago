@@ -83,16 +83,20 @@ class OkamiWorld(World):
     def create_itempool(world: "OkamiWorld") -> List[Item]:
         itempool: List[Item] = []
 
-        di = None
-
         if not world.options.ProgressiveWeapons:
             # Get a random tier 1 divine instrument to start with.
             di = random.choice(list(world.item_name_groups.get('divine_instrument_tier_1')))
             world.push_precollected(
                 create_item(di, get_item_name_to_id_dict()[di], ItemClassification.progression, world))
+            # Create other weapons
+            for (divine_instrument_data) in list(DivineInstruments):
+                if divine_instrument_data.value.item_name != di:
+                    itempool+=[create_item(divine_instrument_data.value.item_name,divine_instrument_data.value.code,ItemClassification.progression,world)]
         else:
+            # Get a random progressive weapon
             (di_name, di) = random.choice(list(progressive_weapons.items()))
             world.push_precollected(create_item(di_name, di.code, ItemClassification.progression, world))
+            # Create other progressive weapons
             for (progressive_waepon_name, progressive_weapon) in progressive_weapons.items():
                 if di_name == progressive_waepon_name:
                     count = 4
