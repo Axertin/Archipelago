@@ -52,8 +52,6 @@ def create_region_events(reg: Region, world: "OkamiWorld"):
                                               None, reg, event_data,
                                               world)
 
-                event_location.show_in_spoiler = False
-
             elif is_event_item_state:
                 create_location(event_name, event_data, reg, world)
 
@@ -61,6 +59,7 @@ def create_region_events(reg: Region, world: "OkamiWorld"):
 def create_event(location_name: str, item_name: str, code: int | None, region: Region, data: LocData,
                  world: "OkamiWorld") -> Location:
     event = OkamiLocation(world.player, location_name, None, region)
+    event.show_in_spoiler = False
     apply_event_or_location_rules(event, location_name, data, world)
     region.locations.append(event)
     event.place_locked_item(OkamiItem(item_name, ItemClassification.progression, code, world.player))

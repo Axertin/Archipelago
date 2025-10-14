@@ -97,8 +97,8 @@ class OkamiWorld(World):
             (di_name, di) = random.choice(list(progressive_weapons.items()))
             world.push_precollected(create_item(di_name, di.code, ItemClassification.progression, world))
             # Create other progressive weapons
-            for (progressive_waepon_name, progressive_weapon) in progressive_weapons.items():
-                if di_name == progressive_waepon_name:
+            for (progressive_weapon_name, progressive_weapon) in progressive_weapons.items():
+                if di_name == progressive_weapon_name:
                     count = 4
                 else:
                     count = 5
