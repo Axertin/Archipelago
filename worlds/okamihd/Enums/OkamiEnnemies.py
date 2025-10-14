@@ -2,7 +2,6 @@ from typing import TYPE_CHECKING, NamedTuple, List
 from enum import Enum
 
 from .BrushTechniques import BrushTechniques
-from ...stardew_valley.stardew_rule import false_
 
 if TYPE_CHECKING:
     from .. import OkamiWorld

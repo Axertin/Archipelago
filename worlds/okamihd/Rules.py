@@ -94,7 +94,6 @@ def has_divine_instrument_tier(tier: int, state: CollectionState, world: "OkamiW
 def apply_event_or_location_rules(loc: Location, name: str, data: LocData | EventData, world: "OkamiWorld"):
     #TODO: Make special rule apply with other rules (and operator)
     if data.special_rule is None:
-        print (name+" has no special rule")
         required_techinques = []
         required_power_slash_level = data.power_slash_level
         required_cherry_bomb_level = data.cherry_bomb_level
