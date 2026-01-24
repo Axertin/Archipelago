@@ -1,15 +1,16 @@
 from BaseClasses import Region, Location, ItemClassification
+from .Enums.LocationType import LocationType
 from .Rules import apply_event_or_location_rules
 from .Types import LocData, OkamiLocation, OkamiItem, resolve_option_callable, EventData
 from typing import Dict, TYPE_CHECKING
-from .RegionsData import okami_locations,okami_events
+from .RegionsData import okami_locations, okami_events, okami_shop_locations
 
 if TYPE_CHECKING:
     from . import OkamiWorld
 
 
 def get_location_names():
-    # ALL Locations are in this table, even events
+    # ALL Locations are in this table, even events and shops
     location_names = {}
     for region_key, region_locations in okami_locations.items():
         for location_name, location_data in region_locations.items():
@@ -17,6 +18,10 @@ def get_location_names():
     for region_key, region_events in okami_events.items():
         for event_name, event_data in region_events.items():
             location_names[event_name] = event_data.id
+    # Include all possible shop locations (they're conditionally created based on options)
+    for region_key, region_shop_locations in okami_shop_locations.items():
+        for location_name, location_data in region_shop_locations.items():
+            location_names[location_name] = location_data.id
     return location_names
 
 
@@ -25,6 +30,15 @@ def create_region_locations(reg: Region, world: "OkamiWorld"):
         for (location_name, location_data) in okami_locations[reg.name].items():
             # if location_data.praise_sanity  <= world.options.PraiseSanity:
             create_location(location_name, location_data, reg, world)
+
+    # Create shop locations if RandomizeShops is enabled
+    if world.options.RandomizeShops and reg.name in okami_shop_locations:
+        shop_slots = world.options.ShopSlots.value
+        created_count = 0
+        for (location_name, location_data) in okami_shop_locations[reg.name].items():
+            if location_data.type == LocationType.SHOP and created_count < shop_slots:
+                create_location(location_name, location_data, reg, world)
+                created_count += 1
 
 
 def create_location(location_name: str, location_data: EventData | LocData, reg: Region, world: "OkamiWorld"):
@@ -75,4 +89,9 @@ def get_total_locations(world: "OkamiWorld") -> int:
         for _, event_data in region_events.items():
             if resolve_option_callable(event_data.is_event_item, world):
                 location_count += 1
+    # Count shop locations if RandomizeShops is enabled
+    if world.options.RandomizeShops:
+        shop_slots = world.options.ShopSlots.value
+        num_shops = len(okami_shop_locations)  # Number of regions with shops
+        location_count += num_shops * shop_slots
     return location_count

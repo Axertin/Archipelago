@@ -43,3 +43,22 @@ locations = {
     }
 
 }
+
+# Shop locations (shopId=19): 300000 + 19*1000 + slot = 319000 + slot
+# These are added separately and conditionally created based on RandomizeShops option
+shop_locations = {
+    RegionNames.TAKA_PASS: {
+        "Taka Pass - Shop Slot 1": LocData(319000, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 2": LocData(319001, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 3": LocData(319002, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 4": LocData(319003, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 5": LocData(319004, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 6": LocData(319005, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 7": LocData(319006, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 8": LocData(319007, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 9": LocData(319008, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 10": LocData(319009, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 11": LocData(319010, type=LocationType.SHOP),
+        "Taka Pass - Shop Slot 12": LocData(319011, type=LocationType.SHOP),
+    }
+}

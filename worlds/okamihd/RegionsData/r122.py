@@ -24,10 +24,11 @@ events = {
 }
 locations = {
     RegionNames.RIVER_OF_THE_HEAVENS_KAMIKI: {
-        "River of the Heavens - Ledge Chest": LocData(1),
-        "River of the Heavens - Yomigami": LocData(2,type=LocationType.CONSTELLATION),
+        # Container IDs: 900000 + (0x122 << 8) + spawn_idx
+        "River of the Heavens - Ledge Chest": LocData(974240),  # spawn_idx=0, Holy Bone S
+        "River of the Heavens - Yomigami": LocData(200001, type=LocationType.CONSTELLATION),  # Brush acquisition
     },
     RegionNames.RIVER_OF_THE_HEAVENS_NAGI: {
-        "River of the Heavens - Astral Pouch": LocData(3),
+        "River of the Heavens - Astral Pouch": LocData(974252),  # spawn_idx=12, Astral Pouch
     }
 }

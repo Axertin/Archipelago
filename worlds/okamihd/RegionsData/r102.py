@@ -61,35 +61,55 @@ events = {
     }
 }
 locations = {
+    # Container IDs: 900000 + (0x102 << 8) + spawn_idx = 966048 + spawn_idx
     RegionNames.STONE_KAMIKI: {
-        "Kamiki Village - Sunrise": LocData(6, type=LocationType.CONSTELLATION),
+        "Kamiki Village - Sunrise": LocData(200000, type=LocationType.CONSTELLATION),  # Brush acquisition
     },
     RegionNames.KAMIKI_VILLAGE: {
-        "Kamiki Village - Chest After Mr.Orange Yokai Fight": LocData(7),
-        "Kamiki Village - Buried Chest near Komuso": LocData(8, type=LocationType.BURIED_CHEST),
-        "Kamiki Village - Underwater Chest 1": LocData(13, type=LocationType.UNDERWATER_CHEST_SHALLOW),
-        "Kamiki Village - Underwater Chest 2": LocData(14, type=LocationType.UNDERWATER_CHEST_SHALLOW),
-        "Kamiki Village - Underwater chest in lake near Kushi's house": LocData(21, type=LocationType.UNDERWATER_CHEST),
-        "Kamiki Village - Hasugami": LocData(16, required_items_events=["Kamiki Village - Restore Sakuya's Tree"],
-                                             type=LocationType.CONSTELLATION),
-        "Kamiki Village - Buried chest in field": LocData(19, type=LocationType.BURIED_CHEST),
-        "Kamiki Village - Chest on Ledge": LocData(22, required_brush_techniques=[BrushTechniques.GREENSPROUT_VINE]),
-        "Kamiki Village - Rafters Lower Chest": LocData(75),
-        "Kamiki Village - Rafters Upper Chest": LocData(76, power_slash_level=1)
+        "Kamiki Village - Chest After Mr.Orange Yokai Fight": LocData(966064),  # spawn_idx=16, Rabbit Statue
+        "Kamiki Village - Buried Chest near Komuso": LocData(966048, type=LocationType.BURIED_CHEST),  # spawn_idx=0, Traveler's Charm
+        "Kamiki Village - Underwater Chest 1": LocData(966055, type=LocationType.UNDERWATER_CHEST_SHALLOW),  # spawn_idx=7, Inkfinity Stone
+        "Kamiki Village - Underwater Chest 2": LocData(966056, type=LocationType.UNDERWATER_CHEST_SHALLOW),  # spawn_idx=8, Stray Bead
+        "Kamiki Village - Underwater chest in lake near Kushi's house": LocData(966080, type=LocationType.UNDERWATER_CHEST),  # spawn_idx=32, Vase
+        "Kamiki Village - Hasugami": LocData(200005, required_items_events=["Kamiki Village - Restore Sakuya's Tree"],
+                                             type=LocationType.CONSTELLATION),  # Brush acquisition (Waterlily)
+        "Kamiki Village - Buried chest in field": LocData(966061, type=LocationType.BURIED_CHEST),  # spawn_idx=13, Dragonfly Bead
+        "Kamiki Village - Chest on Ledge": LocData(966057, required_brush_techniques=[BrushTechniques.GREENSPROUT_VINE]),  # spawn_idx=9, Exorcism Slip S
+        "Kamiki Village - Rafters Lower Chest": LocData(966059),  # spawn_idx=11, Stray Bead
+        "Kamiki Village - Rafters Upper Chest": LocData(966058, power_slash_level=1),  # spawn_idx=10, Glass Beads
     },
     RegionNames.ORANGES_HOUSE: {
-        "Kamiki Village - Chest buried in Oranges' house": LocData(45, type=LocationType.BURIED_CHEST)
+        "Kamiki Village - Chest buried in Oranges' house": LocData(966067, type=LocationType.BURIED_CHEST),  # spawn_idx=19, Coral Fragment
     },
     RegionNames.KUSHIS_HOUSE: {
-        "Kamiki Village - Kushi's Gift": LocData(11,
+        # Kushi's Gift is not a container - it's an event/NPC reward. Keep old ID for now.
+        "Kamiki Village - Kushi's Gift": LocData(500000 + 0x102 * 10000 + 11,
                                                  required_items_events=["Kamiki Village - Repair Kushi's Watermill"]),
     },
     RegionNames.KAMIKI_ISLANDS: {
-        "Kamiki Village - West Island chest ": LocData(9),
-        "Kamiki Village - West Island buried chest": LocData(10, type=LocationType.BURIED_CHEST),
-        # Waterlily tutorial,
-        "Kamiki Village - East Islands Sun fragment chest": LocData(18),
-        "Kamiki Village - East Islands Stray Bead Chest": LocData(44),
-        "Kamiki Village - East Islands Buried Chest": LocData(20, type=LocationType.BURIED_CHEST),
+        "Kamiki Village - West Island chest ": LocData(966081),  # spawn_idx=33, Glass Beads
+        "Kamiki Village - West Island buried chest": LocData(966096, type=LocationType.BURIED_CHEST),  # spawn_idx=48, Dragonfly Bead
+        "Kamiki Village - East Islands Sun fragment chest": LocData(966090),  # spawn_idx=42, Sun Fragment
+        "Kamiki Village - East Islands Stray Bead Chest": LocData(966098),  # spawn_idx=50, Stray Bead
+        "Kamiki Village - East Islands Buried Chest": LocData(966102, type=LocationType.BURIED_CHEST),  # spawn_idx=54, Wooden Bear
+    }
+}
+
+# Shop locations (shopId=5): 300000 + 5*1000 + slot = 305000 + slot
+# These are added separately and conditionally created based on RandomizeShops option
+shop_locations = {
+    RegionNames.KAMIKI_VILLAGE: {
+        "Kamiki Village - Shop Slot 1": LocData(305000, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 2": LocData(305001, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 3": LocData(305002, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 4": LocData(305003, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 5": LocData(305004, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 6": LocData(305005, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 7": LocData(305006, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 8": LocData(305007, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 9": LocData(305008, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 10": LocData(305009, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 11": LocData(305010, type=LocationType.SHOP),
+        "Kamiki Village - Shop Slot 12": LocData(305011, type=LocationType.SHOP),
     }
 }

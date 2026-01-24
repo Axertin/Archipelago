@@ -59,14 +59,17 @@ class OkamiWorld(World):
         return create_standard_item(self, name)
 
     def fill_slot_data(self) -> dict:
-        slot_data: dict = {"SeedNumber": str(self.multiworld.seed),  # For shop prices
-                           "SeedName": self.multiworld.seed_name,
-                           "TotalLocations": get_total_locations(self)}
+        slot_data: dict = {
+            "SeedNumber": str(self.multiworld.seed),  # For shop prices
+            "SeedName": self.multiworld.seed_name,
+            "TotalLocations": get_total_locations(self),
+            # Client configuration
+            "supported_client_version": "0.6.0",  # Minimum client version required
+        }
 
-       # FIXME: Causes issues with Archipelago 0.6.4
-       # for name, value in self.options.as_dict(*self.options_dataclass.type_hints).items():
-       #     if name in slot_data_options:
-       #         slot_data[name] = value
+        # Add game options to slot_data
+        for name, value in self.options.as_dict(*slot_data_options).items():
+            slot_data[name] = value
 
         return slot_data
 

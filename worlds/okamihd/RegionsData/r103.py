@@ -26,16 +26,19 @@ events = {
     }
 }
 locations = {
+    # Container IDs: 900000 + (0x103 << 8) + spawn_idx = 966304 + spawn_idx
     RegionNames.CURSED_HANA_VALLEY: {
-        "Hana Valley - Freestanding Chest": LocData(15),
-        "Hana Valley - Buried chest near tunnel": LocData(23,type=LocationType.BURIED_CHEST),
-        "Hana Valley - Buried chest at entrance boulder" :LocData(24,type=LocationType.BURIED_CHEST),
+        "Hana Valley - Freestanding Chest": LocData(966313),  # spawn_idx=9, Traveler's Charm
+        "Hana Valley - Buried chest near tunnel": LocData(966309, type=LocationType.BURIED_CHEST),  # spawn_idx=5, Stray Bead
+        "Hana Valley - Buried chest at entrance boulder": LocData(966310, type=LocationType.BURIED_CHEST),  # spawn_idx=6, Coral Fragment
     },
-    RegionNames.HANA_VALLEY_SAKIGAMI:{
-        "Hana Valley - Sakigami": LocData(12, type=LocationType.CONSTELLATION)
+    RegionNames.HANA_VALLEY_SAKIGAMI: {
+        "Hana Valley - Sakigami": LocData(200004, type=LocationType.CONSTELLATION),  # Brush acquisition (Bloom)
     },
-    RegionNames.HANA_VALLEY:{
-      "Hana Valley - Chest on Island":LocData(25),
-      "Hana Valley - Sun Fragment Chest (Bloom every Tree)": LocData(26, required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM],power_slash_level=1)
+    RegionNames.HANA_VALLEY: {
+        "Hana Valley - Chest on Island": LocData(966314),  # spawn_idx=10, Travel Guide: Digging Tips
+        # Note: Sun Fragment chest (idx=80 in spreadsheet) may use a different system - keeping as collected object for now
+        "Hana Valley - Sun Fragment Chest (Bloom every Tree)": LocData(500000 + 0x103 * 10000 + 80,
+            required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM], power_slash_level=1),
     }
 }

@@ -26,9 +26,10 @@ events = {
 }
 locations = {
     RegionNames.CAVE_OF_NAGI: {
-        "Cave of Nagi - Stray Bead Chest": LocData(4),
+        # Container IDs: 900000 + (0x101 << 8) + spawn_idx
+        "Cave of Nagi - Stray Bead Chest": LocData(965806),  # spawn_idx=14, Stray Bead
     },
     RegionNames.CAVE_OF_NAGI_TACHIGAMI: {
-        "Cave of Nagi - Tachigami": LocData(5,type=LocationType.CONSTELLATION),
+        "Cave of Nagi - Tachigami": LocData(200002, type=LocationType.CONSTELLATION),  # Brush acquisition (Power Slash)
     }
 }

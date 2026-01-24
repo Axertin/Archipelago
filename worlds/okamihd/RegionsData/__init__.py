@@ -69,3 +69,10 @@ okami_events = {
     **rf07.events,
     **rf08.events
 }
+
+# Shop locations are separate because they're conditionally created based on RandomizeShops
+okami_shop_locations = {
+    **getattr(r102, 'shop_locations', {}),
+    **getattr(rf01, 'shop_locations', {}),
+    **getattr(rf08, 'shop_locations', {}),
+}
