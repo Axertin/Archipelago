@@ -1,5 +1,5 @@
 import typing
-from typing import NamedTuple, Optional, List, Callable
+from typing import NamedTuple, Optional, List, Callable,TYPE_CHECKING
 
 from typing_extensions import TypeVar
 
@@ -9,6 +9,9 @@ from .Enums.BrushTechniques import BrushTechniques
 from .Enums.LocationType import LocationType
 from .Enums.OkamiEnnemies import OkamiEnnemies
 from .Options import OkamiOptions
+
+if TYPE_CHECKING:
+    from .. import OkamiWorld
 
 
 class OkamiLocation(Location):
