@@ -7,7 +7,7 @@ from BaseClasses import Location, Item, ItemClassification, LocationProgressType
 from worlds.AutoWorld import World
 from .Enums.BrushTechniques import BrushTechniques
 from .Enums.LocationType import LocationType
-from .Enums.OkamiEnnemies import OkamiEnemies
+from .Enums.OkamiEnemies import OkamiEnemies
 from .Options import OkamiOptions
 
 

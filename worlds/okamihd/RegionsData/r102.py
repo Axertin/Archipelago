@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from BaseClasses import LocationProgressType
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnemies
+from ..Enums.OkamiEnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Types import ExitData, LocData, EventData
 

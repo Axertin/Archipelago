@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnemies
+from ..Enums.OkamiEnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Rules import has_soup_ingerdients, moon_cave_fire_rule, moon_cave_fire_rule_4f
 from ..Types import ExitData, LocData, EventData
