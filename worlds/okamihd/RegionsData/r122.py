@@ -26,7 +26,7 @@ locations = {
     RegionNames.RIVER_OF_THE_HEAVENS_KAMIKI: {
         # Container IDs: 900000 + (0x122 << 8) + spawn_idx
         "River of the Heavens - Ledge Chest": LocData(974240),  # spawn_idx=0, Holy Bone S
-        "River of the Heavens - Yomigami": LocData(200001, type=LocationType.CONSTELLATION),  # Brush acquisition
+        "River of the Heavens - Yomigami": LocData(200022, type=LocationType.CONSTELLATION),  # Brush acquisition (bit 22)
     },
     RegionNames.RIVER_OF_THE_HEAVENS_NAGI: {
         "River of the Heavens - Astral Pouch": LocData(974252),  # spawn_idx=12, Astral Pouch

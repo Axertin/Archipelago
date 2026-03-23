@@ -20,10 +20,10 @@ events={
 }
 locations={
     RegionNames.CALCIFIED_CAVERN: {
-        "Calcified Cavern - Freestanding item": LocData(171, type=LocationType.FREESTANDING_ITEM),
+        "Calcified Cavern - Freestanding item": LocData(969120, type=LocationType.FREESTANDING_ITEM),
         #For now this is treated like a key, so not randomized.
-        #"Calcified Cavern - Chest after devil gate": LocData(172, required_items_events=["Calcified Cavern - Defeat devil gate"]),
-        "Calcified Cavern - Left Side chest":LocData(173),
-        "Calcified Cavern - Frozen Chest": LocData(174,type=LocationType.FROZEN_CHEST)
+        #"Calcified Cavern - Chest after devil gate": LocData(969121, required_items_events=["Calcified Cavern - Defeat devil gate"]),
+        "Calcified Cavern - Left Side chest":LocData(969122),
+        "Calcified Cavern - Frozen Chest": LocData(969123,type=LocationType.FROZEN_CHEST)
     }
 }

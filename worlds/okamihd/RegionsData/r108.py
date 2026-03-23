@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from BaseClasses import LocationProgressType
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnnemies
+from ..Enums.OkamiEnnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Rules import gale_shrine_access
 from ..Types import EventData, ExitData, LocData
@@ -42,7 +42,7 @@ events = {
                                                 o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
                                             else LocationProgressType.DEFAULT, event_item_name="Save Ko"),
         # Should we add more conditions to get this one ?
-        "Kusa Village - Save Tei": EventData(id=132, mandatory_enemies=[OkamiEnnemies.TEI],
+        "Kusa Village - Save Tei": EventData(id=132, mandatory_enemies=[OkamiEnemies.TEI],
                                              is_event_item=lambda o: o.CanineRewards != 0,
                                              progress_type=lambda
                                                  o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
@@ -51,28 +51,28 @@ events = {
 }
 locations = {
     RegionNames.KUSA_VILLAGE: {
-        "Kusa Village - Chest on rafters after banners": LocData(116,
+        "Kusa Village - Chest on rafters after banners": LocData(967595,
                                                                  required_brush_techniques=[BrushTechniques.GALESTROM,
                                                                                             BrushTechniques.GREENSPROUT_VINE]),
-        "Kusa Village - Chest on rafters before banners": LocData(117,
+        "Kusa Village - Chest on rafters before banners": LocData(967626,
                                                                   required_brush_techniques=[
                                                                       BrushTechniques.GREENSPROUT_VINE]),
-        "Kusa Village - Stray Bead Chest on rafters after banners": LocData(118,
+        "Kusa Village - Stray Bead Chest on rafters after banners": LocData(967627,
                                                                             required_brush_techniques=[
                                                                                 BrushTechniques.GALESTROM,
                                                                                 BrushTechniques.GREENSPROUT_VINE]),
-        "Kusa Village - Buried Chest near Fuse's house": LocData(120, type=LocationType.BURIED_CHEST),
-        "Kusa Village - Buried Chest near Gale Shrine Ledge": LocData(121, type=LocationType.BURIED_CHEST),
-        "Kusa Village - Underwater Chest near Fuse's house right": LocData(122, type=LocationType.UNDERWATER_CHEST),
-        "Kusa Village - Underwater Chest near Fuse's house left": LocData(123, type=LocationType.UNDERWATER_CHEST)
+        "Kusa Village - Buried Chest near Fuse's house": LocData(967637, type=LocationType.BURIED_CHEST),
+        "Kusa Village - Buried Chest near Gale Shrine Ledge": LocData(967642, type=LocationType.BURIED_CHEST),
+        "Kusa Village - Underwater Chest near Fuse's house right": LocData(967654, type=LocationType.UNDERWATER_CHEST),
+        "Kusa Village - Underwater Chest near Fuse's house left": LocData(967655, type=LocationType.UNDERWATER_CHEST)
     },
     RegionNames.KUSA_INN: {
-        "Kusa Village - Daruma inside Inn": LocData(124, type=LocationType.DARUMA)
+        "Kusa Village - Daruma inside Inn": LocData(967652, type=LocationType.DARUMA)
     },
     RegionNames.KUSA_VILLAGE_BLOCKHEAD: {
-        "Kusa Village - Chest inside Blockhead Cave": LocData(115)
+        "Kusa Village - Chest inside Blockhead Cave": LocData(967594)
     },
     RegionNames.BAMBOO_HOUSE: {
-        "Kusa Village - Buried Chest inside Mr Bamboo's house": LocData(119, type=LocationType.BURIED_CHEST)
+        "Kusa Village - Buried Chest inside Mr Bamboo's house": LocData(967631, type=LocationType.BURIED_CHEST)
     }
 }

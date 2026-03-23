@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from BaseClasses import LocationProgressType
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnnemies
+from ..Enums.OkamiEnnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Types import ExitData, LocData, EventData
 
@@ -25,11 +25,11 @@ events = {
     RegionNames.STONE_KAMIKI: {
         "Kamiki Village - Restoring the villagers": EventData(required_brush_techniques=[BrushTechniques.SUNRISE],
                                                               id=0x203, precollected=lambda o: o.OpenGameStart),
-        "Kamiki Village - Fight with Mr.Orange": EventData(mandatory_enemies=[OkamiEnnemies.GREEN_IMP], id=0x208,
+        "Kamiki Village - Fight with Mr.Orange": EventData(mandatory_enemies=[OkamiEnemies.GREEN_IMP], id=0x208,
                                                            precollected=lambda o: o.OpenGameStart,
                                                            required_items_events=[
                                                                "Kamiki Village - Restoring the villagers"]),
-        "Kamiki Village - Get Orb from Hayabusa": EventData(id=145, mandatory_enemies=[OkamiEnnemies.HAYABUSA],
+        "Kamiki Village - Get Orb from Hayabusa": EventData(id=145, mandatory_enemies=[OkamiEnemies.HAYABUSA],
                                                             is_event_item=lambda o: o.CanineRewards != 0,
                                                             progress_type=lambda
                                                                 o: LocationProgressType.EXCLUDED if o.CanineRewards == 2
@@ -47,7 +47,7 @@ events = {
                                                                    "Kamiki Village - Wake up Susano"], id=0x205,
                                                                precollected=lambda o: o.OpenGameStart),
         "Kamiki Village - Save the merchant": EventData(
-            mandatory_enemies=[OkamiEnnemies.GREEN_IMP, OkamiEnnemies.RED_IMP], id=0x206,
+            mandatory_enemies=[OkamiEnemies.GREEN_IMP, OkamiEnemies.RED_IMP], id=0x206,
             precollected=lambda o: o.OpenGameStart),
         "Kamiki Village - Help Susano Train/Break the boulder": EventData(power_slash_level=1,
                                                                           required_items_events=["Vista of the Gods",
@@ -63,7 +63,7 @@ events = {
 locations = {
     # Container IDs: 900000 + (0x102 << 8) + spawn_idx = 966048 + spawn_idx
     RegionNames.STONE_KAMIKI: {
-        "Kamiki Village - Sunrise": LocData(200000, type=LocationType.CONSTELLATION),  # Brush acquisition
+        "Kamiki Village - Sunrise": LocData(200027, type=LocationType.CONSTELLATION),  # Brush acquisition (bit 27)
     },
     RegionNames.KAMIKI_VILLAGE: {
         "Kamiki Village - Chest After Mr.Orange Yokai Fight": LocData(966064),  # spawn_idx=16, Rabbit Statue
@@ -83,7 +83,7 @@ locations = {
     },
     RegionNames.KUSHIS_HOUSE: {
         # Kushi's Gift is not a container - it's an event/NPC reward. Keep old ID for now.
-        "Kamiki Village - Kushi's Gift": LocData(500000 + 0x102 * 10000 + 11,
+        "Kamiki Village - Kushi's Gift": LocData(500000 + 3 * 10000 + 11,  # mapId=3 (KamikiVillage enum index)
                                                  required_items_events=["Kamiki Village - Repair Kushi's Watermill"]),
     },
     RegionNames.KAMIKI_ISLANDS: {

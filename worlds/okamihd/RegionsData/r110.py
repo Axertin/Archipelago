@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnnemies
+from ..Enums.OkamiEnnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Rules import has_soup_ingerdients, moon_cave_fire_rule, moon_cave_fire_rule_4f
 from ..Types import ExitData, LocData, EventData
@@ -125,7 +125,7 @@ events = {
             required_brush_techniques=[BrushTechniques.INFERNO], event_item_name="Moon Cave - Melt Kicthen Ice")
     },
     RegionNames.MOON_CAVE_2F_FIRE_EYE: {
-        "Moon Cave - 2F Cursed Fire Eye Torii": EventData(mandatory_enemies=[OkamiEnnemies.FIRE_EYE]),
+        "Moon Cave - 2F Cursed Fire Eye Torii": EventData(mandatory_enemies=[OkamiEnemies.FIRE_EYE]),
         "Moon Cave - 2F Get Fire Eye": EventData(required_items_events=["Moon Cave - 2F Cursed Fire Eye Torii"],
                                                  event_item_name="Fire Eye")
     },
@@ -155,7 +155,7 @@ events = {
             required_items_events=["Moon Cave - 4F Black Demon Horn Torii"], event_item_name="Black Demon Horn")
     },
     RegionNames.MOON_CAVE_OROCHI: {
-        "Moon Cave - Defeat Orochi": EventData(mandatory_enemies=[OkamiEnnemies.OROCHI_1],
+        "Moon Cave - Defeat Orochi": EventData(mandatory_enemies=[OkamiEnemies.OROCHI_1],
                                                required_brush_techniques=[BrushTechniques.CRESCENT],
                                                power_slash_level=1)
     }
@@ -163,48 +163,48 @@ events = {
 #TODO: Check basment chest, there's probably one or two missing
 locations = {
     RegionNames.MOON_CAVE: {
-        "Moon Cave - 1F Chest on ledge in the kitchen": LocData(175),
-        "Moon Cave - 1F Frozen Chest after 3 ingredients": LocData(185, special_rule=(
+        "Moon Cave - 1F Chest on ledge in the kitchen": LocData(969640),
+        "Moon Cave - 1F Frozen Chest after 3 ingredients": LocData(969639, special_rule=(
             lambda s, w: has_soup_ingerdients(s, w, 3) and s.has(BrushTechniques.INFERNO, w.player))),
-        "Moon Cave - 1F Chest after 4 ingredients": LocData(186,
+        "Moon Cave - 1F Chest after 4 ingredients": LocData(969642,
                                                             special_rule=(lambda s, w: has_soup_ingerdients(s, w, 4))),
     },
     RegionNames.MOON_CAVE_1F_LOCKED_CAVE: {
         "Moon Cave - 1F locked cave Treasure bud behind bombable wall": LocData(176, type=LocationType.TREASURE_BUD)
     },
     RegionNames.MOON_CAVE_B2F_LIFT: {
-        "Moon Cave - B2F Chest on ledge near eyes door": LocData(178)
+        "Moon Cave - B2F Chest on ledge near eyes door": LocData(969647)
     },
     RegionNames.MOON_CAVE_B2F_FROZEN_STATUE: {
-        "Moon Cave - Moegami": LocData(177, type=LocationType.CONSTELLATION)
+        "Moon Cave - Moegami": LocData(200010, type=LocationType.CONSTELLATION)  # bit 10
     },
     RegionNames.MOON_CAVE_B2F_BOMBABLE: {
-        "Moon Cave - B2F Chest behind bombable wall": LocData(188)
+        "Moon Cave - B2F Chest behind bombable wall": LocData(969636)
     },
     RegionNames.MOON_CAVE_2F_SAND: {
         # Made this logically require cherry bomb as it's required to exit this area.
-        "Moon Cave - 2F Chest in sand pit": LocData(179, cherry_bomb_level=1),
-        "Moon Cave - 2F Map Chest after ball puzzle": LocData(180)
+        "Moon Cave - 2F Chest in sand pit": LocData(969648, cherry_bomb_level=1),
+        "Moon Cave - 2F Map Chest after ball puzzle": LocData(969637)
     },
     RegionNames.MOON_CAVE_2F_3F_RAFTERS: {
-        "Moon Cave - 3F Frozen Chest near merchant": LocData(181, special_rule=lambda s, w: moon_cave_fire_rule(s, w)),
-        "Moon Cave - 2F Rafters Chest under 3F Rafters": LocData(182),
+        "Moon Cave - 3F Frozen Chest near merchant": LocData(969644, special_rule=lambda s, w: moon_cave_fire_rule(s, w)),
+        "Moon Cave - 2F Rafters Chest under 3F Rafters": LocData(969643),
     },
     RegionNames.MOON_CAVE_2F_FIRE_EYE: {
-        "Moon Cave - 2F Left Frozen Chest after Fire eye room": LocData(189,
+        "Moon Cave - 2F Left Frozen Chest after Fire eye room": LocData(969651,
                                                                         special_rule=lambda s, w: moon_cave_fire_rule(s,
                                                                                                                       w)),
-        "Moon Cave - 2F Middle Frozen Chest after Fire eye room": LocData(190,
+        "Moon Cave - 2F Middle Frozen Chest after Fire eye room": LocData(969649,
                                                                         special_rule=lambda s, w: moon_cave_fire_rule(s,
                                                                                                                       w)),
-        "Moon Cave - 2F Right Frozen Chest after Fire eye room": LocData(187,
+        "Moon Cave - 2F Right Frozen Chest after Fire eye room": LocData(969650,
                                                                         special_rule=lambda s, w: moon_cave_fire_rule(s,
                                                                                                                       w)),
     },
     RegionNames.MOON_CAVE_4F_AFTER_CANON: {
-        "Moon Cave - 4F Lower ledge Frozen Chest": LocData(183, type=LocationType.FROZEN_CHEST,
+        "Moon Cave - 4F Lower ledge Frozen Chest": LocData(969652, type=LocationType.FROZEN_CHEST,
                                                            special_rule=lambda s, w: moon_cave_fire_rule_4f(s, w)),
-        "Moon Cave - 4F Upper ledge Frozen Chest": LocData(184, type=LocationType.FROZEN_CHEST,
+        "Moon Cave - 4F Upper ledge Frozen Chest": LocData(969653, type=LocationType.FROZEN_CHEST,
                                                            special_rule=lambda s, w: moon_cave_fire_rule_4f(s, w))
     }
 }

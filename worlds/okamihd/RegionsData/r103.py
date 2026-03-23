@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnnemies
+from ..Enums.OkamiEnnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Types import ExitData, LocData,EventData
 
@@ -15,7 +15,7 @@ exits = {
 }
 events = {
     RegionNames.CURSED_HANA_VALLEY:{
-        "Hana Valley - Open the sun stone door": EventData(required_brush_techniques=[BrushTechniques.SUNRISE], mandatory_enemies=[OkamiEnnemies.GREEN_IMP,OkamiEnnemies.YELLOW_IMP]),
+        "Hana Valley - Open the sun stone door": EventData(required_brush_techniques=[BrushTechniques.SUNRISE], mandatory_enemies=[OkamiEnemies.GREEN_IMP,OkamiEnemies.YELLOW_IMP]),
         "Hana Valley - Defeat Sleepy": EventData(power_slash_level=1,required_items_events=["Hana Valley - Open the sun stone door"]),
         "Hana Valley - Grow Guardian Sapling": EventData(required_brush_techniques=[BrushTechniques.SUNRISE],required_items_events=["Hana Valley - Defeat Sleepy"]),
     },
@@ -38,7 +38,7 @@ locations = {
     RegionNames.HANA_VALLEY: {
         "Hana Valley - Chest on Island": LocData(966314),  # spawn_idx=10, Travel Guide: Digging Tips
         # Note: Sun Fragment chest (idx=80 in spreadsheet) may use a different system - keeping as collected object for now
-        "Hana Valley - Sun Fragment Chest (Bloom every Tree)": LocData(500000 + 0x103 * 10000 + 80,
+        "Hana Valley - Sun Fragment Chest (Bloom every Tree)": LocData(500000 + 4 * 10000 + 80,  # mapId=4 (HanaValley enum index)
             required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM], power_slash_level=1),
     }
 }

@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnnemies
+from ..Enums.OkamiEnnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Types import ExitData, LocData, EventData
 
@@ -34,10 +34,10 @@ exits = {
 }
 events = {
     RegionNames.TSUTA_RUINS_1F_MAIN_PART: {
-        "Tsuta Ruins - Mandatory Single Ogre Fight": EventData(mandatory_enemies=[OkamiEnnemies.BUD_OGRE])
+        "Tsuta Ruins - Mandatory Single Ogre Fight": EventData(mandatory_enemies=[OkamiEnemies.BUD_OGRE])
     },
     RegionNames.TSUTA_RUINS_MUSHROOMS: {
-        "Tsuta Ruins - Mandatory Double Ogre Fight": EventData(mandatory_enemies=[OkamiEnnemies.BUD_OGRE]),
+        "Tsuta Ruins - Mandatory Double Ogre Fight": EventData(mandatory_enemies=[OkamiEnemies.BUD_OGRE]),
         "Tsuta Ruins - Grow the Mushrooms": EventData(required_brush_techniques=[BrushTechniques.SUNRISE],
                                                       required_items_events=[
                                                           "Tsuta Ruins - Mandatory Double Ogre Fight"]),
@@ -55,11 +55,11 @@ events = {
     },
     RegionNames.TSUTA_RUINS_DEVIL_GATES: {
         "Tsuta Ruins - Defeat Devil Gate 1": EventData(
-            mandatory_enemies=[OkamiEnnemies.GREEN_IMP, OkamiEnnemies.DEAD_FISH]),
+            mandatory_enemies=[OkamiEnemies.GREEN_IMP, OkamiEnemies.DEAD_FISH]),
         "Tsuta Ruins - Defeat Devil Gate 2": EventData(
-            mandatory_enemies=[OkamiEnnemies.GREEN_IMP, OkamiEnnemies.YELLOW_IMP]),
+            mandatory_enemies=[OkamiEnemies.GREEN_IMP, OkamiEnemies.YELLOW_IMP]),
         "Tsuta Ruins - Defeat Devil Gate 3": EventData(
-            mandatory_enemies=[OkamiEnnemies.RED_IMP, OkamiEnnemies.BUD_OGRE]),
+            mandatory_enemies=[OkamiEnemies.RED_IMP, OkamiEnemies.BUD_OGRE]),
         "Tsuta Ruins - Grow Mushrooms in Devil Gates Room": EventData(
             required_items_events=["Tsuta Ruins - Defeat Devil Gate 1", "Tsuta Ruins - Defeat Devil Gate 2",
                                    "Tsuta Ruins - Defeat Devil Gate 3"],
@@ -72,7 +72,7 @@ events = {
             required_brush_techniques=[BrushTechniques.GREENSPROUT_BLOOM]),
         "Tsuta Ruins - Open the top of the statue": EventData(
             required_brush_techniques=[BrushTechniques.GREENSPROUT_VINE]),
-        "Tsuta Ruins - Defeat the spider queen": EventData(mandatory_enemies=[OkamiEnnemies.SPIDER_QUEEN])
+        "Tsuta Ruins - Defeat the spider queen": EventData(mandatory_enemies=[OkamiEnemies.SPIDER_QUEEN])
     }
 }
 locations = {
@@ -108,8 +108,8 @@ locations = {
             "Tsuta Ruins - Destroy Poison Pots"], cherry_bomb_level=1, type=LocationType.TREASURE_BUD),  # spawn_idx=25, Stray Bead
     },
     RegionNames.TSUTA_RUINS_CENTRAL_STATUE: {
-        "Tsuta Ruins - Tsutagami": LocData(200006, required_items_events=[
-            "Tsuta Ruins - Bloom every cursed patch inside statue"], type=LocationType.CONSTELLATION),  # Brush acquisition (Vine)
+        "Tsuta Ruins - Tsutagami": LocData(200019, required_items_events=[
+            "Tsuta Ruins - Bloom every cursed patch inside statue"], type=LocationType.CONSTELLATION),  # Brush acquisition (Vine, bit 19)
     },
     RegionNames.TSUTA_RUINS_SPIDER: {
         "Tsuta Ruins - Left Chest before Spider queen": LocData(966581),  # spawn_idx=21, Travel Guide: Godhood Tips
