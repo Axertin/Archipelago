@@ -75,4 +75,4 @@ def resolve_option_callable[T](value: T | Callable[[OkamiOptions], T], world: "O
     if isinstance(value, Callable):
         return value(world.options)
     else:
-        return value
+        return value  
