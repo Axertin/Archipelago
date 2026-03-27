@@ -100,11 +100,6 @@ quest_items = {
     "Fox Rods": ItemData(0x46, ItemClassification.progression),
     "Thunder Brew": ItemData(0x47, ItemClassification.progression),
     "Shell Amulet": ItemData(0x48, ItemClassification.progression),
-    "Mask": ItemData(0x49, ItemClassification.progression),
-    "Ogre Liver": ItemData(0x4a, ItemClassification.progression),
-    "Lips of Ice": ItemData(0x4b, ItemClassification.progression),
-    "Eyeball of Fire": ItemData(0x4c, ItemClassification.progression),
-    "Black Demon Horn": ItemData(0x4d, ItemClassification.progression),
 
     "Golden Mushroom": ItemData(0x5f, ItemClassification.progression),
     "Gimmick Gear": ItemData(0x60, ItemClassification.progression),
@@ -200,7 +195,7 @@ filler_items = {
 }
 
 # Items that represent IG Events or quest progression.
-# ALL Items sections blew should have a count of 0, they're created otherwise!
+# All items in the sections below should have a count of 0, they're created by other means:
 event_items = {
     # CANINE WARRIORS STUFF
     "Save Rei": ItemData(0x303, ItemClassification.progression, count_in_pool=0),
