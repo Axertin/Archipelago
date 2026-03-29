@@ -1,7 +1,5 @@
 import typing
-from typing import NamedTuple, Optional, List, Callable
-
-from typing_extensions import TypeVar
+from typing import NamedTuple, Optional, List, Callable,TYPE_CHECKING, TypeVar
 
 from BaseClasses import Location, Item, ItemClassification, LocationProgressType, CollectionState
 from worlds.AutoWorld import World
@@ -9,6 +7,9 @@ from .Enums.BrushTechniques import BrushTechniques
 from .Enums.LocationType import LocationType
 from .Enums.OkamiEnemies import OkamiEnemies
 from .Options import OkamiOptions
+
+if TYPE_CHECKING:
+    from .. import OkamiWorld
 
 
 class OkamiLocation(Location):
@@ -66,10 +67,10 @@ class ExitData(NamedTuple):
     has_events: [str] = []
     needs_swim: bool = False
 
-
+T = TypeVar('T',str,int,bool)
 # Generic function to return the value or the resolved value of a callable that depends of options.
-def resolve_option_callable[T](value: T | Callable[[OkamiOptions], T], world: "OkamiWorld") -> T:
+def resolve_option_callable(value: T | Callable[[OkamiOptions], T], world: "OkamiWorld") -> T:
     if isinstance(value, Callable):
         return value(world.options)
     else:
-        return value
+        return value  

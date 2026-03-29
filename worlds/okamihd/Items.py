@@ -54,11 +54,11 @@ brush_techniques_items = {
     # Brush Techniques — item codes = 0x100 + game bitfield index (from BrushOverlay enum)
     BrushTechniques.GREENSPROUT_BLOOM.value: ItemData(0x104, ItemClassification.progression),       # bit 4
     BrushTechniques.GREENSPROUT_WATERLILY.value: ItemData(0x105, ItemClassification.progression),    # bit 5
-    BrushTechniques.GALESTROM.value: ItemData(0x106, ItemClassification.progression),               # bit 6
+    BrushTechniques.GALESTORM.value: ItemData(0x106, ItemClassification.progression),               # bit 6
     BrushTechniques.THUNDERSTORM.value: ItemData(0x108, ItemClassification.progression),            # bit 8
     BrushTechniques.INFERNO.value: ItemData(0x10A, ItemClassification.progression),                 # bit 10
     BrushTechniques.POWER_SLASH.value: ItemData(0x10C, ItemClassification.progression, count_in_pool=3),  # bit 12
-    BrushTechniques.WATERSPROUT.value: ItemData(0x10D, ItemClassification.progression),             # bit 13
+    BrushTechniques.WATERSPOUT.value: ItemData(0x10D, ItemClassification.progression),             # bit 13
     BrushTechniques.VEIL_OF_MIST.value: ItemData(0x110, ItemClassification.progression),            # bit 16
     BrushTechniques.CRESCENT.value: ItemData(0x112, ItemClassification.progression),                # bit 18
     BrushTechniques.GREENSPROUT_VINE.value: ItemData(0x113, ItemClassification.progression),        # bit 19
@@ -99,11 +99,6 @@ quest_items = {
     "Fox Rods": ItemData(0x46, ItemClassification.progression),
     "Thunder Brew": ItemData(0x47, ItemClassification.progression),
     "Shell Amulet": ItemData(0x48, ItemClassification.progression),
-    "Mask": ItemData(0x49, ItemClassification.progression),
-    "Ogre Liver": ItemData(0x4a, ItemClassification.progression),
-    "Lips of Ice": ItemData(0x4b, ItemClassification.progression),
-    "Eyeball of Fire": ItemData(0x4c, ItemClassification.progression),
-    "Black Demon Horn": ItemData(0x4d, ItemClassification.progression),
 
     "Golden Mushroom": ItemData(0x5f, ItemClassification.progression),
     "Gimmick Gear": ItemData(0x60, ItemClassification.progression),
@@ -199,7 +194,7 @@ filler_items = {
 }
 
 # Items that represent IG Events or quest progression.
-# ALL Items sections blew should have a count of 0, they're created otherwise!
+# All items in the sections below should have a count of 0, they're created by other means:
 event_items = {
     # CANINE WARRIORS STUFF
     "Save Rei": ItemData(0x303, ItemClassification.progression, count_in_pool=0),
@@ -210,7 +205,13 @@ event_items = {
     "Loyalty Orb": ItemData(0x4e, ItemClassification.progression, count_in_pool=0),
     "Justice Orb": ItemData(0x4f, ItemClassification.progression, count_in_pool=0),
     "Duty Orb": ItemData(0x50, ItemClassification.progression, count_in_pool=0),
-    "Serpent Crystal": ItemData(0x308,ItemClassification.progression, count_in_pool=0)
+    "Serpent Crystal": ItemData(0x308,ItemClassification.progression, count_in_pool=0),
+    # MOON CAVE
+    "Mask": ItemData(0x49, ItemClassification.progression, count_in_pool=0),
+    "Ogre Liver": ItemData(0x4a, ItemClassification.progression, count_in_pool=0),
+    "Ice Lips": ItemData(0x4b, ItemClassification.progression, count_in_pool=0),
+    "Fire Eye": ItemData(0x4c, ItemClassification.progression, count_in_pool=0),
+    "Black Demon Horn": ItemData(0x4d, ItemClassification.progression, count_in_pool=0),
 }
 weapons_items = {
     "Divine Retribution": ItemData(0x10, ItemClassification.progression, count_in_pool=0),
