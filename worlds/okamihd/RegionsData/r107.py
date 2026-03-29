@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnnemies
+from ..Enums.OkamiEnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Rules import gale_shrine_access
 from ..Types import EventData, ExitData, LocData
@@ -28,7 +28,7 @@ events = {
     },
     RegionNames.GALE_SHRINE: {
         # Gives a key
-        "Gale Shrine - Cursed Door in 1F right side room": EventData(mandatory_enemies=[OkamiEnnemies.CHIMERA]),
+        "Gale Shrine - Cursed Door in 1F right side room": EventData(mandatory_enemies=[OkamiEnemies.CHIMERA]),
         "Gale Shrine - Open Lift": EventData(required_items_events=["Gale Shrine - Cursed Door in 1F right side room"]),
         "Gale Shrine - Move the Windmill Bridges": EventData(required_brush_techniques=[BrushTechniques.GALESTORM])
     },
@@ -37,7 +37,7 @@ events = {
     },
     RegionNames.GALE_SHRINE_2F: {
         # Gives a key
-        "Gale Shrine - 2F Cursed Scroll": EventData(mandatory_enemies=[OkamiEnnemies.CHIMERA]),
+        "Gale Shrine - 2F Cursed Scroll": EventData(mandatory_enemies=[OkamiEnemies.CHIMERA]),
     },
     RegionNames.GALE_SHRINE_BACK: {
         "Gale Shrine - Cross flame Hallway": EventData(required_brush_techniques=[BrushTechniques.GALESTORM])
@@ -45,7 +45,7 @@ events = {
     RegionNames.GALE_SHRINE_BOSS: {
         # Techinally galestrom is already required to beat the boss,
         # but if we ever randomize enemies/bosses, I've added the following Susano cutscene requirements here.
-        "Gale Shrine - Defeat Crimson Helm": EventData(mandatory_enemies=[OkamiEnnemies.CRIMSON_HELM],
+        "Gale Shrine - Defeat Crimson Helm": EventData(mandatory_enemies=[OkamiEnemies.CRIMSON_HELM],
                                                        power_slash_level=1,
                                                        required_brush_techniques=[BrushTechniques.GALESTORM],
                                                        ),
@@ -60,38 +60,38 @@ events = {
 }
 locations = {
     RegionNames.GALE_SHRINE: {
-        "Gale Shrine - 1st Underwater Chest in entrance room": LocData(153, type=LocationType.UNDERWATER_CHEST),
-        "Gale Shrine - 2nd Underwater Chest in entrance room": LocData(154, type=LocationType.UNDERWATER_CHEST),
-        "Gale Shrine - 3rd Underwater Chest in entrance room": LocData(155, type=LocationType.UNDERWATER_CHEST),
+        "Gale Shrine - 1st Underwater Chest in entrance room": LocData(967354, type=LocationType.UNDERWATER_CHEST),
+        "Gale Shrine - 2nd Underwater Chest in entrance room": LocData(967355, type=LocationType.UNDERWATER_CHEST),
+        "Gale Shrine - 3rd Underwater Chest in entrance room": LocData(967356, type=LocationType.UNDERWATER_CHEST),
     },
     RegionNames.GALE_SHRINE_LIFT: {
-        "Gale Shrine - 1st Chest Under Lift ": LocData(156, required_items_events=["Gale Shrine - Use Lift"]),
-        "Gale Shrine - 2nd Chest Under Lift ": LocData(157, required_items_events=["Gale Shrine - Use Lift"]),
-        "Gale Shrine - 3rd Chest Under Lift ": LocData(158, required_items_events=["Gale Shrine - Use Lift"])
+        "Gale Shrine - 1st Chest Under Lift ": LocData(967350, required_items_events=["Gale Shrine - Use Lift"]),
+        "Gale Shrine - 2nd Chest Under Lift ": LocData(967351, required_items_events=["Gale Shrine - Use Lift"]),
+        "Gale Shrine - 3rd Chest Under Lift ": LocData(967352, required_items_events=["Gale Shrine - Use Lift"])
     },
     RegionNames.GALE_SHRINE_2F: {
-        "Gale Shrine - 2F Burning Chest": LocData(162, type=LocationType.BURNING_CHEST_NO_WATER)
+        "Gale Shrine - 2F Burning Chest": LocData(967330, type=LocationType.BURNING_CHEST_NO_WATER)
     },
     RegionNames.GALE_SHRINE_3F: {
-        "Gale Shrine - Kazegami": LocData(159, type=LocationType.CONSTELLATION),
-        "Gale Shrine - 3F Sun Fragment chest near Kazegami": LocData(160),
-        "Gale Shrine - 3F Burning Chest": LocData(161, type=LocationType.BURNING_CHEST_NO_WATER)
+        "Gale Shrine - Kazegami": LocData(200006, type=LocationType.CONSTELLATION),  # bit 6
+        "Gale Shrine - 3F Sun Fragment chest near Kazegami": LocData(967328),
+        "Gale Shrine - 3F Burning Chest": LocData(967329, type=LocationType.BURNING_CHEST_NO_WATER)
     },
     RegionNames.GALE_SHRINE_BACK: {
-        "Gale Shrine - 1F Chest after windmills": LocData(163),
-        "Gale Shrine - 1F Burning Chest in banner room": LocData(164, type=LocationType.BURNING_CHEST_NO_WATER),
-        "Gale Shrine - 1F Burning Chest in banner room rafters center": LocData(165,
+        "Gale Shrine - 1F Chest after windmills": LocData(967346),
+        "Gale Shrine - 1F Burning Chest in banner room": LocData(967344, type=LocationType.BURNING_CHEST_NO_WATER),
+        "Gale Shrine - 1F Burning Chest in banner room rafters center": LocData(967345,
                                                                                 type=LocationType.BURNING_CHEST_NO_WATER,
                                                                                 required_brush_techniques=[
                                                                                     BrushTechniques.GREENSPROUT_VINE]),
-        "Gale Shrine - 1F Burning Chest in banner room rafters front": LocData(166,
+        "Gale Shrine - 1F Burning Chest in banner room rafters front": LocData(967347,
                                                                                type=LocationType.BURNING_CHEST_NO_WATER,
                                                                                required_brush_techniques=[
                                                                                    BrushTechniques.GREENSPROUT_VINE]),
-        "Gale Shrine - 1F Chest in banner room rafters top": LocData(167,
+        "Gale Shrine - 1F Chest in banner room rafters top": LocData(967348,
                                                                      required_brush_techniques=[
                                                                          BrushTechniques.GREENSPROUT_VINE]),
-        "Gale Shrine - 1F Chest in banner room between banners": LocData(168,
+        "Gale Shrine - 1F Chest in banner room between banners": LocData(967349,
                                                                          required_brush_techniques=[
                                                                              BrushTechniques.GALESTORM]),
         "Gale Shrine - 1F Chest in banner room after banners": LocData(169,
@@ -99,6 +99,6 @@ locations = {
                                                                            BrushTechniques.GALESTORM])
     },
     RegionNames.GALE_SHRINE_BOSS:{
-        "Gale Shrine - Crimson Helm Reward": LocData(170, required_items_events=["Gale Shrine - Defeat Crimson Helm"])
+        "Gale Shrine - Crimson Helm Reward": LocData(967353, required_items_events=["Gale Shrine - Defeat Crimson Helm"])
     }
 }

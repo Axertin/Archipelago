@@ -17,7 +17,7 @@ class EnnemyData(NamedTuple):
     requires_bomb: bool = False
 
 
-class OkamiEnnemies(Enum):
+class OkamiEnemies(Enum):
     GREEN_IMP = EnnemyData(0x03, "Green Imp", 0, BrushTechniques.POWER_SLASH)
     RED_IMP = EnnemyData(0x00, "Red Imp", 0, BrushTechniques.POWER_SLASH)
     YELLOW_IMP = EnnemyData(0x02, "Yellow Imp", 0, BrushTechniques.POWER_SLASH)

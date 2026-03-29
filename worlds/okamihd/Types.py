@@ -5,7 +5,7 @@ from BaseClasses import Location, Item, ItemClassification, LocationProgressType
 from worlds.AutoWorld import World
 from .Enums.BrushTechniques import BrushTechniques
 from .Enums.LocationType import LocationType
-from .Enums.OkamiEnnemies import OkamiEnnemies
+from .Enums.OkamiEnemies import OkamiEnemies
 from .Options import OkamiOptions
 
 if TYPE_CHECKING:
@@ -34,7 +34,7 @@ class LocData(NamedTuple):
     power_slash_level: int = 0
     cherry_bomb_level: int = 0
     required_items_events: [str] = []
-    mandatory_enemies: List[OkamiEnnemies] = []
+    mandatory_enemies: List[OkamiEnemies] = []
     needs_swim: bool = False
     praise_sanity: int = 0
     progress_type: LocationProgressType | typing.Callable[
@@ -51,7 +51,7 @@ class EventData(NamedTuple):
     cherry_bomb_level: int = 0
     event_item_name: str | None = None
     required_items_events: [str] = []
-    mandatory_enemies: List[OkamiEnnemies] = []
+    mandatory_enemies: List[OkamiEnemies] = []
     needs_swim: bool = False
     precollected: bool | typing.Callable[[OkamiOptions], bool] = False
     is_event_item: bool | typing.Callable[[OkamiOptions], bool] = False

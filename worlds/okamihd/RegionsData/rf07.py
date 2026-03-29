@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from ..Enums.BrushTechniques import BrushTechniques
 from ..Enums.LocationType import LocationType
-from ..Enums.OkamiEnnemies import OkamiEnnemies
+from ..Enums.OkamiEnemies import OkamiEnemies
 from ..Enums.RegionNames import RegionNames
 from ..Types import EventData, ExitData, LocData
 
@@ -21,7 +21,7 @@ events={
         "Taka Pass - Blow up boulder to cave" : EventData(cherry_bomb_level=1)
     },
     RegionNames.CURSED_TAKA_PASS_WAKA:{
-        "Taka Pass - Rematch with Waka":EventData(mandatory_enemies=[OkamiEnnemies.WAKA_2])
+        "Taka Pass - Rematch with Waka":EventData(mandatory_enemies=[OkamiEnemies.WAKA_2])
     },
     RegionNames.CURSED_TAKA_PASS_CAVE:{
         "Taka pass - Restore Bridge to Guardian Sapling":EventData(required_brush_techniques=[BrushTechniques.REJUVENATION])
@@ -34,9 +34,9 @@ events={
 
 locations = {
     RegionNames.CURSED_TAKA_PASS_CAVE:{
-        "Taka pass - Stray bead chest in cave pond" : LocData(125, type=LocationType.UNDERWATER_CHEST),
-        "Taka pass - Burning chest in cave upper": LocData(126, type=LocationType.BURNING_CHEST),
-        "Taka pass - Second Burning chest in cave upper": LocData(98, type=LocationType.BURNING_CHEST_NO_WATER),
+        "Taka pass - Stray bead chest in cave pond" : LocData(1884895, type=LocationType.UNDERWATER_CHEST),
+        "Taka pass - Burning chest in cave upper": LocData(1884841, type=LocationType.BURNING_CHEST),
+        "Taka pass - Second Burning chest in cave upper": LocData(1884847, type=LocationType.BURNING_CHEST_NO_WATER),
     }
 
 }

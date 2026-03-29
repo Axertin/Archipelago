@@ -51,32 +51,31 @@ def get_item_name_to_id_dict() -> dict:
 
 
 brush_techniques_items = {
-
-    # Brush Techniques
-    BrushTechniques.SUNRISE.value: ItemData(0x100, ItemClassification.progression),
-    BrushTechniques.REJUVENATION.value: ItemData(0x101, ItemClassification.progression),
-    BrushTechniques.POWER_SLASH.value: ItemData(0x102, ItemClassification.progression, count_in_pool=3),
-    BrushTechniques.CHERRY_BOMB.value: ItemData(0x103, ItemClassification.progression, count_in_pool=3),
-    BrushTechniques.GREENSPROUT_BLOOM.value: ItemData(0x104, ItemClassification.progression),
-    BrushTechniques.GREENSPROUT_WATERLILY.value: ItemData(0x105, ItemClassification.progression),
-    BrushTechniques.GREENSPROUT_VINE.value: ItemData(0x106, ItemClassification.progression),
-    BrushTechniques.WATERSPOUT.value: ItemData(0x107, ItemClassification.progression),
-    BrushTechniques.CRESCENT.value: ItemData(0x108, ItemClassification.progression),
-    BrushTechniques.GALESTORM.value: ItemData(0x109, ItemClassification.progression),
-    BrushTechniques.INFERNO.value: ItemData(0x10A, ItemClassification.progression),
-    BrushTechniques.VEIL_OF_MIST.value: ItemData(0x10B, ItemClassification.progression),
-    BrushTechniques.CATWALK.value: ItemData(0x10C, ItemClassification.progression),
-    BrushTechniques.THUNDERSTORM.value: ItemData(0x10D, ItemClassification.progression),
-    BrushTechniques.BLIZZARD.value: ItemData(0x10E, ItemClassification.progression),
+    # Brush Techniques — item codes = 0x100 + game bitfield index (from BrushOverlay enum)
+    BrushTechniques.GREENSPROUT_BLOOM.value: ItemData(0x104, ItemClassification.progression),       # bit 4
+    BrushTechniques.GREENSPROUT_WATERLILY.value: ItemData(0x105, ItemClassification.progression),    # bit 5
+    BrushTechniques.GALESTORM.value: ItemData(0x106, ItemClassification.progression),               # bit 6
+    BrushTechniques.THUNDERSTORM.value: ItemData(0x108, ItemClassification.progression),            # bit 8
+    BrushTechniques.INFERNO.value: ItemData(0x10A, ItemClassification.progression),                 # bit 10
+    BrushTechniques.POWER_SLASH.value: ItemData(0x10C, ItemClassification.progression, count_in_pool=3),  # bit 12
+    BrushTechniques.WATERSPOUT.value: ItemData(0x10D, ItemClassification.progression),             # bit 13
+    BrushTechniques.VEIL_OF_MIST.value: ItemData(0x110, ItemClassification.progression),            # bit 16
+    BrushTechniques.CRESCENT.value: ItemData(0x112, ItemClassification.progression),                # bit 18
+    BrushTechniques.GREENSPROUT_VINE.value: ItemData(0x113, ItemClassification.progression),        # bit 19
+    BrushTechniques.REJUVENATION.value: ItemData(0x116, ItemClassification.progression),            # bit 22
+    BrushTechniques.BLIZZARD.value: ItemData(0x117, ItemClassification.progression),                # bit 23
+    BrushTechniques.CHERRY_BOMB.value: ItemData(0x119, ItemClassification.progression, count_in_pool=3),  # bit 25
+    BrushTechniques.SUNRISE.value: ItemData(0x11B, ItemClassification.progression),                 # bit 27
+    BrushTechniques.CATWALK.value: ItemData(0x11E, ItemClassification.progression),                 # bit 30
     ## UPGRADES/SECRET
-    BrushTechniques.MIST_WARP.value: ItemData(0x10F, ItemClassification.progression),
-    BrushTechniques.FIREBURST.value: ItemData(0x110, ItemClassification.progression),
-    BrushTechniques.WHIRLWIND.value: ItemData(0x111, ItemClassification.progression),
-    BrushTechniques.DELUGE.value: ItemData(0x112, ItemClassification.progression),
-    BrushTechniques.FOUNTAIN.value: ItemData(0x113, ItemClassification.progression),
-    BrushTechniques.THUNDERBOLT.value: ItemData(0x114, ItemClassification.progression),
+    BrushTechniques.WHIRLWIND.value: ItemData(0x107, ItemClassification.progression),               # bit 7
+    BrushTechniques.THUNDERBOLT.value: ItemData(0x109, ItemClassification.progression),             # bit 9
+    BrushTechniques.FIREBURST.value: ItemData(0x10B, ItemClassification.progression),               # bit 11
+    BrushTechniques.DELUGE.value: ItemData(0x10E, ItemClassification.progression),                  # bit 14
+    BrushTechniques.FOUNTAIN.value: ItemData(0x10F, ItemClassification.progression),                # bit 15
+    BrushTechniques.MIST_WARP.value: ItemData(0x111, ItemClassification.progression),               # bit 17
     ## VERY SECRET ONE
-    BrushTechniques.ICESTORM.value: ItemData(0x115, ItemClassification.useful)
+    BrushTechniques.ICESTORM.value: ItemData(0x118, ItemClassification.useful),                     # bit 24
 }
 equips = {
 

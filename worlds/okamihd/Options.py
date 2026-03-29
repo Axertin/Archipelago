@@ -103,6 +103,32 @@ class MoonCaveAccess(Choice):
     default = 0
 
 
+class RandomizeContainers(Toggle):
+    """Randomize items found in chests, bloom pods, and other containers."""
+    display_name = "Randomize Containers"
+    default = 1
+
+
+class RandomizeShops(Toggle):
+    """Randomize items sold in shops. (Not yet implemented)"""
+    display_name = "Randomize Shops"
+    default = 0
+
+
+class RandomizeBrushes(Toggle):
+    """Randomize brush technique acquisitions from constellations."""
+    display_name = "Randomize Brush Techniques"
+    default = 1
+
+
+class ShopSlots(Range):
+    """Number of item slots available in each randomized shop."""
+    display_name = "Shop Slots"
+    range_start = 1
+    range_end = 12
+    default = 6
+
+
 #
 # class PraiseSanity(Choice):
 #    """Randomize Praise Rewards"""
@@ -117,6 +143,10 @@ class MoonCaveAccess(Choice):
 #
 @dataclass
 class OkamiOptions(PerGameCommonOptions):
+    RandomizeContainers: RandomizeContainers
+    RandomizeShops: RandomizeShops
+    RandomizeBrushes: RandomizeBrushes
+    ShopSlots: ShopSlots
     BuriedChestsByNight: BuriedChestsByNight
     KarmicTransformers: KarmicTransformers
     OpenGameStart: OpenGameStart
@@ -132,6 +162,12 @@ class OkamiOptions(PerGameCommonOptions):
 
 
 okami_option_groups: Dict[str, List[Any]] = {
+    "Randomization": [
+        RandomizeContainers,
+        RandomizeShops,
+        RandomizeBrushes,
+        ShopSlots,
+    ],
     "General Options": [
         BuriedChestsByNight,
         KarmicTransformers,
@@ -151,6 +187,10 @@ okami_option_groups: Dict[str, List[Any]] = {
 }
 
 slot_data_options = {
+    "RandomizeContainers",
+    "RandomizeShops",
+    "RandomizeBrushes",
+    "ShopSlots",
     "BuriedChestsByNight",
     "KarmicTransformers",
     "OpenGameStart",
